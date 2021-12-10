@@ -3,49 +3,44 @@
     <!--Card-Body-->
     <div class="card-body">
         <!--Card-Title-->
-        <p class="card-title text-center shadow mb-5 rounded">Hall Booking Form</p>
+        <p class="card-title text-center shadow mb-5 rounded">{{title}}</p>
         <hr>
-        <p class="searchText"><strong>Search by Date</strong></p>
         <!--First Row-->
         <div class="row mt-4">
-            <div class="col-sm-6"> <input placeholder="Enter your ICTAK ID" type="text"  class="form-control textbox" style="font-family:Arial, FontAwesome"> </div>
-            <div class="col-sm-6"> <input placeholder="Enter your Name" type="text" class="form-control textbox" style="font-family:Arial, FontAwesome"> </div>
+            <div class="col-sm-12"> <input placeholder="Enter your ICTAK ID" type="text" name="emp_Id"  class="form-control textbox" style="font-family:Arial, FontAwesome"> </div>
         </div>
+        <div class="row mt-4">
+            <div class="col-sm-12"> <input placeholder="Enter your Name" type="text" name="emp_name" class="form-control textbox" style="font-family:Arial, FontAwesome"> </div>
+        </div>
+
         <!--Second Row-->
         <div class="row mt-4">
-            <div class="col-sm-6"> <input placeholder="Enter your mail ID" type="email"  class="form-control" style="font-family:Arial, FontAwesome"> </div>
-            <div class="col-sm-6"> <input placeholder="Enter your Phone #" type="tel" class="form-control" style="font-family:Arial, FontAwesome"> </div>
-        </div>
-
-        <!--Third Row-->
-        <div class="row mt-4">
-            <div class="col-sm-6"> <input type="date" id="date" class="form-control" name="date" placeholder="&#xf073;Click to show the datepicker " style="font-family:Arial, FontAwesome"> </div>
+            <div class="col-sm-12"> <input type="date" id="date" class="form-control" name="appDate" placeholder="&#xf073;Click to show the datepicker " style="font-family:Arial, FontAwesome"> </div>
               
-            <!-- <div class="col-sm-6"> <input placeholder="&#xf073; Departing" type="text" id="date-picker-example" class="form-control datepicker mb-4" style="font-family:Arial, FontAwesome"> </div> -->
-            <div class="col-sm-6">
-                <input type="time" id="appt" name="appt" class="form-control" placeholder="Select Time">
+        </div>
+     <!--Third Row-->
 
+        <div class="row mt-4">
+            <div class="col-sm-6"><input type="time" id="appt" name="startTime" class="form-control" placeholder="Select Time">
+            </div>
+            <div class="col-sm-6"><input type="time" id="appt" name="endTime" class="form-control" placeholder="Select Time">
             </div>
         </div>
-        <!--Fourth Row-->
+
+         <!--Fourth Row-->
+
         <div class="row mt-4">
-            <div class="col-sm-6"> <select class="browser-default custom-select mb-4" id="select">
-                    <option value="" disabled="" selected="">Anytime</option>
-                    <option value="1">6:00 AM</option>
-                    <option value="2">3:00 PM</option>
-                    <option value="3">6:00 PM</option>
-                </select> </div>
-            <div class="col-sm-6"> <select class="browser-default custom-select mb-4" id="select">
-                    <option value="" disabled="" selected="">Anytime</option>
-                    <option value="1">6:00 AM</option>
-                    <option value="2">3:00 PM</option>
-                    <option value="3">6:00 PM</option>
-                </select> </div>
+            <div class="col-sm-12"> <input placeholder="Enter your mailing address" type="email" name="email" class="form-control" style="font-family:Arial, FontAwesome"> </div>
         </div>
-        <!--Fifth Row-->
-        <div class="row">
-            <div class="col-sm-12"><textarea placeholder
-                ="Write some description here..."></textarea></div>
-        </div> <a href="#" class="btn btn-primary float-right mt-5">Find Flights</a>
+
+       <!-- Fifth Row -->
+        <div class="row mt-4">
+            <div class="col-sm-12"> <input placeholder="Comments" type="text" name="desc" class="form-control" style="font-family:Arial, FontAwesome"> </div>
+        </div>
+
+        
+        <div class="row mt-2">
+
+        </div> <a href="#" class="btn btn-primary float-right mt-5">Reserve Hall</a>
     </div>
 </div>

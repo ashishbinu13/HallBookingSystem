@@ -6,8 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add-booking.component.css']
 })
 export class AddBookingComponent implements OnInit {
-
+ title = "Hall Booking Form";
   constructor() { }
+
+  bookingDetails={
+    empName:"",
+    empID:"",
+    bookingaDate:"",
+    email:"",
+    startTime:"",
+    endTime:"",
+    desc:""
+  }
 
   ngOnInit(): void {
   }
