@@ -20,16 +20,16 @@ export class AddBookingComponent implements OnInit {
     startTime:"",
     endTime:"",
     empEmail:"",
-    desc:""
+    desc:"",
+    dateStamp:new Date()
   }
 
   ngOnInit(): void {
   }
   saveBookings()
   {
-
+ console.log(this.bookingDetails)
     this.bookingDetails.hallName="hall 1";
-
      this._adminService.saveBookings(this.bookingDetails);
      alert("success");
 

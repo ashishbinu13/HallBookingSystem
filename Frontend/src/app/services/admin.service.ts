@@ -10,7 +10,7 @@ export class AdminService {
 
   saveBookings( bookingDetails:any)
   {
-    return this.http.post<any>("http://localhost:3000/admin/insert",{bookingDetails})
+    return this.http.post("http://localhost:3000/admin/insert",bookingDetails)
     .subscribe((data)=>{console.log("succes")});
 
   }

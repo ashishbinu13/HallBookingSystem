@@ -4,7 +4,12 @@ const express = require("express");
 const morgan = require("morgan");
 const createHttpError = require("http-errors");
 const cors = require("cors");
-require("dotenv").config();
+var bodyParser = require('body-parser')
+//require("dotenv").config();
+const mongoose= require('mongoose')
+mongoose.connect("mongodb+srv://userone@Project6#.zs9i6.mongodb.net/hallBookingSystem?retryWrites=true&w=majority");
+
+
 const AdminRoute= require("./src/routes/admin.routes")
 const AuthRoute= require("./src/routes/auth.routes")
 
@@ -14,7 +19,7 @@ const AuthRoute= require("./src/routes/auth.routes")
 //
 const app = express();
 //
-
+app.use(bodyParser.json());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
