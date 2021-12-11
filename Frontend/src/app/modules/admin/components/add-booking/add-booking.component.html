@@ -1,46 +1,52 @@
-<!--Card-->
-<div class="card shadow mb-5 bg-white rounded">
-    <!--Card-Body-->
-    <div class="card-body">
-        <!--Card-Title-->
-        <p class="card-title text-center shadow mb-5 rounded">{{title}}</p>
-        <hr>
-        <!--First Row-->
-        <div class="row mt-4">
-            <div class="col-sm-12"> <input placeholder="Enter your ICTAK ID" type="text" name="emp_Id"  class="form-control textbox" style="font-family:Arial, FontAwesome"> </div>
+<div class="form">
+    <h2>Make Your Booking</h2>
+    <form #addhallbook="ngForm" (ngSubmit)="saveBookings()">
+        <div class="input">
+        <div class="inputBox">
+            <label >Associate Name</label>
+            <input type="text" name="empName" required [(ngModel)]=bookingDetails.empName >
         </div>
-        <div class="row mt-4">
-            <div class="col-sm-12"> <input placeholder="Enter your Name" type="text" name="emp_name" class="form-control textbox" style="font-family:Arial, FontAwesome"> </div>
+        <div class="inputBox">
+            <label>ICTAK ID</label>
+            <input type="text" name="empId" required [(ngModel)]=bookingDetails.empId>
         </div>
-
-        <!--Second Row-->
-        <div class="row mt-4">
-            <div class="col-sm-12"> <input type="date" id="date" class="form-control" name="appDate" placeholder="&#xf073;Click to show the datepicker " style="font-family:Arial, FontAwesome"> </div>
-              
+        <div class="inputBox">
+            <label>Hall</label>
+            <select name="hallName">
+                <option selected>Select Hall</option>
+                <option value="1">Hall 1</option>
+                <option value="2">Hall 2</option>
+                <option value="3">Hall 3</option>
+              </select>
+           </div>
+        <div class="inputBox">
+            <label >Date</label>
+            <input type="date" name="bookingDate" [(ngModel)]=bookingDetails.bookingDate>
         </div>
-     <!--Third Row-->
-
-        <div class="row mt-4">
-            <div class="col-sm-6"><input type="time" id="appt" name="startTime" class="form-control" placeholder="Select Time">
-            </div>
-            <div class="col-sm-6"><input type="time" id="appt" name="endTime" class="form-control" placeholder="Select Time">
-            </div>
+        <div class="inputBox">
+            <label >Start Time</label>
+            <input type="time" name="startTime" [(ngModel)]=bookingDetails.startTime>
         </div>
-
-         <!--Fourth Row-->
-
-        <div class="row mt-4">
-            <div class="col-sm-12"> <input placeholder="Enter your mailing address" type="email" name="email" class="form-control" style="font-family:Arial, FontAwesome"> </div>
+        <div class="inputBox">
+            <label >End Time</label>
+            <input type="time" name="endTime" [(ngModel)]=bookingDetails.endTime>
         </div>
-
-       <!-- Fifth Row -->
-        <div class="row mt-4">
-            <div class="col-sm-12"> <input placeholder="Comments" type="text" name="desc" class="form-control" style="font-family:Arial, FontAwesome"> </div>
+        <div class="inputBox">
+            <label >Email</label>
+            <input type="email" name="empEmail" [(ngModel)]=bookingDetails.empEmail>
         </div>
+        <div class="inputBox">
+            <label >Purpose</label>
+            <input type="text" name="desc" [(ngModel)]=bookingDetails.desc>
+        </div>
+        <div class="inputBox">
+            <br>
+            <button id="btn" type="submit" name="">
+<a routerLink="home"><h2>Book Now</h2></a>
+                </button>
 
-        
-        <div class="row mt-2">
-
-        </div> <a href="#" class="btn btn-primary float-right mt-5">Reserve Hall</a>
+        </div>
     </div>
-</div>
+    </form>
+    </div>
+

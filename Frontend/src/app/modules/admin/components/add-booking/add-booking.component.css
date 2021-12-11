@@ -1,112 +1,101 @@
-.card {
+.form {
+    position: relative;
+    background: #2f333e;
+    border: 1px solid #000;
+    width: 80%;
+    padding: 40px 40px 60px;
+    border-radius: 10px;
+    text-align: center;
     margin: auto;
-    border: solid 1px #dbdad7;
-    width: 50%;
-    padding-left: 10px !important;
-    padding-bottom: 10px !important;
-    padding-right: 10px !important;
-    padding-top: 0px !important
+    margin-top: 80px;
 }
 
-.card-title {
-    margin: auto;
-    padding: 15px;
-    background-color: #2f7fad;
-    color: white;
-    width: 80%
+.form::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+    z-index: -1;
+    transform: skew(2deg, 1deg);
+    border-radius: 10px;
 }
 
-div.card-body {
-    padding: 0px
+.form h2 {
+    color: #fff;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 5px;
 }
 
-.custom-select {
-    width: 100%
+.form .input {
+    margin-top: 40px;
+    text-align: left;
 }
 
-.btn2 {
-    margin-left: 10%
+.form .input .inputBox {
+    margin-top: 10px;
 }
 
-
-input {
-    outline: 0 !important;
-    border-width: 0 0 2px !important;
-    border-color: #d1d1cf !important
-}
-textarea {
-    outline: 0 !important;
-    border-width: 0 0 2px !important;
-    width: 500px;
-    height: 50px;
-    border-color: #d1d1cf !important
-
-  }
-
-input:focus {
-    border-color: #d1d1cf !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important
+.form .input .inputBox label {
+    display: block;
+    color: #fff;
+    margin-bottom: 5px;
+    font-size: 18px;
+    letter-spacing: 1px;
 }
 
-select {
-    outline: 0 !important;
-    border-width: 0 0 2px !important;
-    border-color: #d1d1cf !important
+.form .input .inputBox input {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
 }
 
-select:focus {
-    border-color: #d1d1cf !important;
-    -webkit-box-shadow: none !important;
-    box-shadow: none !important
+#btn {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 0px;
 }
 
-.radiobtn {
-    margin-left: 3.5%
+.form .input .inputBox input[type="submit"] {
+    cursor: pointer;
+    margin-top: 20px;
+    letter-spacing: 1px;
 }
 
-.icons {
-    margin: auto !important
+.form .input .inputBox input[type="submit"]:hover {
+    background: linear-gradient(315deg, #5d02ff, #e91e63);
 }
 
-.fa {
-    border-radius: 25px;
-    width: 10%;
-    margin-left: 5%;
-    border: solid 2px #dbdad7;
-    margin-top: 5%;
-    text-align: center
+.form .input .inputBox input[type="submit"]:active {
+    color: rgba(255, 255, 255, 0.521);
+    background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
 }
 
-.fa-plane {
-    color: #1cad9f
+.forgot {
+    margin-top: 10px;
+    color: #fff;
+    font-size: 14px;
+    letter-spacing: 1px;
 }
 
-.fa-taxi {
-    color: #c2f700
-}
-
-.fa-train {
-    color: red
-}
-
-@media only screen and (max-width: 600px) {
-    .card {
-        margin: auto;
-        border: solid 1px #dbdad7;
-        width: 90%;
-        padding-left: 10px !important;
-        padding-bottom: 10px !important;
-        padding-right: 10px !important;
-        padding-top: 0px !important
-    }
-
-    .fa {
-        border-radius: 25px;
-        width: 15%;
-        margin-left: 5%;
-        border: solid 2px #dbdad7;
-        margin-top: 5%;
-        text-align: center
-    }
+.forgot a {
+    color: #ff0800;
 }
