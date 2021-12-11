@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://userone:userone@projectfiles.zs9i6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority");
 const Schema =  mongoose.Schema;
 const bookingSchema = new Schema
  ({

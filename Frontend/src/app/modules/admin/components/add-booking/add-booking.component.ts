@@ -28,7 +28,6 @@ export class AddBookingComponent implements OnInit {
   saveBookings()
   {
 
-    console.log(this.bookingDetails);
     this.bookingDetails.hallName="hall 1";
 
      this._adminService.saveBookings(this.bookingDetails);
