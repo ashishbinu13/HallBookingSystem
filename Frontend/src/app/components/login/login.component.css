@@ -74,6 +74,10 @@
     margin: 0px;
 }
 
+.form .input .inputBox input:hover {
+    background: #13547a -webkit-linear-gradient(bottom, #13547a 0%, #13547a 100%);
+}
+
 .form .input .inputBox input[type="submit"] {
     cursor: pointer;
     margin-top: 20px;
@@ -97,5 +101,5 @@
 }
 
 .forgot a {
-    color: #ff0800;
+    color: #13547a;
 }
