@@ -4,11 +4,11 @@
         <div class="input">
         <div class="inputBox">
             <label >Associate Name</label>
-            <input type="text" name="empName" required [(ngModel)]=bookingDetails.empName >
+            <input type="text" name="empName" required [(ngModel)]=bookingDetails.employeeName >
         </div>
         <div class="inputBox">
             <label>ICTAK ID</label>
-            <input type="text" name="empId" required [(ngModel)]=bookingDetails.empId>
+            <input type="text" name="empId" required [(ngModel)]=bookingDetails.ICTAKId>
         </div>
         <div class="inputBox">
             <label>Hall</label>
@@ -41,10 +41,7 @@
         </div>
         <div class="inputBox">
             <br>
-            <button id="btn" type="submit" name="">
-<a routerLink="home"><h2>Book Now</h2></a>
-                </button>
-
+            <input type="submit" value="Submit">
         </div>
     </div>
     </form>

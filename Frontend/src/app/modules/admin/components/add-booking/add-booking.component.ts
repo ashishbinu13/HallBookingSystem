@@ -13,8 +13,8 @@ export class AddBookingComponent implements OnInit {
   constructor( public _adminService:AdminService) { }
 
   bookingDetails={
-    empName:"",
-    empId:"",
+    employeeName:"",
+    ICTAKId:"",
     bookingDate:"",
     hallName: "",
     startTime:"",
@@ -25,9 +25,12 @@ export class AddBookingComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
   saveBookings()
   {
+
+    console.log(this.bookingDetails);
+    this.bookingDetails.hallName="hall 1";
+
      this._adminService.saveBookings(this.bookingDetails);
      alert("success");
 
