@@ -3,7 +3,6 @@
 const express = require("express");
 const morgan = require("morgan");
 const createHttpError = require("http-errors");
-<<<<<<< HEAD
 const cors = require("cors");
 require("dotenv").config();
 require("./src/helpers/init_mongodb");
@@ -11,9 +10,6 @@ const mongoose = require("mongoose");
 
 const AdminRoute = require("./src/routes/admin.routes");
 const AuthRoute = require("./src/routes/auth.routes");
-=======
-require("dotenv").config();
->>>>>>> 44d62f62c3ead6c641c435133fbc0ff48c47cc76
 
 // modules
 
@@ -32,21 +28,21 @@ app.use("/admin", AdminRoute);
 
 // error handling
 
-app.use(async(req, res, next) => {
-    next(createHttpError.NotFound());
+app.use(async (req, res, next) => {
+  next(createHttpError.NotFound());
 });
 
 app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.send({
-        error: err.status || 500,
-        message: err.message,
-    });
+  res.status(err.status || 500);
+  res.send({
+    error: err.status || 500,
+    message: err.message,
+  });
 });
 
 // port
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`server started on PORT: ${PORT}`);
+  console.log(`server started on PORT: ${PORT}`);
 });

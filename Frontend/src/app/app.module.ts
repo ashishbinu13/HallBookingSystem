@@ -14,25 +14,20 @@ FullCalendarModule.registerPlugins([
   dayGridPlugin,
 ]);
 //
+import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
+
 import { LoginComponent } from './components/login/login.component';
 import { HeaderComponent } from './components/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AdminModule } from './modules/admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AddBookingComponent } from './modules/admin/components/add-booking/add-booking.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
+import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
   declarations: [
-    AddBookingComponent,
-    CalendarComponent,
     AppComponent,
     LoginComponent,
     HeaderComponent,
-    DashboardComponent,
-    SidebarComponent,
+    CalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +36,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
     FormsModule,
     FullCalendarModule,
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent],
 })
