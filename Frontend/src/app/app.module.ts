@@ -21,11 +21,11 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { AdminModule } from './modules/admin/admin.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CalendarComponent } from './components/calendar/calendar.component';
+//import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
-    CalendarComponent,
+    //CalendarComponent,
     AppComponent,
     LoginComponent,
     HeaderComponent,
