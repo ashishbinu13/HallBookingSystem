@@ -3,10 +3,11 @@ const express = require("express");
 
 // modules
 const bookingDetails = require("../models/adminaddbooking.model");
+const HallNames= require("../models/hallNames.model")
 
 const router = express.Router();
 
-// register route
+// insert booking details route
 router.post("/insert", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -34,5 +35,27 @@ router.post("/insert", async (req, res, next) => {
     next(error);
   }
 });
+
+
+router.get('/gethallNames', (req,res,next)=>{
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+
+    HallNames.find()
+    .then (function(hallNames){
+      console.log(hallNames)
+      res.send(hallNames)
+    }) 
+  }
+    catch(err){
+      next(err)
+    }
+  }
+
+
+);
 
 module.exports = router;

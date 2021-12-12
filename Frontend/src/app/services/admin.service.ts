@@ -14,4 +14,10 @@ export class AdminService {
     .subscribe((data)=>{console.log("succes")});
 
   }
+   getHallNames()
+   {
+    return this.http.get("http://localhost:3000/admin/gethallNames");
+   }
+
+
 }
