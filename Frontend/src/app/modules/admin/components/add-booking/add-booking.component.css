@@ -113,12 +113,12 @@
     }
     
     .form .input .inputBox input[type="submit"]:hover {
-        background: linear-gradient(315deg, #5d02ff, #e91e63);
+        background: linear-gradient(315deg, #032c44, #5a9c95);
     }
     
     .form .input .inputBox input[type="submit"]:active {
         color: rgba(255, 255, 255, 0.521);
-        background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
+        background: linear-gradient(315deg, #032c44, #5a9c95);
     }
     
     .forgot {

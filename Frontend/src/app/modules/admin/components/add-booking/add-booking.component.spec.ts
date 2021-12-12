@@ -13,6 +13,8 @@ describe('AddBookingComponent', () => {
     .compileComponents();
   });
 
+  //test//
+
   beforeEach(() => {
     fixture = TestBed.createComponent(AddBookingComponent);
     component = fixture.componentInstance;
