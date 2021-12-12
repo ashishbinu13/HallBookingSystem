@@ -1,0 +1,21 @@
+#btn {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.icon {
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+}
+
+section {
+    margin-left: 250px;
+}
