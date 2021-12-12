@@ -5,9 +5,7 @@ const morgan = require("morgan");
 const createHttpError = require("http-errors");
 const cors = require("cors");
 var bodyParser = require('body-parser')
-//require("dotenv").config();
-const mongoose= require('mongoose')
-mongoose.connect("mongodb+srv://userone@Project6#.zs9i6.mongodb.net/hallBookingSystem?retryWrites=true&w=majority");
+require("dotenv").config();
 
 
 const AdminRoute= require("./src/routes/admin.routes")

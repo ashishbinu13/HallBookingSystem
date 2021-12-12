@@ -32,7 +32,6 @@ router.post("/insert",  (req, res,next) => {
     }
     console.log(details);
 
-
    var bookingDet=  new bookingDetails(details);
     bookingDet.save();
     res.send();
