@@ -13030,18 +13030,19 @@ nav.side-navbar {
     overflow: hidden;
     min-width: 250px;
     max-width: 250px;
-    color: #686a76;
-    background: #fff;
+    color: #13547a;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
     box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+    position: absolute;
     /*==== Shrinked Sidebar ====*/
 }
 
 @media (max-width: 1199.98px) {
     nav.side-navbar {
-        min-width: 90px;
-        max-width: 90px;
-        margin-left: -90px;
+        /* min-width: 90px;
+        max-width: 90px; */
+        margin-left: -60px;
         text-align: center;
     }
 }
@@ -13094,27 +13095,27 @@ nav.side-navbar.shrinked .sidebar-header .title {
 
 .sidebar-item li a {
     padding-left: 50px;
-    background: #EEF5F9;
+    background: #80d0c7;
 }
 
 .sidebar-item.active>.sidebar-link {
     color: #fff;
     border-left: 4px solid #3b25e6;
-    background: #796AEE;
+    background: #80d0c7;
 }
 
 .sidebar-item.active>.sidebar-link:hover {
-    background: #796AEE;
+    background: #80d0c7;
 }
 
 .sidebar-item li.active>.sidebar-link {
     color: #fff;
     border-left: 4px solid #3b25e6;
-    background: #8e81f1;
+    background: #80d0c7;
 }
 
 .sidebar-item .collapse {
-    background: #EEF5F9;
+    background: #80d0c7;
 }
 
 .sidebar-link {
@@ -13150,8 +13151,8 @@ nav.side-navbar.shrinked .sidebar-header .title {
 
 .sidebar-link:hover {
     color: #fff;
-    border-left: 4px solid #3b25e6;
-    background: #796AEE;
+    border-left: 4px solid #80d0c7;
+    background: #80d0c7;
 }
 
 .sidebar-link[data-bs-toggle="collapse"]::before {
@@ -13206,7 +13207,7 @@ nav.side-navbar.shrinked .sidebar-header .title {
 .sidebar-link[aria-expanded="true"]:hover,
 .sidebar-link[aria-expanded="aria-expanded"]:hover {
     color: #fff;
-    background: #796AEE;
+    background: #80d0c7;
 }
 
 .sidebar-link .badge {
@@ -14932,7 +14933,7 @@ a.text-hover-paleBlue:hover {
     }
 }
 
-.dark-overlay-xxl {
+sideba .dark-overlay-xxl {
     position: relative;
 }
 
@@ -15043,16 +15044,16 @@ a.text-hover-paleBlue:hover {
 }
 
 .text-darkBlue {
-    color: #2f333e;
+    color: #80d0c7;
 }
 
 .text-darkBlue:hover {
-    color: #2f333e;
+    color: #80d0c7;
 }
 
 .bg-sidebar-bg {
     color: #fff;
-    background: #30323e;
+    background: #80d0c7;
 }
 
 .bg-sidebar-bg:hover {
@@ -15060,11 +15061,11 @@ a.text-hover-paleBlue:hover {
 }
 
 .text-sidebar-bg {
-    color: #30323e;
+    color: #80d0c7;
 }
 
 .text-sidebar-bg:hover {
-    color: #30323e;
+    color: #80d0c7;
 }
 
 .bg-red {
