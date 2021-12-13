@@ -17,18 +17,11 @@ FullCalendarModule.registerPlugins([
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 
 import { LoginComponent } from './components/login/login.component';
-import { HeaderComponent } from './components/header/header.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AdminModule } from './modules/admin/admin.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HeaderComponent,
-    CalendarComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, CalendarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

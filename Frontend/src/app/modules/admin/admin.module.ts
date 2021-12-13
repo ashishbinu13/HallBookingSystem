@@ -7,6 +7,7 @@ import { AssociatesComponent } from './components/associates/associates.componen
 import { AddassociateComponent } from './components/addassociate/addassociate.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { OutletComponent } from './components/outlet/outlet.component';
+import { HeaderComponent } from 'src/app/components/header/header.component';
 @NgModule({
   declarations: [
     AddBookingComponent,
@@ -15,6 +16,7 @@ import { OutletComponent } from './components/outlet/outlet.component';
     DashboardComponent,
     SidebarComponent,
     OutletComponent,
+    HeaderComponent,
   ],
   imports: [CommonModule, AdminRoutingModule],
   exports: [AddBookingComponent, AssociatesComponent, AddassociateComponent],

@@ -8,7 +8,11 @@ import { AssociatesComponent } from './components/associates/associates.componen
 import { OutletComponent } from './components/outlet/outlet.component';
 
 const routes: Routes = [
-  { path: 'home', component: DashboardComponent },
+  {
+    path: 'home',
+    component: OutletComponent,
+    children: [{ path: '', component: DashboardComponent }],
+  },
   {
     path: 'bookings',
     component: OutletComponent,
