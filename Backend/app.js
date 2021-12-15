@@ -5,14 +5,14 @@ const morgan = require("morgan");
 const createHttpError = require("http-errors");
 const cors = require("cors");
 require("dotenv").config();
-require("./src/helpers/init_mongodb");
+
 const mongoose = require("mongoose");
 
+// modules
+const BookingRoute = require("./src/routes/bookings.routes");
 const AdminRoute = require("./src/routes/admin.routes");
 const AuthRoute = require("./src/routes/auth.routes");
-
-// modules
-
+require("./src/helpers/init_mongodb");
 //
 const app = express();
 //
@@ -25,6 +25,7 @@ app.use(morgan("dev"));
 // routes
 app.use("/auth", AuthRoute);
 app.use("/admin", AdminRoute);
+app.use("/booking", BookingRoute);
 
 // error handling
 
