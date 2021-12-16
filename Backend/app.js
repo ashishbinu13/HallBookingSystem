@@ -30,21 +30,21 @@ app.use("/hall",HallRoute)
 
 // error handling
 
-app.use(async(req, res, next) => {
-    next(createHttpError.NotFound());
+app.use(async (req, res, next) => {
+  next(createHttpError.NotFound());
 });
 
 app.use((err, req, res, next) => {
-    res.status(err.status || 500);
-    res.send({
-        error: err.status || 500,
-        message: err.message,
-    });
+  res.status(err.status || 500);
+  res.send({
+    error: err.status || 500,
+    message: err.message,
+  });
 });
 
 // port
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`server started on PORT: ${PORT}`);
+  console.log(`server started on PORT: ${PORT}`);
 });
