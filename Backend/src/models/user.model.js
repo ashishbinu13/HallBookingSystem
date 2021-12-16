@@ -9,9 +9,10 @@ const UserSchema = new Schema({
     type: String,
     required: true,
   },
-  userId: {
+  username: {
     type: String,
     lowercase: true,
+    unique: true,
     default: "ICTAK-ID",
   },
   email: {
