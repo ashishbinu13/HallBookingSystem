@@ -1,25 +1,26 @@
 <div class="form">
     <h2>Add Associate</h2>
+    <form (ngSubmit)="addAssociate()">
     <div class="input">
         <div class="inputBox">
             <label for="">Associate Name</label>
-            <input type="text">
+            <input type="text" name="a_name" required [(ngModel)]=addAssDetails.a_name>
         </div>
         <div class="inputBox">
             <label for="">ICTAK ID</label>
-            <input type="text">
+            <input type="text" name="a_id" required [(ngModel)]=addAssDetails.a_id>
         </div>
         <div class="inputBox">
             <label for="">Email Id</label>
-            <input type="email">
+            <input type="email" name="a_email" required [(ngModel)]=addAssDetails.a_email>
         </div>
         <div class="inputBox">
             <label for="">Password</label>
-            <input type="password">
+            <input type="password" name="a_pass" required [(ngModel)]=addAssDetails.a_pass>
         </div>
         <div class="inputBox">
             <label for="">Department</label>
-            <select id="halls" name="halls">
+            <select id="halls" name="halls" [(ngModel)]=addAssDetails.halls>
                 <option  value="a">A</option>
                 <option value="b">B</option>
                 <option value="c">C</option>
@@ -28,25 +29,25 @@
         </div>
         <div class="inputBox">
             <label for="">Phone Number</label>
-            <input type="text">
+            <input type="text" name="a_phone" required [(ngModel)]=addAssDetails.a_phone>
         </div>
         <div class="inputBox">
             <label for="">Place</label>
-            <input type="text">
+            <input type="text" name="a_place" required [(ngModel)]=addAssDetails.a_place>
         </div>
         <div class="inputBox">
             <label for="">Nationality</label>
-            <input type="text">
+            <input type="text" name="a_nationality" required [(ngModel)]=addAssDetails.a_nationality>
         </div>
 
         <div class="inputBox">
             <br>
             <button id="btn" type="submit" name="">
-<a routerLink="associates"><h2>ADD</h2></a>
+<a routerLink="/associates"><h2>ADD</h2></a>
                 </button>
 
         </div>
     </div>
-
+</form>
 
 </div>
