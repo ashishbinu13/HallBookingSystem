@@ -3,7 +3,6 @@ const express = require("express");
 
 // modules
 const bookingDetails = require("../models/adminaddbooking.model");
-const HallNames= require("../models/hallNames.model")
 
 const router = express.Router();
 
@@ -22,8 +21,7 @@ router.post("/insert", async (req, res, next) => {
       hallName: req.body.hallName,
       startTime: req.body.startTime,
       endTime: req.body.endTime,
-      empEmail: req.body.empEmail,
-      desc: req.body.desc,
+      eventDetails: req.body.eventDetails,
       dateStamp: req.body.dateStamp,
     };
     console.log(details);
@@ -36,26 +34,22 @@ router.post("/insert", async (req, res, next) => {
   }
 });
 
+ router.get("/check", function(req,res,next){
 
-router.get('/gethallNames', (req,res,next)=>{
-  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  try{
 
-    HallNames.find()
-    .then (function(hallNames){
-      console.log(hallNames)
-      res.send(hallNames)
-    }) 
-  }
-    catch(err){
-      next(err)
-    }
-  }
+   console.log("incheck");
+  console.log(req.params)
+//  bookingDetails.find({"bookingDate":bookingdate},
+//                       {"hallName":hallname})
 
 
-);
+    res.send()
+ })
+
+
 
 module.exports = router;

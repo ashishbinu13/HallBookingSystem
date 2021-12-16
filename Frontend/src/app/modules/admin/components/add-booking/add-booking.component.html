@@ -1,8 +1,9 @@
 <div class="form">
     <h2>Make Your Booking</h2>
-    <form (ngSubmit)="saveBookings()">
+    <form
+    (ngSubmit)="saveBookings()">
         <div class="input">
-            <div class="inputBox">
+            <div class="inputBox ">
                 <label>Associate Name</label>
                 <input type="text" name="employeeName" required [(ngModel)]=bookingDetails.employeeName>
             </div>
@@ -12,34 +13,35 @@
             </div>
             <div class="inputBox">
                 <label for="">Hall </label>
-                <select id="halls" name="halls">
-                <option  value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
+                <select id="halls" (change)="onChange($event)" name="halls" [(ngModel)]=hallselected required >
+                    <option *ngFor="let i of halldata" [value]="i._id">{{i.hallname}}</option>
               </select>
             </div>
             <div class="inputBox">
                 <label>Date</label>
-                <input type="date" name="bookingDate" [(ngModel)]=bookingDetails.bookingDate>
+                <input type="date" name="bookingDate" min={{mindate}}   max={{maxdate}}  required [(ngModel)]=bookingDetails.bookingDate>
+                <!-- <input type="datetime-local" name="bookingDate"  min={{mindate}}   max={{maxdate}}  [(ngModel)]=bookingDetails.bookingDate> -->
+
             </div>
             <div class="inputBox">
                 <label>Start Time</label>
-                <input type="time" name="startTime" [(ngModel)]=bookingDetails.startTime>
+                <input type="time" name="startTime" required [(ngModel)]=bookingDetails.startTime>
             </div>
-            <div class="inputBox">
+            <div class="inputBox ">
                 <label>End Time</label>
-                <input type="time" name="endTime" [(ngModel)]=bookingDetails.endTime>
+                <input type="time" name="endTime"required  [(ngModel)]=bookingDetails.endTime (click)="Clearmessage()" >
             </div>
-            <div class="inputBox">
+            <!-- <div class="inputBox">
                 <label>Email</label>
                 <input type="email" name="empEmail" [(ngModel)]=bookingDetails.empEmail>
+            </div> -->
+            <div class="inputBox ">
+                <label>Event Details</label>
+                <input type="text" name="desc" required [(ngModel)]=bookingDetails.eventDetails>
             </div>
+
             <div class="inputBox">
-                <label>Purpose</label>
-                <input type="text" name="desc" [(ngModel)]=bookingDetails.desc>
-            </div>
-            <div class="inputBox">
+                <span style="color:red">{{errormessage}}</span>
                 <br>
                 <input type="submit" value="Submit">
             </div>

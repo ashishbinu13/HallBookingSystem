@@ -10,6 +10,7 @@ const mongoose = require("mongoose");
 
 const AdminRoute = require("./src/routes/admin.routes");
 const AuthRoute = require("./src/routes/auth.routes");
+const HallRoute= require("./src/routes/hall.routes");
 
 // modules
 
@@ -25,6 +26,7 @@ app.use(morgan("dev"));
 // routes
 app.use("/auth", AuthRoute);
 app.use("/admin", AdminRoute);
+app.use("/hall",HallRoute)
 
 // error handling
 

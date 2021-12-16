@@ -5,6 +5,10 @@ const HallNamesSchema = new Schema({
         type: String,
         required: true
       },
+    value:{
+        type:String,
+        required:true
+    }
     
 })
 var HallNames = mongoose.model("hallnames", HallNamesSchema);
