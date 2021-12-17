@@ -33,7 +33,7 @@
                             Home</a>
                     </li>
                     <!-- Notifications-->
-                    <li class="nav-item dropdown">
+                    <!-- <li class="nav-item dropdown">
                         <a class="nav-link text-white" id="notifications" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end mt-3 shadow-sm" aria-labelledby="notifications">
@@ -81,10 +81,10 @@
                                 <a class="dropdown-item all-notifications text-center" href="#"> <strong class="text-xs text-gray-600">view all notifications                                            </strong></a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!-- Messages                        -->
                     <li class="nav-item dropdown">
-                        <a class="nav-link text-white" id="messages" rel="nofollow" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link text-white d-none" id="messages" rel="nofollow" href="#" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="far fa-envelope"></i> Message</a>
                         <ul class="dropdown-menu dropdown-menu-end mt-3 shadow-sm" aria-labelledby="messages">
                             <li>
@@ -107,15 +107,21 @@
                             </li>
                         </ul>
                     </li>
-
-                    <!-- Logout    -->
+                    <!-- Profile    -->
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="login.html" rel="nofollow" href="#"> <span class="d-none d-sm-inline">Logout</span>
+                        <a class="nav-link text-white" rel="nofollow" routerLink="profile"> <span class=" d-sm-inline"><i class="fas fa-user-alt"></i> Profile</span>
                             <!-- <svg class="svg-icon svg-icon-xs svg-icon-heavy">
                   <use xlink:href="#security-1"> </use>
                 </svg> -->
                         </a>
-                    </li>
+                        <!-- Logout    -->
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="login.html" rel="nofollow" href="#"><i class="fas fa-sign-out-alt"></i> <span class="d-none d-sm-inline">Logout</span>
+                                <!-- <svg class="svg-icon svg-icon-xs svg-icon-heavy">
+                  <use xlink:href="#security-1"> </use>
+                </svg> -->
+                            </a>
+                        </li>
                 </ul>
             </div>
         </div>
