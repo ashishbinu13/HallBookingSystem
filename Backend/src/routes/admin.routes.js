@@ -6,7 +6,7 @@ const bookingDetails = require("../models/adminaddbooking.model");
 
 const router = express.Router();
 
-// register route
+// insert booking details route
 router.post("/insert", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -21,8 +21,7 @@ router.post("/insert", async (req, res, next) => {
       hallName: req.body.hallName,
       startTime: req.body.startTime,
       endTime: req.body.endTime,
-      empEmail: req.body.empEmail,
-      desc: req.body.desc,
+      eventDetails: req.body.eventDetails,
       dateStamp: req.body.dateStamp,
     };
     console.log(details);
@@ -34,5 +33,23 @@ router.post("/insert", async (req, res, next) => {
     next(error);
   }
 });
+
+ router.get("/check", function(req,res,next){
+
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+
+   console.log("incheck");
+  console.log(req.params)
+//  bookingDetails.find({"bookingDate":bookingdate},
+//                       {"hallName":hallname})
+
+
+    res.send()
+ })
+
+
 
 module.exports = router;
