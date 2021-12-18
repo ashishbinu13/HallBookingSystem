@@ -1,15 +1,19 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient } from '@angular/common/http';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
-  loginUser(user:any){
-   
+  constructor(private http: HttpClient) {}
+  loginUser(user: any) {
     return this.http.post<any>('http://localhost:3000/auth/login', user);
-
   }
-  
+
+  isLoggedIn() {
+    return !!localStorage.getItem('accessToken');
+  }
+
+  getToken() {
+    return localStorage.getItem('accessToken');
+  }
 }

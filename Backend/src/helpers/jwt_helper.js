@@ -25,6 +25,8 @@ module.exports = {
       return next(createHttpError.Unauthorized());
     const authHeader = req.headers["authorization"];
     const token = authHeader.split(" ")[1];
+    if (token === "null") return next(createHttpError.Unauthorized());
+
     JWT.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, payload) => {
       if (err) {
         // if (err.name === "JasonWebTokenError")

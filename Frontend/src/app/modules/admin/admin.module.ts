@@ -8,6 +8,7 @@ import { AddassociateComponent } from './components/addassociate/addassociate.co
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
+
 @NgModule({
   declarations: [
     AddBookingComponent,
