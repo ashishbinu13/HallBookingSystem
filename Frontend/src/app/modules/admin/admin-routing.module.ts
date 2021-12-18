@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
+import { EditBookingComponent } from 'src/app/components/edit-booking/edit-booking.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { AddassociateComponent } from './components/addassociate/addassociate.component';
 import { AssociatesComponent } from './components/associates/associates.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', component: CalendarComponent },
       { path: 'bookHall', component: AddBookingComponent },
+      { path: 'editbooking',component:EditBookingComponent}
     ],
   },
   {
