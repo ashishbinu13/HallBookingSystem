@@ -19,9 +19,13 @@ import { CalendarComponent } from 'src/app/components/calendar/calendar.componen
 import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+// import { AddBookingComponent } from './components/add-booking/add-booking.component';
+// import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 
 @NgModule({
+  // declarations: [AppComponent, LoginComponent, CalendarComponent, AddBookingComponent, EditBookingComponent],
   declarations: [AppComponent, LoginComponent, CalendarComponent],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
