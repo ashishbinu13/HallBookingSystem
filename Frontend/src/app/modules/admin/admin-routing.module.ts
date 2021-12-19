@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { AddBookingComponent } from 'src/app/components/add-booking/add-booking.component';

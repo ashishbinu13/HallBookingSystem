@@ -1,30 +1,34 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {HttpClient ,HttpResponse} from '@angular/common/http'
+
 @Injectable({
   providedIn: 'root'
 })
 export class BookingsService {
 
-  constructor(private http:HttpClient) { }
 
-  getBooking(id:any){
-    return this.http.get('http://localhost:3000/booking/getbooking/'+id);
-  }
-  editBooking(booking:any)
-  {   
-    return this.http.put('http://localhost:3000/booking/editbookings',booking)
-    .subscribe(data =>{console.log(data)})
-    
-  }
-  deleteBooking(id:any)
+  base_url: string = 'http://localhost:3000';
+
+  constructor(public http:HttpClient) { }
+
+  saveBookings( bookingDetails:any)
   {
-
-    return this.http.delete('http://localhost:3000/booking/deletebooking/'+id)
+    console.log(bookingDetails)
+    return this.http.post(`${this.base_url}/booking/insert`,bookingDetails)
+    .subscribe((data)=>{console.log("succes")});
 
   }
+  getBookingslist() {
+    return this.http.get(`${this.base_url}/booking/getBookings`);
+  }
+
   checkavailabilty(bookingDetails:any)
   {
     console.log(bookingDetails)
-    return this.http.get("http://localhost:3000/admin/check", {params:bookingDetails})
+    return this.http.post("http://localhost:3000/booking/check", bookingDetails)
   }
+
+
+
+  
 }

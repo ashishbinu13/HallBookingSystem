@@ -34,22 +34,7 @@ router.post("/insert", async (req, res, next) => {
   }
 });
 
- router.get("/check", function(req,res,next){
-
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
-
-   console.log("incheck");
-  console.log(req.params)
-//  bookingDetails.find({"bookingDate":bookingdate},
-//                       {"hallName":hallname})
-
-
-    res.send()
- })
-
+ 
 
 
 module.exports = router;

@@ -5,21 +5,11 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminService {
-
+  base_url="http://localhost:3000";
   constructor(public http:HttpClient) { }
 
-  saveBookings( bookingDetails:any)
-  {
-    console.log(bookingDetails)
-    return this.http.post("http://localhost:3000/admin/insert",bookingDetails)
-    .subscribe((data)=>{console.log("succes")});
 
-  }
 
-  checkavailabilty(bookingDetails:any)
-  {
-    console.log(bookingDetails)
-    return this.http.get("http://localhost:3000/admin/check", {params:bookingDetails})
-  }
+
 
 }
