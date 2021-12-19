@@ -20,9 +20,10 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CalendarComponent, ProfileComponent],
+  declarations: [AppComponent, LoginComponent, CalendarComponent, ProfileComponent, FooterComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
