@@ -23,7 +23,7 @@ import { EditBookingComponent } from './components/edit-booking/edit-booking.com
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CalendarComponent, EditBookingComponent, AddBookingComponent],
+  declarations: [AppComponent, LoginComponent, CalendarComponent,EditBookingComponent,AddBookingComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
