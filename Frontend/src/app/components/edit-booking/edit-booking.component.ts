@@ -56,7 +56,6 @@ export class EditBookingComponent implements OnInit {
     this.date = new Date();
     this.date.setDate(this.date.getDate() + 15);
     this.maxdate= this.date.getFullYear()+ '-' +(this.date.getMonth() + 1) + '-' +this.date.getDate()  ;
-    // this.maxdate= this.date.getFullYear()+ '-' +(this.date.getMonth() + 1) + '-' +this.date.getDate()+'T00:00'   ;
 
   }
 
@@ -65,7 +64,6 @@ export class EditBookingComponent implements OnInit {
     this.todaydate = new Date();
     this.todaydate.setDate(this.todaydate.getDate());
     this.mindate= this.todaydate.getFullYear()+ '-' +(this.todaydate.getMonth() + 1) + '-' +this.todaydate.getDate()  ;
-    // this.mindate= this.todaydate.getFullYear()+ '-' +(this.todaydate.getMonth() + 1) + '-' +this.todaydate.getDate()+'T00:00'   ;
   }
   
   onChange(event: any)

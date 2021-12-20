@@ -68,12 +68,7 @@ router.delete("/deleteBookings/:id", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  // id = req.params.id;
-  // bookingDetails.findByIdAndDelete({"_id":id})
-  // .then(()=>{
-  //     console.log('success')
-  //     res.send();
-
+  
   bookings =  bookingDetails.findById(req.params.id)
   bookings.remove()   
  .then(()=>{
