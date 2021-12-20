@@ -1,30 +1,46 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+// fullcalendar
+import { FullCalendarModule } from '@fullcalendar/angular';
+import interactionPlugin from '@fullcalendar/interaction';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
 
+FullCalendarModule.registerPlugins([
+  timeGridPlugin,
+  interactionPlugin,
+  dayGridPlugin,
+]);
+//
+import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
+
+import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
-import { HeaderComponent } from './components/header/header.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { AdminModule } from './modules/admin/admin.module';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CommonModule } from '@angular/common';
+
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    HeaderComponent,
-    DashboardComponent,
-    SidebarComponent
-  ],
+  declarations: [AppComponent, LoginComponent, CalendarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
-    HttpClientModule
+    FullCalendarModule,
+    CommonModule,
+    ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  exports: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -28,7 +28,7 @@ export class AddassociateComponent implements OnInit {
   
   addAssociate(){
     console.log(this.addAssDetails);
-    // this.adminService.addAssociate(this.addAssDetails);
+    this.adminService.addAssociate(this.addAssDetails);
     this.router.navigate(['/home/associates'])
   }
 }

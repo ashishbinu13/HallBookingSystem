@@ -1,46 +1,52 @@
 <div class="form">
-    <h2>Make Your Booking</h2>
-    <form (ngSubmit)="saveBookings()">
-        <div class="input">
-            <div class="inputBox">
-                <label>Associate Name</label>
-                <input type="text" name="employeeName" required [(ngModel)]=bookingDetails.employeeName>
-            </div>
-            <div class="inputBox">
-                <label>ICTAK ID</label>
-                <input type="text" name="empId" required [(ngModel)]=bookingDetails.ICTAKId>
-            </div>
-            <div class="inputBox">
-                <label for="">Hall </label>
-                <select id="halls" name="halls">
-                <option  value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
-              </select>
-            </div>
-            <div class="inputBox">
-                <label>Date</label>
-                <input type="date" name="bookingDate" [(ngModel)]=bookingDetails.bookingDate>
-            </div>
-            <div class="inputBox">
-                <label>Start Time</label>
-                <input type="time" name="startTime" [(ngModel)]=bookingDetails.startTime>
-            </div>
-            <div class="inputBox">
-                <label>End Time</label>
-                <input type="time" name="endTime" [(ngModel)]=bookingDetails.endTime>
-            </div>
-            <div class="inputBox">
-                <label>Email</label>
-                <input type="email" name="empEmail" [(ngModel)]=bookingDetails.empEmail>
-            </div>
-            <div class="inputBox">
-                <label>Purpose</label>
-                <input type="text" name="desc" [(ngModel)]=bookingDetails.desc>
-            </div>
-            <div class="inputBox">
-                <br>
-                <input type="submit" value="Submit">
-            </div>
-        </div>
+  <h2>Make Your Booking</h2>
+  <div class="input">
+    <div class="inputBox">
+      <label for="">Associate Name</label>
+      <input type="text" />
+    </div>
+    <div class="inputBox">
+      <label for="">ICTAK ID</label>
+      <input type="password" />
+    </div>
+    <div class="inputBox">
+      <label for="">Event Name</label>
+      <input type="password" />
+    </div>
+    <div class="inputBox">
+      <label for="">Hall </label>
+      <select id="halls" name="halls">
+        <option value="a">A</option>
+        <option value="b">B</option>
+        <option value="c">C</option>
+        <option value="d">D</option>
+      </select>
+    </div>
+    <div class="inputBox">
+      <label for="">Date</label>
+      <input type="date" />
+    </div>
+    <div class="inputBox">
+      <label for="">Start Time</label>
+      <input type="time" />
+    </div>
+    <div class="inputBox">
+      <label for="">End Time</label>
+      <input type="time" />
+    </div>
+    <div class="inputBox">
+      <label for="">Email</label>
+      <input type="email" />
+    </div>
+    <div class="inputBox">
+      <label for="">Purpose</label>
+      <input type="text" />
+    </div>
+    <div class="inputBox">
+      <br />
+      <button id="btn" type="submit" name="">
+        <a routerLink="home"><h2>Book Now</h2></a>
+      </button>
+    </div>
+  </div>
+</div>

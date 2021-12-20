@@ -1,15 +1,16 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AdminService } from 'src/app/services/admin.service';
 
-import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 @Component({
   selector: 'app-add-booking',
   templateUrl: './add-booking.component.html',
-  styleUrls: ['./add-booking.component.css']
+  styleUrls: ['./add-booking.component.css'],
 })
-export class AddBookingComponent  implements OnInit {
+export class AddBookingComponent implements OnInit {
   title = 'Hall Booking Form';
- 
-  constructor() { }
+  constructor(public adminService: AdminService) {}
+
   bookingDetails = {
     employeeName: '',
     ICTAKId: '',
@@ -21,13 +22,12 @@ export class AddBookingComponent  implements OnInit {
     desc: '',
     dateStamp: new Date(),
   };
-  ngOnInit(): void {
-   
-  }
+
+  ngOnInit(): void {}
   saveBookings() {
     console.log(this.bookingDetails);
-    // this.bookingDetails.hallName = 'hall 1';
-    // this._adminService.saveBookings(this.bookingDetails);
-    // alert('success');
+    this.bookingDetails.hallName = 'hall 1';
+    this.adminService.saveBookings(this.bookingDetails);
+    alert('success');
   }
 }
