@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingsService } from 'src/app/services/bookings.service';
 import { DatePipe } from '@angular/common'
-
+import { Router,ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,16 +10,29 @@ import { DatePipe } from '@angular/common'
 })
 export class DashboardComponent implements OnInit {
 
-constructor(private _bookingService:BookingsService) { }
- 
+constructor(private _bookingService:BookingsService,private router:Router) { }
+
  bookingdetails:any[] | undefined
 
 
   ngOnInit(): void {
- this._bookingService.getBookingslist().subscribe((data)=>{
+this._bookingService. getBookingslist().subscribe((data)=>{
 this.bookingdetails=JSON.parse(JSON.stringify(data));
-console.log(this.bookingdetails)
+
  })
+  }
+  editBookings(bookings:any)
+  {
+    localStorage.setItem("updatebookingId",bookings._id.toString());
+    this.router.navigate(['/admin/bookings/editbooking']);
+
+  }
+
+  deleteBookings(bookings:any)
+  {
+    this._bookingService.deleteBookings(bookings._id)   
+        this.router.navigate(['/admin/home']); 
+        alert("Deleted");     
   }
   
 }

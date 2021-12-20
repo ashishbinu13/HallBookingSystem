@@ -18,7 +18,7 @@ router.get("/getBookings", async (req, res, next) => {
     next(error);
   }
 });
-router.get("/getbooking/:id",  (req, res) => {
+router.get("/:id",  (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -29,7 +29,7 @@ router.get("/getbooking/:id",  (req, res) => {
         res.send(booking);
     });
 })
-router.get("/editBookings", async (req, res, next) => {
+router.put("/editBookings", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -42,8 +42,8 @@ router.get("/editBookings", async (req, res, next) => {
       hallName= req.body.hallName,
       startTime= req.body.startTime,
       endTime= req.body.endTime,
-      empEmail= req.body.empEmail,
-      desc=req.body.desc,
+      eventDetails= req.body. eventDetails,
+     
       dateStamp= req.body.dateStamp,
   
       bookingDetails.findByIdAndUpdate({"_id":id},
@@ -53,21 +53,27 @@ router.get("/editBookings", async (req, res, next) => {
                              "hallName":hallName,
                              "startTime":startTime,
                              "endTime":endTime,
-                            "empEmail":empEmail,
-                            " desc": desc,
+                            "eventDetails":eventDetails,    
                             "dateStamp":dateStamp   
                             }})
 .then(function(){
  console.log('success')
     res.send();
+    
 })
 });
 
-router.get("/deleteBookings", async (req, res, next) => {
+router.delete("/deleteBookings/:id", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
+  // id = req.params.id;
+  // bookingDetails.findByIdAndDelete({"_id":id})
+  // .then(()=>{
+  //     console.log('success')
+  //     res.send();
+
   bookings =  bookingDetails.findById(req.params.id)
   bookings.remove()   
  .then(()=>{
@@ -75,34 +81,35 @@ router.get("/deleteBookings", async (req, res, next) => {
      res.send();
  })
 });
-module.exports = router;
+
+
 
 router.post("/insert", async (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header(
-      "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
-    );
-  
-    try {
-      var details = {
-        employeeName: req.body.employeeName,
-        ICTAKId: req.body.ICTAKId,
-        bookingDate: req.body.bookingDate,
-        hallName: req.body.hallName,
-        startTime: req.body.startTime,
-        endTime: req.body.endTime,
-        eventDetails: req.body.eventDetails,
-        dateStamp: req.body.dateStamp,
-      };
-      console.log(details);
-  
-      var bookingDet = new bookingDetails(details);
-      var booked = await bookingDet.save();
-      console.log(booked);
-    } catch (error) {
-      next(error);
-    }
-  });
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+
+  try {
+    var details = {
+      employeeName: req.body.employeeName,
+      ICTAKId: req.body.ICTAKId,
+      bookingDate: req.body.bookingDate,
+      hallName: req.body.hallName,
+      startTime: req.body.startTime,
+      endTime: req.body.endTime,
+      eventDetails: req.body.eventDetails,
+      dateStamp: req.body.dateStamp,
+    };
+    console.log(details);
+
+    var bookingDet = new bookingDetails(details);
+    var booked = await bookingDet.save();
+    console.log(booked);
+  } catch (error) {
+    next(error);
+  }
+});
 
   router.post("/check", function(req,res,next){
 
@@ -118,10 +125,6 @@ router.post("/insert", async (req, res, next) => {
     date=req.body.bookingDate;
     console.log(newStartTime);
     console.log(newEndTime);
-    
-
-
-  
     bookingDetails.find({
       $or: [{$and: [
   {$or: [
@@ -153,5 +156,4 @@ console.log(results) ;         }
       });
     
     });
-
 module.exports = router;

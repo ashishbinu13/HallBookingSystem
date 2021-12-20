@@ -15,7 +15,7 @@ export class AddBookingComponent implements OnInit {
   title = 'Make Your Booking';
 
   
-  constructor(public _bookingService: BookingsService, public __hallservice:HallDataService) {}
+  constructor(public _bookingService: BookingsService, public __hallservice:HallDataService,private router:Router) {}
   bookingDetails = {
     employeeName: '',
     ICTAKId: '',
@@ -73,22 +73,9 @@ export class AddBookingComponent implements OnInit {
   }
 
   saveBookings() {
-    // if (this.bookingDetails.endTime>this.bookingDetails.startTime)
-    // {
-    //  console.log("true")
-    //  console.log(this.bookingDetails)
-
-    //  this._bookingService.saveBookings(this.bookingDetails)
-
-
-
-    // }
-    // else{
-    //   this.errormessage="Endtime should be greater than starttime " ;     
-    //    }
- this._bookingService.checkavailabilty(this.bookingDetails)
+    
+ this._bookingService. checkavailabilty(this.bookingDetails)
   .subscribe((data)=>{console.log(data)})
-
 }
 
 onChange(event: any)

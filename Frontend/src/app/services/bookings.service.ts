@@ -18,16 +18,31 @@ export class BookingsService {
     .subscribe((data)=>{console.log("succes")});
 
   }
+  getBooking(id:any){
+    return this.http.get(`${this.base_url}/booking/`+id);
+  }
+  
   getBookingslist() {
     return this.http.get(`${this.base_url}/booking/getBookings`);
   }
-
+ 
+  editBookings(bookings:any)
+  {
+    return this.http.put(`${this.base_url}/booking/editBookings`,bookings)
+    .subscribe(data =>{console.log(data)})
+    
+  }
   checkavailabilty(bookingDetails:any)
   {
     console.log(bookingDetails)
-    return this.http.post("http://localhost:3000/booking/check", bookingDetails)
+    return this.http.post(`${this.base_url}/booking/check`, bookingDetails)
   }
+  deleteBookings(id:any)
+  {
 
+    return this.http.delete(`${this.base_url}/booking/deleteBookings/`+id) 
+    .subscribe(data =>{console.log(data)}) 
+  }
 
 
   
