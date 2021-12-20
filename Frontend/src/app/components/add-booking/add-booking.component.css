@@ -2,12 +2,12 @@
     position: relative;
     background: #2f333e;
     border: 1px solid #000;
-    width: 350px;
+    width: 70%;
     padding: 40px 40px 60px;
     border-radius: 10px;
     text-align: center;
     margin: auto;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
 .form::before {
@@ -74,8 +74,36 @@
     margin: 0px;
 }
 
+option {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background-color: #80d0c7;
+    color: #13547a;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 0px;
+}
+
 .form .input .inputBox input:hover {
     background: #13547a -webkit-linear-gradient(bottom, #13547a 0%, #13547a 100%);
+}
+
+#halls {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 0px;
 }
 
 .form .input .inputBox input[type="submit"] {
@@ -85,12 +113,12 @@
 }
 
 .form .input .inputBox input[type="submit"]:hover {
-    background: linear-gradient(315deg, #5d02ff, #e91e63);
+    background: linear-gradient(315deg, #032c44, #5a9c95);
 }
 
 .form .input .inputBox input[type="submit"]:active {
     color: rgba(255, 255, 255, 0.521);
-    background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
+    background: linear-gradient(315deg, #032c44, #5a9c95);
 }
 
 .forgot {

@@ -13027,9 +13027,10 @@ input {
   */
 
 nav.side-navbar {
-    overflow: hidden;
+    overflow: auto;
     min-width: 250px;
     max-width: 250px;
+    height: 100vh;
     color: #13547a;
     background: linear-gradient(315deg, #13547a, #80d0c7);
     -webkit-box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
@@ -13044,6 +13045,7 @@ nav.side-navbar {
         max-width: 90px; */
         margin-left: -60px;
         text-align: center;
+        height: auto;
     }
 }
 
@@ -13089,11 +13091,12 @@ nav.side-navbar.shrinked .sidebar-header .title {
     display: none;
 }
 
-.sidebar-item {
-    /* submenu item active */
-}
 
-.sidebar-item li a {
+/* .sidebar-item {
+    submenu item active
+} */
+
+*/ .sidebar-item li a {
     padding-left: 50px;
     background: #80d0c7;
 }
@@ -13446,9 +13449,9 @@ nav.navbar .search-box form input {
 /* MAIN NAVBAR MEDIAQUERIES ----------------------------------- */
 
 @media (max-width: 991.98px) {
-    nav.navbar {
-        /*==== Toggle Sidebar Btn ====*/
-    }
+    /* nav.navbar {
+        ====Toggle Sidebar Btn====
+    } */
     nav.navbar .menu-btn {
         margin-right: 20px;
         -webkit-transition: all 0.7s;

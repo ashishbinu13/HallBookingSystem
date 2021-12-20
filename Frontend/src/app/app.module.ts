@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-// fullcalendar
+//fullcalendar
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -13,7 +13,7 @@ FullCalendarModule.registerPlugins([
   interactionPlugin,
   dayGridPlugin,
 ]);
-//
+
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 
 import { LoginComponent } from './components/login/login.component';
@@ -29,7 +29,7 @@ import { FooterComponent } from './components/footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    FullCalendarModule,
+    FullCalendarModule
   ],
   exports: [],
   providers: [],

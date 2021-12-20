@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddBookingComponent } from 'src/app/components/add-booking/add-booking.component';
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { ProfileComponent } from 'src/app/components/profile/profile.component';
@@ -21,8 +22,9 @@ const routes: Routes = [
     path: 'bookings',
     component: OutletComponent,
     children: [
-      { path: '', component: CalendarComponent }
-     
+      { path: '', component: CalendarComponent },
+     { path: 'bookHall', component:AddBookingComponent },
+
     ],
   },
   {
