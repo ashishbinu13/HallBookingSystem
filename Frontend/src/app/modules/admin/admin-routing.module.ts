@@ -9,9 +9,12 @@ import { OutletComponent } from './components/outlet/outlet.component';
 
 const routes: Routes = [
   {
-    path: 'home',
+    path: '',
     component: OutletComponent,
-    children: [{ path: '', component: DashboardComponent }],
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent },
+    ],
   },
   {
     path: 'bookings',

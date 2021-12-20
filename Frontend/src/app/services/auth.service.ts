@@ -16,4 +16,8 @@ export class AuthService {
   getToken() {
     return localStorage.getItem('accessToken');
   }
+
+  isAdmin() {
+    return this.http.get('http://localhost:3000/auth/role');
+  }
 }

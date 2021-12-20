@@ -9,6 +9,7 @@ const {
   signAccessToken,
   signRefreshToken,
   verifyRefreshToken,
+  verifyAccessToken,
 } = require("../helpers/jwt_helper");
 
 const router = express.Router();
@@ -60,13 +61,27 @@ router.post("/login", async (req, res, next) => {
     if (!isMatch)
       throw createHttpError.Unauthorized("Invalid username/password");
 
-    const accessToken = await signAccessToken(user.username);
-    const refreshToken = await signRefreshToken(user.username);
+    const accessToken = await signAccessToken(user.username, user.role);
+    const refreshToken = await signRefreshToken(user.username, user.role);
 
     res.send({ accessToken, refreshToken, username: user.username });
   } catch (error) {
     if (error.isJoi === true)
       return next(createHttpError.BadRequest("Invalid username/password"));
+    next(error);
+  }
+});
+
+router.get("/role", verifyAccessToken, async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+
+  try {
+    var result = req.payload.role === "ADMIN" ? true : false;
+    res.json({ result });
+  } catch (error) {
     next(error);
   }
 });
