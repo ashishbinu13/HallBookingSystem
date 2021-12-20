@@ -15,8 +15,10 @@ export class AddassociateComponent implements OnInit {
     a_id:'',
     a_email:'',
     a_pass:'',
-    halls:'',
     a_phone:'',
+    halls:'',
+    a_designation:'',
+    a_areaint:'',
     a_place:'',
     a_nationality:''
   }
