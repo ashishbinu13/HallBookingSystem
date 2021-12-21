@@ -74,8 +74,10 @@ export class AddBookingComponent implements OnInit {
 
   saveBookings() {
     
- this._bookingService. checkavailabilty(this.bookingDetails)
-  .subscribe((data)=>{console.log(data)})
+ this._bookingService. saveBookings(this.bookingDetails)
+  // .subscribe((data)=>{console.log(data)})
+  alert("Success");
+    this.router.navigate(['/admin/home']);
 }
 
 onChange(event: any)

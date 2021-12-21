@@ -41,7 +41,7 @@ export class BookingsService {
   {
 
     return this.http.delete(`${this.base_url}/booking/deleteBookings/`+id) 
-    .subscribe(data =>{console.log(data)}) 
+    // .subscribe(data =>{console.log(data)}) 
   }
 
 

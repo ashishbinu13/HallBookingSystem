@@ -14,7 +14,8 @@ export class DashboardComponent implements OnInit {
     private router: Router
   ) {}
 
-  bookingdetails: any[] | undefined;
+  //bookingdetails:any[] | undefined
+  bookingdetails: any = [{}];
 
   ngOnInit(): void {
     this._bookingService.getBookingslist().subscribe((data) => {
@@ -22,13 +23,15 @@ export class DashboardComponent implements OnInit {
     });
   }
   editBookings(bookings: any) {
-    localStorage.setItem('updatebookingId', bookings._id.toString());
+    localStorage.setItem('editbookingId', bookings._id.toString());
     this.router.navigate(['/admin/bookings/editbooking']);
   }
 
   deleteBookings(bookings: any) {
-    this._bookingService.deleteBookings(bookings._id);
-    this.router.navigate(['/admin/home']);
-    alert('Deleted');
+    this._bookingService.deleteBookings(bookings._id).subscribe((data) => {
+      this.bookingdetails = this.bookingdetails.filter(
+        (b: any) => b !== bookings
+      );
+    });
   }
 }

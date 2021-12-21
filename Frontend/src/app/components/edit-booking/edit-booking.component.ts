@@ -38,7 +38,7 @@ export class EditBookingComponent implements OnInit {
 
   ngOnInit(): void {
 
-    let bookingId= localStorage.getItem("updatebookingId");
+    let bookingId= localStorage.getItem("editbookingId");
     this.bookingsService.getBooking(bookingId).subscribe((data)=>{
     this.bookingDetails=JSON.parse(JSON.stringify(data));
   })
