@@ -4,58 +4,59 @@
     <div class="input">
         <div class="inputBox">
             <label for="">Associate Name</label>
-            <input type="text" name="a_name" required [(ngModel)]=addAssDetails.a_name>
+            <input type="text" name="employeeName" required [(ngModel)]=addAssDetails.employeeName>
         </div>
         <div class="inputBox">
             <label for="">ICTAK ID</label>
-            <input type="text" name="a_id" required [(ngModel)]=addAssDetails.a_id>
+            <input type="text" name="empId" required [(ngModel)]=addAssDetails.ICTAKID>
         </div>
         <div class="inputBox">
             <label for="">Email Id</label>
-            <input type="email" name="a_email" required [(ngModel)]=addAssDetails.a_email>
+            <input type="email" name="email" required [(ngModel)]=addAssDetails.email>
         </div>
         <div class="inputBox">
             <label for="">Password</label>
-            <input type="password" name="a_pass" required [(ngModel)]=addAssDetails.a_pass>
+            <input type="password" name="pass" required [(ngModel)]=addAssDetails.pass>
         </div>
         <div class="inputBox">
             <label for="">Phone Number</label>
-            <input type="text" name="a_phone" required [(ngModel)]=addAssDetails.a_phone>
+            <input type="number" name="phonenum" required [(ngModel)]=addAssDetails.phonenum>
         </div>
         <div class="inputBox">
-            <label for="">Department</label>
-            <select id="halls" name="halls" [(ngModel)]=addAssDetails.halls>
-                <option  value="a">A</option>
-                <option value="b">B</option>
-                <option value="c">C</option>
-                <option value="d">D</option>
-              </select>
+            <label for="">Department </label>
+            <select id="dept" (change)="onChange($event)" name="dept" [(ngModel)]=deptselected required >
+                <!-- <select id="halls" name="halls" [(ngModel)]=hallselected required > -->
+
+                <option *ngFor="let i of deptdata" [value]="i._id">{{i.deptname}}</option>
+          </select>
         </div>
         <div class="inputBox">
             <label for="">Designation</label>
-            <input type="text" name="a_phone" required [(ngModel)]=addAssDetails.a_designation>
+            <input type="text" name="designation" required [(ngModel)]=addAssDetails.designation>
         </div>
+
         <div class="inputBox">
             <label for="">Area of Interest</label>
-            <input type="text" name="a_areaint" required [(ngModel)]=addAssDetails.a_areaint>
+            <input type="text" name="areaint" required [(ngModel)]=addAssDetails.areaint>
         </div>
         <div class="inputBox">
             <label for="">Place</label>
-            <input type="text" name="a_place" required [(ngModel)]=addAssDetails.a_place>
+            <input type="text" name="place" required [(ngModel)]=addAssDetails.place>
         </div>
         <div class="inputBox">
             <label for="">Nationality</label>
-            <input type="text" name="a_nationality" required [(ngModel)]=addAssDetails.a_nationality>
+            <input type="text" name="nationality" required [(ngModel)]=addAssDetails.nationality>
         </div>
 
         <div class="inputBox">
             <br>
             <button id="btn" type="submit" name="">
-<a routerLink="/associates"><h2>ADD</h2></a>
+            <h2>ADD</h2>
                 </button>
 
         </div>
     </div>
 </form>
+
 
 </div>

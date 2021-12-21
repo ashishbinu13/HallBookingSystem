@@ -9,7 +9,7 @@ const { verifyAccessToken } = require("../helpers/jwt_helper");
 const router = express.Router();
 
 // register route
-router.post("/insert", verifyAccessToken, async (req, res, next) => {
+router.post("/insert", verifyAccessToken,async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -37,7 +37,7 @@ router.post("/insert", verifyAccessToken, async (req, res, next) => {
   }
 });
 
-router.post("/insertass", verifyAccessToken, async (req, res, next) => {
+router.post("/insertass",verifyAccessToken, async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -45,16 +45,16 @@ router.post("/insertass", verifyAccessToken, async (req, res, next) => {
 
   try {
     var assdetails = {
-      a_name: req.body.a_name,
-      a_id: req.body.a_id,
-      a_email: req.body.a_email,
-      a_pass: req.body.pass,
-      a_phone: req.body.a_phone,
-      halls: req.body.halls,
-      a_designation: req.body.a_designation,
-      a_areaofint: req.body.a_areaofint,
-      a_place: req.body.a_place,
-      a_nationality: req.body.a_nationality,
+      employeeName: req.body.employeeName,
+      ICTAKID: req.body.ICTAKID,
+      email: req.body.email,
+      pass: req.body.pass,
+      phonenum: req.body.phonenum,
+      deptName: req.body.deptName,
+      designation: req.body.designation,
+      areaint: req.body.areaint,
+      place: req.body.place,
+      nationality: req.body.nationality,
     };
     console.log(assdetails);
 

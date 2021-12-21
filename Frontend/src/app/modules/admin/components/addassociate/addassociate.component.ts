@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AddingService } from 'src/app/services/adding.service';
 import { AdminService } from 'src/app/services/admin.service';
+import { DeptDataService } from 'src/app/services/dept-data.service';
+import { HallDataService } from 'src/app/services/hall-data.service';
 
 @Component({
   selector: 'app-addassociate',
@@ -9,26 +12,42 @@ import { AdminService } from 'src/app/services/admin.service';
 })
 export class AddassociateComponent implements OnInit {
 
-  constructor(private adminService:AdminService, private router:Router) { }
+
+  constructor(private addingService:AddingService,public deptservice:DeptDataService, private router:Router) { }
   addAssDetails={
-    a_name:'',
-    a_id:'',
-    a_email:'',
-    a_pass:'',
-    a_phone:'',
-    halls:'',
-    a_designation:'',
-    a_areaint:'',
-    a_place:'',
-    a_nationality:''
-  }
+    employeeName:'',
+    ICTAKID:'',
+    email:'',
+    pass:'',
+    phonenum:'',
+    deptName:'',
+    designation:'',
+    areaint:'',
+    place:'',
+    nationality:''
+  };
+
+  deptdata:any[] |undefined;
+deptselected:any=""
+  deptnames:any
 
   ngOnInit(): void {
+    this.deptservice.getDeptNames().subscribe((data)=>{
+      this.deptdata= JSON.parse(JSON.stringify(data));
+       console.log(this.deptdata);
+            
+     })
   }
   
   addAssociate(){
     console.log(this.addAssDetails);
-    this.adminService.addAssociate(this.addAssDetails);
-    this.router.navigate(['/home/associates'])
+    this.addingService.addAssociate(this.addAssDetails);
+    this.router.navigate(['/admin/home'])
   }
+  onChange(event: any)
+{
+ this.addAssDetails.deptName=event.target.options[event.target.options.selectedIndex].text;
+
+}
+
 }

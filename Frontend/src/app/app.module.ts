@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CommonModule } from '@angular/common';
+import { AddassociateComponent } from './modules/admin/components/addassociate/addassociate.component';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, CalendarComponent],

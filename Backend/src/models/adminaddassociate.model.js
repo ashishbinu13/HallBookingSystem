@@ -3,44 +3,44 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const addAssSchema = new Schema({
-  a_name: {
+  EmployeeName: {
     type: String,
     required: true,
   },
-  a_id: {
+  ICTAKID: {
     type: String,
     required: true,
   },
-  a_email: {
+  email: {
     type: String,
     lowercase: true,
     required: true,
   },
-  a_pass: {
+  pass: {
     required: true,
     type: String,
   },
-  a_phone: {
+  phonenum: {
     required: true,
     type: String,
   },
-  halls: {
+  deptName: {
     type: String,
     required: true,
   },
-  a_designation: {
+  designation: {
     type: String,
     required: true,
   },
-  a_areaofint: {
+  areaint: {
     type: String,
     required: true,
   },
-  a_place: {
+  place: {
     type: String,
   },
 
-  a_nationality: {
+  nationality: {
     type: String,
     required: true,
   },
