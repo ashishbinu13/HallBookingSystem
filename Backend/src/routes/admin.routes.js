@@ -21,8 +21,7 @@ router.post("/insert", verifyAccessToken, async (req, res, next) => {
       hallName: req.body.hallName,
       startTime: req.body.startTime,
       endTime: req.body.endTime,
-      empEmail: req.body.empEmail,
-      desc: req.body.desc,
+      eventDetails: req.body.eventDetails,
       dateStamp: req.body.dateStamp,
     };
     console.log(details);

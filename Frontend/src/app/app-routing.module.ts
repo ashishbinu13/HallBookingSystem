@@ -12,6 +12,13 @@ const routes: Routes = [
       import('./modules/admin/admin.module').then((m) => m.AdminModule),
     canActivate: [AuthGuard, RoleGuard],
   },
+  {
+    path: 'associates',
+    loadChildren: () =>
+      import('./modules/associates/associates.module').then(
+        (n) => n.AssociatesModule
+      ),
+  },
 ];
 
 @NgModule({

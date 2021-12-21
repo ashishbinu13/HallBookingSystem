@@ -13,6 +13,11 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   loginUser() {
-    this._auth.loginUser(this.user);
+    this._auth.loginUser(this.user).subscribe((res) => {
+      localStorage.setItem('accessToken', res.accessToken);
+      localStorage.setItem('refreshToken', res.refreshToken);
+
+      if (this._auth.isAdmin()) this._router.navigate(['/admin/home']);
+    });
   }
 }
