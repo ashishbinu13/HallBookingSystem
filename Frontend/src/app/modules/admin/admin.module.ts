@@ -17,7 +17,7 @@ import { AddBookingComponent } from 'src/app/components/add-booking/add-booking.
     DashboardComponent,
     SidebarComponent,
     OutletComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [CommonModule, AdminRoutingModule, FormsModule],
   exports: [ AssociatesComponent, AddassociateComponent],
