@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AdminRoutingModule } from './admin-routing.module';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
+import { FooterComponent } from 'src/app/components/footer/footer.component';
 import { AssociatesComponent } from './components/associates/associates.component';
 import { AddassociateComponent } from './components/addassociate/addassociate.component';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +12,17 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @NgModule({
   declarations: [
-  //  AddBookingComponent,
+    //  AddBookingComponent,
     AssociatesComponent,
     AddassociateComponent,
     DashboardComponent,
     SidebarComponent,
     OutletComponent,
     HeaderComponent,
+    FooterComponent,
     // EditBookingComponent
   ],
   imports: [CommonModule, AdminRoutingModule, FormsModule],
-  exports: [ AssociatesComponent, AddassociateComponent],
+  exports: [AssociatesComponent, AddassociateComponent],
 })
 export class AdminModule {}
