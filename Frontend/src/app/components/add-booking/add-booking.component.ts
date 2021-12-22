@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HallDataService } from 'src/app/services/hall-data.service';
 import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
-import { Router } from '@angular/router';
 // import { AdminService } from 'src/app/services/admin.service';
 import { BookingsService } from 'src/app/services/bookings.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -15,7 +15,8 @@ export class AddBookingComponent implements OnInit {
   title = 'Make Your Booking';
 
   
-  constructor(public _bookingService: BookingsService, public __hallservice:HallDataService,private router:Router) {}
+  constructor(public _bookingService: BookingsService, public __hallservice:HallDataService,
+    public _router:Router) {}
   bookingDetails = {
     employeeName: '',
     ICTAKId: '',
@@ -60,7 +61,6 @@ export class AddBookingComponent implements OnInit {
     this.date = new Date();
     this.date.setDate(this.date.getDate() + 15);
     this.maxdate= this.date.getFullYear()+ '-' +(this.date.getMonth() + 1) + '-' +this.date.getDate()  ;
-    // this.maxdate= this.date.getFullYear()+ '-' +(this.date.getMonth() + 1) + '-' +this.date.getDate()+'T00:00'   ;
 
   }
 
@@ -69,7 +69,6 @@ export class AddBookingComponent implements OnInit {
     this.todaydate = new Date();
     this.todaydate.setDate(this.todaydate.getDate());
     this.mindate= this.todaydate.getFullYear()+ '-' +(this.todaydate.getMonth() + 1) + '-' +this.todaydate.getDate()  ;
-    // this.mindate= this.todaydate.getFullYear()+ '-' +(this.todaydate.getMonth() + 1) + '-' +this.todaydate.getDate()+'T00:00'   ;
   }
 
   saveBookings() {
@@ -77,7 +76,24 @@ export class AddBookingComponent implements OnInit {
  this._bookingService. saveBookings(this.bookingDetails)
   // .subscribe((data)=>{console.log(data)})
   alert("Success");
-    this.router.navigate(['/admin/home']);
+    this._router.navigate(['/admin/home']);
+    if (this.bookingDetails.endTime>this.bookingDetails.startTime)
+    {
+     console.log("true")
+     console.log(this.bookingDetails)
+
+     this._bookingService.saveBookings(this.bookingDetails)
+   this._router.navigate(['home'])
+
+
+    }
+    else{
+      this.errormessage="Endtime should be greater than starttime " ;     
+       }
+
+    //  this._bookingService.checkavailabilty(this.bookingDetails)
+    // .subscribe((data)=>{console.log(data)})
+
 }
 
 onChange(event: any)

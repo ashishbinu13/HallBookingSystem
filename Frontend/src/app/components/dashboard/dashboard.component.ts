@@ -3,19 +3,26 @@ import { BookingsService } from 'src/app/services/bookings.service';
 import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
+import { AuthService } from 'src/app/services/auth.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+
+  bookingdetails: any = [{}];
   constructor(
     private _bookingService: BookingsService,
-    private router: Router
+    private router: Router,private authService: AuthService
   ) {}
+ 
 
-  //bookingdetails:any[] | undefined
-  bookingdetails: any = [{}];
+ 
+ 
+
 
   ngOnInit(): void {
     this._bookingService.getBookingslist().subscribe((data) => {
@@ -27,11 +34,4 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/admin/bookings/editbooking']);
   }
 
-  deleteBookings(bookings: any) {
-    this._bookingService.deleteBookings(bookings._id).subscribe((data) => {
-      this.bookingdetails = this.bookingdetails.filter(
-        (b: any) => b !== bookings
-      );
-    });
-  }
 }
