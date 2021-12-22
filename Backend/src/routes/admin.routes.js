@@ -34,7 +34,4 @@ router.post("/insert", verifyAccessToken, async (req, res, next) => {
   }
 });
 
- 
-
-
 module.exports = router;

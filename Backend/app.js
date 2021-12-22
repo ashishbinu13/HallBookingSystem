@@ -1,20 +1,15 @@
-// packages
-
 const express = require("express");
 const morgan = require("morgan");
 const createHttpError = require("http-errors");
 const cors = require("cors");
 require("dotenv").config();
+require("./src/helpers/init_mongodb");
 
 const mongoose = require("mongoose");
-
 const BookingRoute = require("./src/routes/bookings.routes");
 const AdminRoute = require("./src/routes/admin.routes");
 const AuthRoute = require("./src/routes/auth.routes");
-const HallRoute= require("./src/routes/hall.routes");
-require("./src/helpers/init_mongodb");
-
-// modules
+const HallRoute = require("./src/routes/hall.routes");
 
 //
 const app = express();
@@ -28,10 +23,8 @@ app.use(morgan("dev"));
 // routes
 app.use("/auth", AuthRoute);
 app.use("/admin", AdminRoute);
-app.use("/hall",HallRoute);
 app.use("/booking", BookingRoute);
-
-
+app.use("/hall", HallRoute);
 // error handling
 
 app.use(async (req, res, next) => {

@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  role!: string;
+
+  constructor(private http: HttpClient, private _router: Router) {}
+
   loginUser(user: any) {
     return this.http.post<any>('http://localhost:3000/auth/login', user);
   }
@@ -18,6 +22,13 @@ export class AuthService {
   }
 
   isAdmin() {
-    return this.http.get('http://localhost:3000/auth/role');
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+
+    return user.role === 'ADMIN' ? true : false;
+  }
+
+  getUser(token: string) {
+    return JSON.parse(atob(token.split('.')[1]));
   }
 }
