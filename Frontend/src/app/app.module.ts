@@ -25,14 +25,7 @@ import { AddBookingComponent } from './components/add-booking/add-booking.compon
 import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    CalendarComponent,
-    ProfileComponent,
-    EditBookingComponent,
-    AddBookingComponent,
-  ],
+  declarations: [AppComponent, LoginComponent, CalendarComponent, ProfileComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
