@@ -25,13 +25,38 @@ export class DashboardComponent implements OnInit {
 
 
   ngOnInit(): void {
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+  console.log(user.role);
+   if (user.role=='ADMIN')
+   {
     this._bookingService.getBookingslist().subscribe((data) => {
       this.bookingdetails = JSON.parse(JSON.stringify(data));
     });
+   }
+   else
+   {
+    var username= user.aud;
+    this._bookingService.getBookingslistbyid(username).subscribe((data) => {
+      this.bookingdetails = JSON.parse(JSON.stringify(data));
+    });
+
+
+   }
+
   }
+
+  
   editBookings(bookings: any) {
     localStorage.setItem('editbookingId', bookings._id.toString());
     this.router.navigate(['/admin/bookings/editbooking']);
   }
 
+  deleteBookings(bookings: any) {
+    this._bookingService.deleteBookings(bookings._id).subscribe((data) => {
+      this.bookingdetails = this.bookingdetails.filter(
+        (b: any) => b !== bookings
+      );
+    });
+  }
 }

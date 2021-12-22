@@ -73,17 +73,14 @@ export class AddBookingComponent implements OnInit {
 
   saveBookings() {
     
- this._bookingService. saveBookings(this.bookingDetails)
-  // .subscribe((data)=>{console.log(data)})
-  alert("Success");
-    this._router.navigate(['/admin/home']);
+ 
     if (this.bookingDetails.endTime>this.bookingDetails.startTime)
     {
      console.log("true")
      console.log(this.bookingDetails)
 
      this._bookingService.saveBookings(this.bookingDetails)
-   this._router.navigate(['home'])
+     this._router.navigate(['/admin/home']);
 
 
     }

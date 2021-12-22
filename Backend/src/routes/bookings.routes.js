@@ -19,6 +19,20 @@ router.get("/getBookings", verifyAccessToken, async(req, res, next) => {
         next(error);
     }
 });
+
+router.post("/insert", verifyAccessToken, async(req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+
+    try {
+        const bookings = await bookingDetails.find();
+        res.send(bookings);
+    } catch (error) {
+        next(error);
+    }
+});
 router.get("/:id", (req, res) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
@@ -29,7 +43,18 @@ router.get("/:id", (req, res) => {
         res.send(booking);
     });
 });
-router.put("/editBookings", async(req, res, next) => {
+
+router.get("/:id", verifyAccessToken, (req, res) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    const id = req.params.id;
+    bookingDetails.findOne({ _id: id }).then((booking) => {
+        res.send(booking);
+    });
+});
+router.put("/editBookings", verifyAccessToken, async(req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
         "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -63,11 +88,14 @@ router.put("/editBookings", async(req, res, next) => {
         });
 });
 
-router.delete("/deleteBookings/:id", async(req, res, next) => {
+
+
+router.delete("/deleteBookings/:id", verifyAccessToken, async(req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
         "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
+
 
     bookings = bookingDetails.findById(req.params.id);
     bookings.remove().then(() => {
@@ -75,6 +103,7 @@ router.delete("/deleteBookings/:id", async(req, res, next) => {
         res.send();
     });
 });
+
 
 router.post("/insert", async(req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
@@ -102,6 +131,47 @@ router.post("/insert", async(req, res, next) => {
         next(error);
     }
 });
+router.get("/userbookinglist/:user", verifyAccessToken, async(req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+        "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+    );
+    let empname = req.params.user;
+    bookings = bookingDetails.findById({ "employeeName": empname });
+    bookings.remove().then(() => {
+        console.log("success");
+        res.send();
+    });
+});
+
+
+// router.post("/insert",verifyAccessToken async (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+//   );
+
+//   try {
+//     var details = {
+//       employeeName: req.body.employeeName,
+//       ICTAKId: req.body.ICTAKId,
+//       bookingDate: req.body.bookingDate,
+//       hallName: req.body.hallName,
+//       startTime: req.body.startTime,
+//       endTime: req.body.endTime,
+//       eventDetails: req.body.eventDetails,
+//       dateStamp: req.body.dateStamp,
+//     };
+//     console.log(details);
+
+//     var bookingDet = new bookingDetails(details);
+//     var booked = await bookingDet.save();
+//     console.log(booked);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
 
 router.post("/check", function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");

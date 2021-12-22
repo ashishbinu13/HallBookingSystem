@@ -6,11 +6,11 @@ require("dotenv").config();
 
 
 const mongoose = require("mongoose");
-
 const BookingRoute = require("./src/routes/bookings.routes");
 const AdminRoute = require("./src/routes/admin.routes");
 const AuthRoute = require("./src/routes/auth.routes");
 const HallRoute = require("./src/routes/hall.routes");
+
 require("./src/helpers/init_mongodb");
 
 // modules
@@ -27,12 +27,8 @@ app.use(morgan("dev"));
 // routes
 app.use("/auth", AuthRoute);
 app.use("/admin", AdminRoute);
-
-
 app.use("/hall", HallRoute);
 app.use("/booking", BookingRoute);
-
-
 
 // error handling
 
