@@ -1,24 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService }  from 'src/app/services/auth.service'
-import {Router} from '@angular/router'
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
+  constructor(public _auth: AuthService, private _router: Router) {}
 
-  constructor(public _auth:AuthService,
-    private _router:Router) { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
+  logoutUser() {
+    localStorage.clear();
+    this._router.navigate(['']);
   }
- 
-  logoutUser()
-  {
-  localStorage.removeItem('accessToken')
-  localStorage.removeItem('refreshToken')
-  this._router.navigate(['/'])
-  }
-
 }
