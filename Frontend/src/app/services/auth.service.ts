@@ -20,4 +20,9 @@ export class AuthService {
   isAdmin() {
     return this.http.get('http://localhost:3000/auth/role');
   }
+  addAssociate(user: any){
+    console.log(user)
+    return this.http.post('http://localhost:3000/auth/register',user)
+    .subscribe((data)=>{console.log("success")});
+  }
 }

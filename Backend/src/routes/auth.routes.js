@@ -39,7 +39,8 @@ router.post("/register", async (req, res, next) => {
     const refreshToken = await signRefreshToken(savedUser.username);
 
     res.send({ accessToken, refreshToken });
-  } catch (error) {
+  } 
+  catch (error) {
     if (error.isJoi === true) error.status = 422;
     next(error);
   }

@@ -1,14 +1,15 @@
-export class BookingModel {
+export class userModel {
     constructor(
-      public employeeName: String,
-      public ICTAKId: String,
+      public name: String,
+      public username: String,
       public email: String,
-      public pass: String,
-      public phonenum: String,
+      public password: String,
+      public phone: String,
       public deptName: String,
       public designation: String,
       public areaint: String,
       public place: String,
-      public nationality: String
+      public nation: String,
+      public role: String
     ) {}
   }
