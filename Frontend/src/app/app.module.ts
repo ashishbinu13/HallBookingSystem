@@ -23,6 +23,8 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     ProfileComponent,
     EditBookingComponent,
     AddBookingComponent,
+    PagenotfoundComponent
+    
   ],
   imports: [
     BrowserModule,
