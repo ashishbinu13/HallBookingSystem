@@ -3,9 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { AssociatesRoutingModule } from './associates-routing.module';
 
+import { UseroutletComponent } from './components/useroutlet/useroutlet.component';
+// import { HeaderComponent } from 'src/app/components/header/header.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    UseroutletComponent
+    // HeaderComponent
+
+  ],
   imports: [
     CommonModule,
     AssociatesRoutingModule

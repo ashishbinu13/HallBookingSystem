@@ -43,6 +43,11 @@ export class BookingsService {
     return this.http.delete(`${this.base_url}/booking/deleteBookings/`+id) 
     // .subscribe(data =>{console.log(data)}) 
   }
+  getBookingslistbyid(user:any)
+  {
+    return this.http.get(`${this.base_url}/booking/userbookinglist/`+user) 
+
+  }
 
 
   

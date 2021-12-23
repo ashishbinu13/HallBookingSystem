@@ -25,7 +25,6 @@ import { AddBookingComponent } from './components/add-booking/add-booking.compon
 import { ProfileComponent } from './components/profile/profile.component';
 import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,8 +33,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     ProfileComponent,
     EditBookingComponent,
     AddBookingComponent,
-    PagenotfoundComponent
-    
+    PagenotfoundComponent,
   ],
   imports: [
     BrowserModule,
