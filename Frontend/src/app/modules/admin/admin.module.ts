@@ -9,14 +9,14 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-//import { AddBookingComponent } from 'src/app/components/add-booking/add-booking.component';
+//import { SidebarComponent } from 'src/app/components/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     //  AddBookingComponent,
     AssociatesComponent,
     AddassociateComponent,
     DashboardComponent,
-    SidebarComponent,
+   SidebarComponent,
     OutletComponent,
     HeaderComponent,
     FooterComponent,

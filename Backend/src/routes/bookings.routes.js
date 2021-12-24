@@ -13,7 +13,8 @@ router.get("/getBookings", verifyAccessToken, async (req, res, next) => {
   );
 
   try {
-    const bookings = await bookingDetails.find();
+
+    const bookings = await bookingDetails.find().sort({_id:-1}).limit(5);
     res.send(bookings);
   } catch (error) {
     next(error);
@@ -25,7 +26,7 @@ router.post("/insert",verifyAccessToken, async (req, res, next) => {
     res.header(
       "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
-  
+    console.log("in insert")
     try {
       var details = {
         employeeName: req.body.employeeName,
@@ -35,6 +36,7 @@ router.post("/insert",verifyAccessToken, async (req, res, next) => {
         startTime: req.body.startTime,
         endTime: req.body.endTime,
         eventDetails: req.body.eventDetails,
+        username:req.body.username,
         dateStamp: req.body.dateStamp,
       };
       console.log(details);
@@ -111,12 +113,23 @@ router.get("/userbookinglist/:user",verifyAccessToken, async (req, res, next) =>
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
- let empname= req.params.user;
-  bookings = bookingDetails.findById({"employeeName":empname});
-  bookings.remove().then(() => {
-    console.log("success");
-    res.send();
-  });
+  console.log("userbookinglist")
+  console.log(req.params.user)
+ let username= req.params.user;
+ console.log(username)
+ try
+ {
+  const records = await bookingDetails.find().where('username').in(username).exec();
+
+    console.log(records);
+    res.send(records);
+
+ }
+ catch(err)
+ {
+   res.send(err)
+ }
+
 });
 
 
@@ -160,7 +173,9 @@ router.post("/check", function (req, res, next) {
   date = req.body.bookingDate;
   console.log(newStartTime);
   console.log(newEndTime);
-  bookingDetails.find(
+  try
+  {
+   const results=bookingDetails.find(
     {
       $or: [
         {
@@ -202,18 +217,25 @@ router.post("/check", function (req, res, next) {
           ],
         },
       ],
-    },
-
-    function (err, results) {
-      if (err) {
-        console.log(err);
-        return;
-      }
-
-      if (results.length > 0) {
-        console.log(results);
-      }
     }
-  );
+
+  //   function (err, results) {
+  //     if (err) {
+  //       console.log(err);
+  //       return;
+  //     }
+
+  //     if (results.length > 0) {
+  //       console.log(results);
+  //     }
+  //   }
+  )
+console.log(results);
+   res.send(results);
+  }
+  catch(err)
+  {
+    res.send(err)
+  }
 });
 module.exports = router;

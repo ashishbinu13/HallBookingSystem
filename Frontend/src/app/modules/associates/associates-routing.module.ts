@@ -11,7 +11,7 @@ const routes: Routes = [
     component: UseroutletComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'home', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent }
     ],
   },
   {

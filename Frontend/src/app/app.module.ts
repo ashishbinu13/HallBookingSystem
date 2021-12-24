@@ -23,6 +23,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
+//import { SidebarComponent } from './components/sidebar/sidebar.component'
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     CalendarComponent,
     ProfileComponent,
     EditBookingComponent,
-    AddBookingComponent,
+    AddBookingComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +41,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     FormsModule,
     FullCalendarModule,
   ],
-  exports: [],
+  exports: [AddBookingComponent,EditBookingComponent],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

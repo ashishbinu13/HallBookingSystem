@@ -24,7 +24,9 @@ export class AddBookingComponent implements OnInit {
     startTime: '',
     endTime: '',
     eventDetails: '',
+    username:'',
     dateStamp: new Date(),
+
   };
   
   halldata:any[] | undefined;
@@ -71,6 +73,12 @@ export class AddBookingComponent implements OnInit {
   }
 
   saveBookings() {
+
+    var token = localStorage.getItem('accessToken') || '';
+    var user= JSON.parse(atob(token.split('.')[1]));
+    this.bookingDetails.username = user.aud;
+
+
     if (this.bookingDetails.endTime>this.bookingDetails.startTime)
     {
      console.log("true")
@@ -99,6 +107,9 @@ onChange(event: any)
 
 Clearmessage() {
   this.errormessage="";
+  this._bookingService.checkavailabilty(this.bookingDetails)
+   .subscribe((data)=>{console.log(data)})
+
 }
 
 

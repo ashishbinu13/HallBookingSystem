@@ -35,6 +35,13 @@ const bookingSchema = new Schema({
   eventDetails: {
     type: String,
   },
+  username:{
+    type:String,
+    required:true,
+    lowercase: true,
+    unique: true,
+
+  },
 
   dateStamp: {
     type: Date,
