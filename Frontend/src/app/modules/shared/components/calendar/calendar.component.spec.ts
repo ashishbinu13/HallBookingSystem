@@ -13,8 +13,6 @@ describe('CalendarComponent', () => {
     .compileComponents();
   });
 
-  //test//
-
   beforeEach(() => {
     fixture = TestBed.createComponent(CalendarComponent);
     component = fixture.componentInstance;

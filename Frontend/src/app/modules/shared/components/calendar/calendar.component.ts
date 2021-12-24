@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Calendar, CalendarOptions } from '@fullcalendar/angular';
+import { CalendarOptions } from '@fullcalendar/angular';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { BookingModel } from './booking.model';
 import { Router } from '@angular/router';
