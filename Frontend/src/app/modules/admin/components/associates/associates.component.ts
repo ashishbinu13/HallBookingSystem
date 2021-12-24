@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { User } from './associate.model';
 
 @Component({
   selector: 'app-associates',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AssociatesComponent implements OnInit {
 
-  constructor() { }
+  user1!: User[];
+
+  constructor(private _authService:AuthService,private router:Router) { }
 
   ngOnInit(): void {
+    this._authService.getass().subscribe((data)=>{
+      this.user1=JSON.parse(JSON.stringify(data));
+    })
   }
+  editass(user:any)
+  {
+    localStorage.setItem("editassId", user._id.toString());
+    this.router.navigate(['auth']);
 
+  }
 }
+
+

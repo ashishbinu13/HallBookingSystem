@@ -46,6 +46,50 @@ router.post("/register", async (req, res, next) => {
   }
 });
 
+router.get("/getass", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+    const user1=await User.find();
+    res.send(user1);
+  }
+  catch(error){
+    next(error);
+  }
+});
+
+router.get("/:id",async(req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+  const id = req.params.id;
+  const user1=await User.findById({ _id: id });
+    res.send(user1);
+  }
+  catch(error){
+    next(error);
+  }
+});
+
+router.put("/editass", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+    const result = await authSchema.validateAsync(req.body);
+    const user1=await User.findByIdAndUpdate();
+    res.send(user1);
+  }
+  catch(error){
+    next(error);
+  }
+});
+
 // login route
 router.post("/login", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -73,18 +117,18 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.get("/role", verifyAccessToken, async (req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
-  );
+// router.get("/role", verifyAccessToken, async (req, res, next) => {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header(
+//     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+//   );
 
-  try {
-    var result = req.payload.role === "ADMIN" ? true : false;
-    res.json({ result });
-  } catch (error) {
-    next(error);
-  }
-});
+//   try {
+//     var result = req.payload.role === "ADMIN" ? true : false;
+//     res.json({ result });
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 module.exports = router;

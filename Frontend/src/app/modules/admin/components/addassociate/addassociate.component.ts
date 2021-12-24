@@ -44,7 +44,7 @@ deptselected:any=""
   addAssociate(){
     console.log(this.user);
     this.authService.addAssociate(this.user);
-    this.router.navigate(['/admin/home'])
+    this.router.navigate(['/admin/associates'])
   }
   onChange(event: any)
 {

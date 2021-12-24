@@ -17,14 +17,14 @@
         <br>
 
         <!-- Associates-->
-        <div class="card mb-3">
+        <div class="card mb-3" *ngFor='let i of user1'>
             <div class="card-body p-3">
                 <div class="row align-items-center gx-lg-5 gy-3">
                     <div class="col-lg-3 border-lg-end">
                         <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center"><img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50">
+                            <!-- <div class="d-flex align-items-center"><img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
                                 <div class="ms-3">
-                                    <h3 class="h4 text-gray-700 mb-0">Associate name</h3><small class="text-gray-500">Department</small>
+                                    <h3 class="h4 text-gray-700 mb-0">{{i.name}}</h3><small class="text-gray-500">{{i.deptName}}</small>
                                 </div>
                             </div>
                         </div>
@@ -33,17 +33,17 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="d-flex align-items-center">
                                 <div class="ms-3">
-                                    <h3 class="h4 text-gray-700 mb-0"><i class="fas fa-envelope"></i> email@ictak.com</h3>
+                                    <h3 class="h4 text-gray-700 mb-0"><i class="fas fa-envelope">{{i.email}}</i></h3>
 
                                 </div>
-                            </div><span class="text-sm text-gray-600  d-sm-block"><i class="fas fa-id-card-alt"></i> ICTAK ID</span>
+                            </div><span class="text-sm text-gray-600  d-sm-block"><i class="fas fa-id-card-alt"></i>{{i.username}}</span>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="d-flex align-items-center">
                             <p class="d-flex mb-0 text-gray-600 text-sm d-flex align-items-center flex-shrink-0">
                                 <a href="">
-                                    <h3 class="h4 text-gray-700 mb-0"><i class="fas fa-mobile-alt"></i> 055458623</h3>
+                                    <h3 class="h4 text-gray-700 mb-0"><i class="fas fa-mobile-alt"></i>{{i.phone}}</h3>
 
 
                                 </a>
@@ -61,13 +61,13 @@
                             <div style="height: 50px; margin-left: 0px; margin-right: 10px; max-width: 15rem">
                                 <!-- <div class="progress-bar bg-red" role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                                 <button id="btn" type="submit" name="">
-                            <a routerLink=""><h2 style="color: white;">EDIT</h2></a>
+                            <a routerLink="editass"><h2 style="color: white;">EDIT</h2></a>
                                             </button>
                             </div>
                             <div style="height: 50px;  max-width: 15rem">
                                 <!-- <div class="progress-bar bg-red" role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
                                 <button id="btn" type="submit" name="">
-                            <a routerLink=""><h2 style="color: white;">DELETE</h2></a>
+                            <a routerLink="deleteass"><h2 style="color: white;">DELETE</h2></a>
                                             </button>
                             </div>
                         </div>
@@ -76,63 +76,4 @@
             </div>
         </div>
         <!-- Associates-->
-        <div class="card mb-3">
-            <div class="card-body p-3">
-                <div class="row align-items-center gx-lg-5 gy-3">
-                    <div class="col-lg-3 border-lg-end">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center"><img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50">
-                                <div class="ms-3">
-                                    <h3 class="h4 text-gray-700 mb-0">Assciate name</h3><small class="text-gray-500">Department</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 border-lg-end">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div class="d-flex align-items-center">
-                                <div class="ms-3">
-                                    <h3 class="h4 text-gray-700 mb-0"><i class="fas fa-envelope"></i> email@ictak.com</h3>
-
-                                </div>
-                            </div><span class="text-sm text-gray-600  d-sm-block"><i class="fas fa-id-card-alt"></i> ICTAK ID</span>
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="d-flex align-items-center">
-                            <p class="d-flex mb-0 text-gray-600 text-sm d-flex align-items-center flex-shrink-0">
-                                <a href="">
-                                    <h3 class="h4 text-gray-700 mb-0"><i class="fas fa-mobile-alt"></i> 055458623</h3>
-
-
-                                </a>
-                            </p>
-                            <a href=""></a>
-                            <p class="d-flex mb-0 mx-3 text-gray-600 text-sm d-flex align-items-center flex-shrink-0"></p>
-
-                        </div>
-                    </div>
-                    <div class="col-lg-3">
-                        <div class="d-flex align-items-center">
-
-                            <a href=""></a>
-                            <p class="d-flex mb-0 mx-3 text-gray-600 text-sm d-flex align-items-center flex-shrink-0"></p>
-                            <div style="height: 50px; margin-left: 0px; margin-right: 10px; max-width: 15rem">
-                                <!-- <div class="progress-bar bg-red" role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
-                                <button id="btn" type="submit" name="">
-                    <a routerLink=""><h2 style="color: white;">EDIT</h2></a>
-                                    </button>
-                            </div>
-                            <div style="height: 50px;  max-width: 15rem">
-                                <!-- <div class="progress-bar bg-red" role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
-                                <button id="btn" type="submit" name="">
-                    <a routerLink=""><h2 style="color: white;">DELETE</h2></a>
-                                    </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+        

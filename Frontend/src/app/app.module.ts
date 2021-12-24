@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-// fullcalendar
+import { FormsModule } from '@angular/forms';
+//fullcalendar
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -13,7 +13,7 @@ FullCalendarModule.registerPlugins([
   interactionPlugin,
   dayGridPlugin,
 ]);
-//
+
 import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
 
 import { LoginComponent } from './components/login/login.component';
@@ -22,9 +22,20 @@ import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
 import { CommonModule } from '@angular/common';
 import { AddassociateComponent } from './modules/admin/components/addassociate/addassociate.component';
+import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
+import { AddBookingComponent } from './components/add-booking/add-booking.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, CalendarComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    CalendarComponent,
+    ProfileComponent,
+    EditBookingComponent,
+    AddBookingComponent,
+  
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -32,7 +43,6 @@ import { AddassociateComponent } from './modules/admin/components/addassociate/a
     FormsModule,
     FullCalendarModule,
     CommonModule,
-    ReactiveFormsModule
   ],
   exports: [],
   providers: [

@@ -53,7 +53,7 @@ const UserSchema = new Schema({
     type: String,
     enum: [role.admin, role.associate],
     default: role.associate,
-  },
+  }
 });
 
 UserSchema.pre("save", async function (next) {
