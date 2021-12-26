@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
+import { EditassociateComponent } from './components/editassociate/editassociate.component';
 
 @NgModule({
   declarations: [
@@ -19,10 +20,11 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     SidebarComponent,
     OutletComponent,
     HeaderComponent,
-    FooterComponent,
+    EditassociateComponent,
+    // FooterComponent,
     // EditBookingComponent
   ],
   imports: [CommonModule, AdminRoutingModule, FormsModule],
-  exports: [AssociatesComponent, AddassociateComponent],
+  exports: [AssociatesComponent, AddassociateComponent, EditassociateComponent],
 })
 export class AdminModule {}

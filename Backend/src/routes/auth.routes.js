@@ -39,8 +39,53 @@ router.post("/register", async (req, res, next) => {
     const refreshToken = await signRefreshToken(savedUser.username);
 
     res.send({ accessToken, refreshToken });
-  } catch (error) {
+  } 
+  catch (error) {
     if (error.isJoi === true) error.status = 422;
+    next(error);
+  }
+});
+
+router.get("/getass", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+    const user1=await User.find();
+    res.send(user1);
+  }
+  catch(error){
+    next(error);
+  }
+});
+
+router.get("/:id",async(req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+  const id = req.params.id;
+  const user1=await User.findById({ _id: id });
+    res.send(user1);
+  }
+  catch(error){
+    next(error);
+  }
+});
+
+router.put("/editass", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  try{
+    const result = await authSchema.validateAsync(req.body);
+    const user1=await User.findByIdAndUpdate();
+    res.send(user1);
+  }
+  catch(error){
     next(error);
   }
 });

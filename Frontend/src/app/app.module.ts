@@ -20,6 +20,8 @@ import { LoginComponent } from './components/login/login.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TokenInterceptorService } from './services/token-interceptor.service';
+import { CommonModule } from '@angular/common';
+import { AddassociateComponent } from './modules/admin/components/addassociate/addassociate.component';
 import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -43,6 +45,7 @@ import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.co
     HttpClientModule,
     FormsModule,
     FullCalendarModule,
+    CommonModule,
   ],
   exports: [],
   providers: [
