@@ -48,4 +48,10 @@ export class AuthService {
     .subscribe((data) =>{console.log(data)})
     
   }
+  deleteass(id:any)
+  {
+
+    return this.http.delete('http://localhost:3000/auth/deleteass/'+id)
+
+  }
 }

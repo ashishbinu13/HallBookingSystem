@@ -65,14 +65,13 @@ router.get("/:id",async(req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  try{
-  const id = req.params.id;
-  const user1=await User.findById({ _id: id });
+  // const result = await authSchema.validateAsync(req.body.id);
+    const id=req.params.id;
+    User.findOne({"_id":id })
+    .then((user1)=>{
     res.send(user1);
-  }
-  catch(error){
-    next(error);
-  }
+  });
+
 });
 
 router.put("/editass", async (req, res, next) => {
@@ -80,14 +79,49 @@ router.put("/editass", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  try{
-    const result = await authSchema.validateAsync(req.body);
-    const user1=await User.findByIdAndUpdate();
-    res.send(user1);
-  }
-  catch(error){
-    next(error);
-  }
+  console.log(req.body);
+  id = req.body._id,
+    name1 = req.body.name,
+    username = req.body.username,
+    email = req.body.email,
+    password = req.body.password,
+    phone = req.body.phone,
+    deptName = req.body.endTime,
+    designation = req.body.designation,
+    areaint = req.body.areaint,
+    place = req.body.place,
+    nation = req.body.nation,
+    role = req.body.role,
+    User.findByIdAndUpdate({"_id": id },
+        {$set: {"name": name1,
+            "username": username,
+            "email": email,
+            "password": password,
+            "phone": phone,
+            "deptName": deptName,
+            "designation": designation,
+            "areaint": areaint,
+            "place": place,
+            "nation": nation,
+            "role": role}})
+      
+            .then(function () {
+        console.log("success");
+        res.send();
+      });
+});
+
+router.delete("/deleteass/:id", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+
+  user1 = User.findById(req.params.id);
+  user1.remove().then(() => {
+    console.log("success");
+    res.send();
+  });
 });
 
 // login route

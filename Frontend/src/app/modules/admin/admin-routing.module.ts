@@ -43,7 +43,7 @@ const routes: Routes = [
     children: [
       { path: '', component: AssociatesComponent },
       { path: 'register', component: AddassociateComponent },
-      { path: 'editass', component:EditassociateComponent}
+      { path: 'editass', component: EditassociateComponent}
     ],
   },
 ];

@@ -60,14 +60,14 @@
                             <p class="d-flex mb-0 mx-3 text-gray-600 text-sm d-flex align-items-center flex-shrink-0"></p>
                             <div style="height: 50px; margin-left: 0px; margin-right: 10px; max-width: 15rem">
                                 <!-- <div class="progress-bar bg-red" role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
-                                <button id="btn" type="submit" name="">
-                            <a routerLink="editass"><h2 style="color: white;">EDIT</h2></a>
+                                <button id="btn" type="submit" name="btn1" (click)="editass(i)">
+                                    <h2 style="color: white;">EDIT</h2>
                                             </button>
                             </div>
                             <div style="height: 50px;  max-width: 15rem">
                                 <!-- <div class="progress-bar bg-red" role="progressbar" style="width: 45%; height: 6px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
-                                <button id="btn" type="submit" name="">
-                            <a routerLink="deleteass"><h2 style="color: white;">DELETE</h2></a>
+                                <button id="btn" type="submit" name="btn2" (click)="deleteass(i)">
+                            <h2 style="color: white;">DELETE</h2>
                                             </button>
                             </div>
                         </div>
