@@ -3,28 +3,21 @@
   <!-- Sidebar Header-->
   <div class="sidebar-header d-flex align-items-center py-4 px-3">
     <div class="ms-3 title">
-      <h1 class="h4 mb-2">Welcome</h1>
-      <h4 class="text-md text-white-500 fw-light mb-0 lh-1">Admin</h4>
+      <h1 class="h4 mb-2">Welcome {{username}}</h1>
+      <h4 class="text-md text-white-500 fw-light mb-0 lh-1"></h4>
     </div>
   </div>
   <!-- Sidebar Navidation Menus-->
   <!-- <span class="text-uppercase text-gray-400 text-xs letter-spacing-0 mx-3 px-2 heading">Main</span> -->
   <ul class="list-unstyled py-4">
-    <li class="sidebar-item active">
-      <a class="sidebar-link text-uppercase">
+    <li class="sidebar-item active" >
+      <a class="sidebar-link text-uppercase " routerLink="{{ nav.home }}">
         <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
               <use xlink:href="#real-estate-1"> </use>
             </svg>  -->Home
       </a>
     </li>
-    <li class="sidebar-item">
-      <a class="sidebar-link text-uppercase" href="tables.html">
-        <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-              <use xlink:href="#portfolio-grid-1"> </use>
-            </svg>-->Calendar
-      </a>
-    </li>
-    <li class="sidebar-item">
+    <li class="sidebar-item" routerLinkActive=Active>
       <a class="sidebar-link text-uppercase" routerLink="{{ nav.bookHall }}">
         <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
               <use xlink:href="#sales-up-1"> </use>
@@ -32,15 +25,15 @@
       >
     </li>
 
-    <li class="sidebar-item">
-      <a class="sidebar-link text-uppercase">
+    <li class="sidebar-item" >
+      <a class="sidebar-link text-uppercase" routerLink="{{nav.associates}}" >
         <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2 ">
               <use xlink:href="#sales-up-1 "> </use>
             </svg>-->Associates
       </a>
     </li>
     <li class="sidebar-item">
-      <a class="sidebar-link text-uppercase">
+      <a class="sidebar-link text-uppercase" routerLink="{{ nav.viewBookings }}">
         <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2 ">
               <use xlink:href="#survey-1 "> </use>
             </svg>-->View Bookings

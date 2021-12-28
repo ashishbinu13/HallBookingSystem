@@ -22,17 +22,21 @@ const routes: Routes = [
     path: '',
     component: OutletComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'home', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      {path: '', component: DashboardComponent },
+      {path: 'home', component: DashboardComponent },
+      {path: 'profile', component: ProfileComponent },
+      {path:'bookHall', component :AddBookingComponent},
+      {path:'calendar', component :CalendarComponent},
+      {path:'associates',component:AssociatesComponent}
+
     ],
   },
   {
     path: 'bookings',
     component: OutletComponent,
     children: [
-      { path: '', component: CalendarComponent },
-      { path: 'bookHall', component: AddBookingComponent },
+      // { path: 'calendar', component: CalendarComponent },
+     // { path: ''bookHall'', component: AddBookingComponent },
       { path: 'editbooking', component: EditBookingComponent },
     ],
   },

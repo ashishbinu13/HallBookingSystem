@@ -17,7 +17,13 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('accessToken', res.accessToken);
       localStorage.setItem('refreshToken', res.refreshToken);
 
-      if (this._auth.isAdmin()) this._router.navigate(['/admin/home']);
+      if (this._auth.isAdmin()) 
+      {
+      this._router.navigate(['/admin/home']);
+      }
+      else{
+        this._router.navigate(['/associates/home'])
+      }
     });
   }
 }
