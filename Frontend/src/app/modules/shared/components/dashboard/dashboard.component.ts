@@ -21,16 +21,26 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
-    if (user.role == 'ADMIN') {
-      this._bookingService.getBookingslist().subscribe((data) => {
-        this.bookingdetails = JSON.parse(JSON.stringify(data));
-      });
-    } else {
-      var username = user.aud;
-      this._bookingService.getBookingslistbyid(username).subscribe((data) => {
-        this.bookingdetails = JSON.parse(JSON.stringify(data));
-      });
-    }
+  console.log(user);
+   if (user.role=='ADMIN')
+   {
+    this._bookingService.getBookingslist().subscribe((data) => {
+      this.bookingdetails = JSON.parse(JSON.stringify(data));
+    });
+   }
+  else
+   {
+    var username= user.aud;
+    console.log(username);
+       this._bookingService.getBookingslistbyid(username).subscribe((data) => {
+      this.bookingdetails = JSON.parse(JSON.stringify(data));
+      console.log(this.bookingdetails)
+
+    });
+
+
+   }
+
   }
 
   editBookings(bookings: any) {

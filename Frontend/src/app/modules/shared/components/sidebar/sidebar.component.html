@@ -6,25 +6,43 @@
     </a>
 
     <nav class="s-sidebar__nav">
-        <ul style="margin-top: 100px;">
+        <!-- <div class="sidebar-header d-flex align-items-center py-5 px-4">
+            <div class="ms-3 title d-none">
+                <h1 class="h4 mb-2">Welcome {{username}}</h1>
+
+            </div>
+        </div> -->
+        <ul style="margin-top: 10px;">
             <li>
-                <a class="s-sidebar__nav-link" href="#0">
+                <a class="s-sidebar__nav-link" routerLink="{{nav.profile}}">
+                    <i class="fas fa-user-circle"></i> <em>WELCOME {{username}}</em>
+                </a>
+
+            </li>
+
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="{{nav.home}}">
                     <i class="fa fa-home"></i><em>HOME</em>
                 </a>
             </li>
             <li>
-                <a class="s-sidebar__nav-link" href="#0">
+                <a class="s-sidebar__nav-link" routerLink="{{ nav.bookHall }}">
                     <i class="fa fa-camera"></i><em>BOOK A HALL</em>
                 </a>
             </li>
             <li>
-                <a class="s-sidebar__nav-link" href="#0">
+                <a class="s-sidebar__nav-link" routerLink="{{nav.associates}}">
                     <i class="fa fa-user"></i><em>ASSOCIATES</em>
                 </a>
             </li>
             <li>
-                <a class="s-sidebar__nav-link" href="#0">
+                <a class="s-sidebar__nav-link" routerLink="{{ nav.viewBookings }}">
                     <i class="fa fa-camera"></i><em>VIEW BOOKINGS</em>
+                </a>
+            </li>
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="" (click)=logoutUser()>
+                    <i class="fa fa-camera"></i><em>LOG OUT</em>
                 </a>
             </li>
         </ul>

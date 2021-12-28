@@ -17,5 +17,6 @@
 }
 
 section {
-    margin: auto;
+    margin-left: 250px;
+    min-height: 1000px;
 }
