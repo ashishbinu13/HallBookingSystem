@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RoleGuard } from './guards/role.guard';
+import { PagenotfoundComponent } from './components/pagenotfound/pagenotfound.component';
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -19,6 +20,12 @@ const routes: Routes = [
         (n) => n.AssociatesModule
       ),
   },
+  {
+    path:'**',
+    pathMatch:'full',
+    component:PagenotfoundComponent
+  }
+   
 ];
 
 @NgModule({
