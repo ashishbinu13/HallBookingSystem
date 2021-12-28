@@ -23,7 +23,7 @@ import { TokenInterceptorService } from './services/token-interceptor.service';
 import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { ProfileComponent } from './components/profile/profile.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +39,7 @@ import { ProfileComponent } from './components/profile/profile.component';
     HttpClientModule,
     FormsModule,
     FullCalendarModule,
+    NgxPaginationModule
   ],
   exports: [],
   providers: [

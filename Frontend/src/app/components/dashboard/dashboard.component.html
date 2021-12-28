@@ -18,7 +18,10 @@
         <div class="table-responsive">
           <table class="table">
             <tbody>
-              <tr *ngFor="let bookings of bookingdetails">
+              <tr *ngFor="let bookings of bookingdetails | paginate:{
+              itemsPerPage:3,
+              currentPage:page,
+              totalItems:totalRecords}">
                 <td>
                   <img
                     class="img-fluid shadow-sm"
@@ -82,6 +85,9 @@
               </tr>
             </tbody>
           </table>
+          <div>
+            <pagination-controls class="text-center" (pageChange)="page=$event"></pagination-controls>
+          </div>
         </div>
       </div>
     </div>

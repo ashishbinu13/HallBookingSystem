@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { HeaderComponent } from 'src/app/components/header/header.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [
     //  AddBookingComponent,
@@ -22,7 +22,7 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
     FooterComponent,
     // EditBookingComponent
   ],
-  imports: [CommonModule, AdminRoutingModule, FormsModule],
+  imports: [CommonModule, AdminRoutingModule, FormsModule ,NgxPaginationModule],
   exports: [AssociatesComponent, AddassociateComponent],
 })
 export class AdminModule {}
