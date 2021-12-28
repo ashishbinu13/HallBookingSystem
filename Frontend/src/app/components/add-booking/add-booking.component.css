@@ -6,8 +6,8 @@
     padding: 40px 40px 60px;
     border-radius: 10px;
     text-align: center;
-    margin: auto;
     margin-top: 80px;
+    margin-left: 350px;
 }
 
 .form::before {

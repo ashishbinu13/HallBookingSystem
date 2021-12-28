@@ -1,0 +1,55 @@
+nav.navbar {
+    -webkit-box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    z-index: 9998;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    padding-top: 0;
+    padding-bottom: 0;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+}
+
+nav.navbar .nav-link {
+    color: #333;
+    letter-spacing: 0.08rem;
+    font-size: 0.95rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-top: 2px solid transparent;
+}
+
+nav.navbar .nav-link.active {
+    color: #7fb401;
+    border-color: #7fb401;
+}
+
+nav.navbar .navbar-toggler {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    outline: none;
+}
+
+nav.navbar .navbar-btn.btn-unique,
+nav.navbar .navbar-btn.btn-unique-reverse,
+nav.navbar .navbar-btn.btn-unique-white {
+    margin-left: 10px;
+    font-size: 0.9rem;
+}
+
+nav.navbar.shrink .nav-link {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+@media (max-width: 991.98px) {
+    nav.navbar {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+    nav.navbar .nav-link {
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        border: none;
+    }
+}
