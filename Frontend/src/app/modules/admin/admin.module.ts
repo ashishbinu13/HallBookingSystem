@@ -19,9 +19,10 @@ import { OutletComponent } from './components/outlet/outlet.component';
 //   ],
 //   imports: [CommonModule, AdminRoutingModule, FormsModule],
 import { SharedModule } from '../shared/shared.module';
+import { EditassociateComponent } from './components/editassociate/editassociate.component';
 @NgModule({
-  declarations: [AssociatesComponent, AddassociateComponent, OutletComponent],
+  declarations: [AssociatesComponent, AddassociateComponent, OutletComponent, EditassociateComponent],
   imports: [AdminRoutingModule, SharedModule],
-  exports: [AssociatesComponent, AddassociateComponent],
+  exports: [AssociatesComponent, AddassociateComponent, EditassociateComponent],
 })
 export class AdminModule {}
