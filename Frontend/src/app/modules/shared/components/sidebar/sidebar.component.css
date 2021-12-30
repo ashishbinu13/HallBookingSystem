@@ -13,7 +13,7 @@
 .s-sidebar__trigger>i {
     display: inline-block;
     margin: 1.5em 0 0 1.5em;
-    color: #f07ab0;
+    color: #f7f4f5;
 }
 
 .s-sidebar__nav {
@@ -102,7 +102,7 @@
     .s-sidebar__nav:focus,
     .s-sidebar__trigger:hover+.s-sidebar__nav,
     .s-sidebar__trigger:focus+.s-sidebar__nav {
-        width: 15em;
+        width: 13em;
     }
 }
 
