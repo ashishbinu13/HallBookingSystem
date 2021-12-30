@@ -16,16 +16,17 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {}
-  totalRecords:any;
+  totalRecords: any;
   page:number=1
   ngOnInit(): void {
+   
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
   console.log(user);
    if (user.role=='ADMIN')
    {
     this._bookingService.getBookingslist().subscribe((data) => {
-      this.bookingdetails = JSON.parse(JSON.stringify(data));
+      this.bookingdetails = JSON.parse(JSON.stringify(data)); 
       this.totalRecords=this.bookingdetails.length;
     });
    }
