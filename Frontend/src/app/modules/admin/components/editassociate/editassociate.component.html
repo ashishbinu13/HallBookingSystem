@@ -1,6 +1,6 @@
 <div class="form">
-    <h2>Add Associate</h2>
-    <form (ngSubmit)="addAssociate()">
+    <h2>Update Associate</h2>
+    <form (ngSubmit)="editass()">
     <div class="input">
         <div class="inputBox">
             <label for="">Associate Name</label>
@@ -34,6 +34,7 @@
             <label for="">Designation</label>
             <input type="text" name="designation" required [(ngModel)]=user.designation>
         </div>
+
         <div class="inputBox">
             <label for="">Area of Interest</label>
             <input type="text" name="areaint" required [(ngModel)]=user.areaint>
@@ -62,7 +63,7 @@
         <div class="inputBox">
             <br>
             <button id="btn" type="submit" name="">
-            <h2>ADD</h2>
+            <h2>UPDATE</h2>
                 </button>
 
         </div>
