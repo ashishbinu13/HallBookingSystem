@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { CalendarComponent } from 'src/app/components/calendar/calendar.component';
-import { DashboardComponent } from 'src/app/components/dashboard/dashboard.component';
-import { AddBookingComponent } from 'src/app/components/add-booking/add-booking.component';
-import { EditBookingComponent } from 'src/app/components/edit-booking/edit-booking.component';
-import { ProfileComponent } from 'src/app/components/profile/profile.component';
+import { CalendarComponent } from 'src/app/modules/shared/components/calendar/calendar.component';
+import { DashboardComponent } from 'src/app/modules/shared/components/dashboard/dashboard.component';
+import { AddBookingComponent } from 'src/app/modules/shared/components/add-booking/add-booking.component';
+import { EditBookingComponent } from 'src/app/modules/shared/components/edit-booking/edit-booking.component';
+import { ProfileComponent } from 'src/app/modules/shared/components/profile/profile.component';
 
 import { AddassociateComponent } from './components/addassociate/addassociate.component';
 import { AssociatesComponent } from './components/associates/associates.component';
@@ -23,17 +23,21 @@ const routes: Routes = [
     path: '',
     component: OutletComponent,
     children: [
-      { path: '', component: DashboardComponent },
-      { path: 'home', component: DashboardComponent },
-      { path: 'profile', component: ProfileComponent },
+      {path: '', component: DashboardComponent },
+      {path: 'home', component: DashboardComponent },
+      {path: 'profile', component: ProfileComponent },
+      {path:'bookHall', component :AddBookingComponent},
+      {path:'calendar', component :CalendarComponent},
+      {path:'associates',component:AssociatesComponent}
+
     ],
   },
   {
     path: 'bookings',
     component: OutletComponent,
     children: [
-      { path: '', component: CalendarComponent },
-      { path: 'bookHall', component: AddBookingComponent },
+      // { path: 'calendar', component: CalendarComponent },
+     // { path: ''bookHall'', component: AddBookingComponent },
       { path: 'editbooking', component: EditBookingComponent },
     ],
   },
