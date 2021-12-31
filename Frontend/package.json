@@ -19,13 +19,18 @@
     "@angular/platform-browser": "~12.2.0",
     "@angular/platform-browser-dynamic": "~12.2.0",
     "@angular/router": "~12.2.0",
+    "@fontsource/poppins": "^4.5.0",
     "@fullcalendar/angular": "^5.10.1",
     "@fullcalendar/daygrid": "^5.10.1",
     "@fullcalendar/interaction": "^5.10.1",
     "@fullcalendar/timegrid": "^5.10.1",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^4.6.1",
+<<<<<<< HEAD
     "ngx-pagination": "^5.1.1",
+=======
+    "ngx-lottie": "^8.0.1",
+>>>>>>> 7b8c427c28d825c3987a9c5f5ca69a8881c416aa
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

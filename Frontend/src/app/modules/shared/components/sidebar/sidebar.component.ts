@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,14 +8,17 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+
   nav = {
     home: '',
     bookHall: '',
     associates: '',
     viewBookings: '',
+    profile:'',
   };
  username="";
-  constructor(public _auth: AuthService) {}
+  constructor(public _auth: AuthService, public _router:Router) {}
+
 
   ngOnInit(): void {
 
@@ -27,11 +31,17 @@ export class SidebarComponent implements OnInit {
       this.nav.bookHall = '/admin/bookHall';
       this.nav.associates = '/admin/associates';
       this.nav.viewBookings = '/admin/calendar';
+      this.nav.profile = '/admin/profile';
     }
     else{
       this.nav.home = '/associates/home';
       this.nav.bookHall = '/associates/bookings/bookHall';
       this.nav.viewBookings = '/associates/bookings';
+      this.nav.profile = '/associates/profile';
     }
+  }
+  logoutUser() {
+    localStorage.clear();
+    this._router.navigate(['']);
   }
 }

@@ -1,94 +1,56 @@
-<!-- Side Navbar -->
-<nav id="foo" class="side-navbar z-index-40">
-  <!-- Sidebar Header-->
-  <div class="sidebar-header d-flex align-items-center py-4 px-3">
-    <div class="ms-3 title">
-      <h1 class="h4 mb-2">Welcome {{username}}</h1>
-      <h4 class="text-md text-white-500 fw-light mb-0 lh-1"></h4>
-    </div>
-  </div>
-  <!-- Sidebar Navidation Menus-->
-  <!-- <span class="text-uppercase text-gray-400 text-xs letter-spacing-0 mx-3 px-2 heading">Main</span> -->
-  <ul class="list-unstyled py-4">
-    <li class="sidebar-item active" >
-      <a class="sidebar-link text-uppercase " routerLink="{{ nav.home }}">
-        <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-              <use xlink:href="#real-estate-1"> </use>
-            </svg>  -->Home
-      </a>
-    </li>
-    <li class="sidebar-item" routerLinkActive=Active>
-      <a class="sidebar-link text-uppercase" routerLink="{{ nav.bookHall }}">
-        <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-              <use xlink:href="#sales-up-1"> </use>
-            </svg>-->Book Hall</a
-      >
-    </li>
+<!-- <div class="s-layout"> -->
+<!-- Sidebar -->
+<div class="s-layout__sidebar">
+    <a class="s-sidebar__trigger" href="#0">
+        <i class="fa fa-bars"></i>
+    </a>
 
-    <li class="sidebar-item" >
-      <a class="sidebar-link text-uppercase" routerLink="{{nav.associates}}" >
-        <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2 ">
-              <use xlink:href="#sales-up-1 "> </use>
-            </svg>-->Associates
-      </a>
-    </li>
-    <li class="sidebar-item">
-      <a class="sidebar-link text-uppercase" routerLink="{{ nav.viewBookings }}">
-        <!-- <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2 ">
-              <use xlink:href="#survey-1 "> </use>
-            </svg>-->View Bookings
-      </a>
-    </li>
-    <!-- <li class="sidebar-item ">
-            <a class="sidebar-link " href="#exampledropdownDropdown " data-bs-toggle="collapse ">
-                <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2 ">
-              <use xlink:href="#browser-window-1 "> </use>
-            </svg>Example dropdown </a>
-            <ul class="collapse list-unstyled " id="exampledropdownDropdown ">
-                <li><a class="sidebar-link " href="# ">Page</a></li>
-                <li><a class="sidebar-link " href="# ">Page</a></li>
-                <li><a class="sidebar-link " href="# ">Page</a></li>
-            </ul>
-        </li> -->
-  </ul>
-  <span
-    class="
-      text-uppercase text-gray-400 text-xs
-      letter-spacing-0
-      mx-3
-      px-2
-      heading
-    "
-    >ICTAK</span
-  >
-  <ul class="list-unstyled py-4">
-    <li class="sidebar-item">
-      <a class="sidebar-link" href="# ">
-        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-          <use xlink:href="#imac-screen-1 "></use></svg
-        >Contacts
-      </a>
-    </li>
-    <li class="sidebar-item">
-      <a class="sidebar-link" href="# ">
-        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-          <use xlink:href="#chart-1 "></use></svg
-        >Offices
-      </a>
-    </li>
-    <li class="sidebar-item">
-      <a class="sidebar-link" href="# ">
-        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-          <use xlink:href="#quality-1 "></use></svg
-        >Courses
-      </a>
-    </li>
-    <li class="sidebar-item">
-      <a class="sidebar-link" href="# ">
-        <svg class="svg-icon svg-icon-sm svg-icon-heavy me-xl-2">
-          <use xlink:href="#security-shield-1 "></use></svg
-        >Help
-      </a>
-    </li>
-  </ul>
-</nav>
+    <nav class="s-sidebar__nav">
+        <!-- <div class="sidebar-header d-flex align-items-center py-5 px-4">
+            <div class="ms-3 title d-none">
+                <h1 class="h4 mb-2">Welcome {{username}}</h1>
+
+            </div>
+        </div> -->
+        <ul style="margin-top: 10px;">
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="{{nav.profile}}">
+                    <i class="fas fa-user-circle"></i> <em>WELCOME {{username}}</em>
+                </a>
+
+            </li>
+
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="{{nav.home}}">
+                    <i class="fa fa-home"></i><em>HOME</em>
+                </a>
+            </li>
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="{{ nav.bookHall }}">
+                    <i class="fab fa-wpforms"></i><em>BOOK A HALL</em>
+                </a>
+            </li>
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="{{nav.associates}}">
+                    <i class="fas fa-users"></i><em>ASSOCIATES</em>
+                </a>
+            </li>
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="{{ nav.viewBookings }}">
+                    <i class="fas fa-calendar-alt"></i><em>VIEW BOOKINGS</em>
+                </a>
+            </li>
+            <li>
+                <a class="s-sidebar__nav-link" routerLink="" (click)=logoutUser()>
+                    <i class="fas fa-sign-out-alt"></i><em>LOG OUT</em>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Content -->
+<!-- <main class="s-layout__content">
+    <h1>Full View, Please!</h1>
+</main> -->
+<!-- </div> -->

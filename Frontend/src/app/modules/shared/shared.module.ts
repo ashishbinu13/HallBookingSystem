@@ -15,6 +15,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { EditBookingComponent } from './components/edit-booking/edit-booking.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 FullCalendarModule.registerPlugins([
   timeGridPlugin,
@@ -31,6 +32,7 @@ FullCalendarModule.registerPlugins([
     EditBookingComponent,
     HeaderComponent,
     ProfileComponent,
+    FooterComponent,
   ],
 
   imports: [RouterModule, FormsModule, FullCalendarModule, CommonModule,NgxPaginationModule],
@@ -45,6 +47,7 @@ FullCalendarModule.registerPlugins([
     EditBookingComponent,
     HeaderComponent,
     ProfileComponent,
+    FooterComponent,
   ],
 })
 export class SharedModule {}
