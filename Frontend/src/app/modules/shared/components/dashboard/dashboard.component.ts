@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
     var user = JSON.parse(atob(token.split('.')[1]));
   console.log(user);
    if (user.role=='ADMIN')
+  
    {
     this._bookingService.getBookingslist().subscribe((data) => {
       this.bookingdetails = JSON.parse(JSON.stringify(data)); 
@@ -47,8 +48,16 @@ export class DashboardComponent implements OnInit {
   }
 
   editBookings(bookings: any) {
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+    if (user.role=='ADMIN'){
     localStorage.setItem('editbookingId', bookings._id.toString());
     this.router.navigate(['/admin/bookings/editbooking']);
+    }
+    else{
+      localStorage.setItem('editbookingId', bookings._id.toString());
+      this.router.navigate(['/associates/bookings/editbooking']);  
+    }
   }
 
   deleteBookings(bookings: any) {
