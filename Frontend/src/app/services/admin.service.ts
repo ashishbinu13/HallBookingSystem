@@ -5,11 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AdminService {
-  base_url="http://localhost:3000";
+
+  base_url:string='http://localhost:3000';
   constructor(public http:HttpClient) { }
-
-
-
-
 
 }

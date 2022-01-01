@@ -13,4 +13,3 @@ const HallNamesSchema = new Schema({
 })
 var HallNames = mongoose.model("hallnames", HallNamesSchema);
 module.exports = HallNames;
-

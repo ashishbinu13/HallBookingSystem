@@ -10,6 +10,7 @@ import { ProfileComponent } from 'src/app/modules/shared/components/profile/prof
 import { AddassociateComponent } from './components/addassociate/addassociate.component';
 import { AssociatesComponent } from './components/associates/associates.component';
 import { OutletComponent } from './components/outlet/outlet.component';
+import { EditassociateComponent } from './components/editassociate/editassociate.component';
 // import { EditBookingComponent } from 'src/app/components/edit-booking/edit-booking.component';
 // import { AddBookingComponent } from 'src/app/components/add-booking/add-booking.component';
 
@@ -42,6 +43,7 @@ const routes: Routes = [
     children: [
       { path: '', component: AssociatesComponent },
       { path: 'register', component: AddassociateComponent },
+      { path: 'editass', component: EditassociateComponent}
     ],
   },
 ];

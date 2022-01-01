@@ -4,9 +4,18 @@ import { AssociatesComponent } from './components/associates/associates.componen
 import { AddassociateComponent } from './components/addassociate/addassociate.component';
 import { OutletComponent } from './components/outlet/outlet.component';
 import { SharedModule } from '../shared/shared.module';
+import { EditassociateComponent } from './components/editassociate/editassociate.component';
+
 @NgModule({
-  declarations: [AssociatesComponent, AddassociateComponent, OutletComponent],
+  declarations: [
+    //  AddBookingComponent,
+    AssociatesComponent,
+    AddassociateComponent,
+    OutletComponent,
+    EditassociateComponent,
+    // EditBookingComponent
+  ],
   imports: [AdminRoutingModule, SharedModule],
-  exports: [AssociatesComponent, AddassociateComponent],
+  exports: [AssociatesComponent, AddassociateComponent, EditassociateComponent],
 })
 export class AdminModule {}
