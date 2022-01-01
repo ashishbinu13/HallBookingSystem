@@ -16,6 +16,7 @@ require("./src/helpers/init_mongodb");
 
 const DeptRoute = require("./src/routes/dept.routes");
 //
+require("./src/helpers/init_mongodb");
 const app = express();
 //
 app.use(express.json());
@@ -29,6 +30,7 @@ app.use("/auth", AuthRoute);
 app.use("/admin", AdminRoute);
 app.use("/hall", HallRoute);
 app.use("/dept", DeptRoute);
+// app.use("/adding", AddAssociateRoute);
 app.use("/booking", BookingRoute);
 
 // error handling

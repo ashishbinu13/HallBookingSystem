@@ -1,0 +1,88 @@
+footer {
+    background: #2f333e;
+    padding: 50px 0 0;
+    position: relative;
+    margin-top: 50px;
+    bottom: 0;
+    width: 100%;
+}
+
+footer .header {
+    margin-bottom: 40px;
+}
+
+footer .header h6 {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #fff;
+}
+
+footer .header h6::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 2px;
+    background: #787976;
+}
+
+footer p {
+    color: rgb(252, 250, 250);
+}
+
+footer ul.contact a,
+footer ul.contact li {
+    color: rgb(252, 250, 250);
+    letter-spacing: 1px;
+    margin: 5px 0;
+}
+
+footer ul.contact a:hover,
+footer ul.contact li:hover {
+    color: #787976;
+}
+
+footer ul.contact span {
+    padding-right: 10px;
+}
+
+footer .newsletter form {
+    margin-top: 20px;
+    max-width: 500px;
+}
+
+footer .newsletter form input,
+footer .newsletter form button {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    font-size: 0.85rem !important;
+    border: none;
+}
+
+footer .newsletter form input[type=submit],
+footer .newsletter form button[type=submit] {
+    min-width: 100px !important;
+    padding: 0 !important;
+    margin: 0;
+}
+
+footer .newsletter form input[type=email],
+footer .newsletter form button[type=email] {
+    width: calc(100% - 100px);
+    padding: 0 20px;
+}
+
+footer ul.social {
+    text-align: center;
+    margin: 0px 0 0px;
+}
+
+footer ul.social a {
+    color: rgb(255, 255, 255);
+}
+
+footer ul.social a:hover {
+    color: #5d5f63;
+}

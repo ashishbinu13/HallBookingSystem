@@ -4,14 +4,14 @@ import { AddBookingComponent } from 'src/app/modules/shared/components/add-booki
 import { CalendarComponent } from 'src/app/modules/shared/components/calendar/calendar.component';
 import { DashboardComponent } from 'src/app/modules/shared/components/dashboard/dashboard.component';
 import { UseroutletComponent } from './components/useroutlet/useroutlet.component';
-
+import { EditBookingComponent } from '../shared/components/edit-booking/edit-booking.component';
 const routes: Routes = [
   {
     path: '',
     component: UseroutletComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'home', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent }
     ],
   },
   {
@@ -20,6 +20,7 @@ const routes: Routes = [
     children: [
       { path: '', component: CalendarComponent },
       { path: 'bookHall', component: AddBookingComponent },
+      { path: 'editbooking', component: EditBookingComponent}
     ],
   },
 ];

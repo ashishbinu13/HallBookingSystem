@@ -13,10 +13,12 @@ export class AssociatesComponent implements OnInit {
   user1!: User[];
 
   constructor(private _authService:AuthService,private router:Router) { }
-
+  totalRecords: any;
+  page:number=1
   ngOnInit(): void {
     this._authService.getass().subscribe((data)=>{
       this.user1=JSON.parse(JSON.stringify(data));
+      this.totalRecords=this.user1.length;
     })
   }
   editass(user:any)

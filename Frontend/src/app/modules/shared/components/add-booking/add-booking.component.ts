@@ -24,6 +24,7 @@ export class AddBookingComponent implements OnInit {
     startTime: '',
     endTime: '',
     eventDetails: '',
+    username:'',
     dateStamp: new Date(),
   };
 
@@ -73,6 +74,11 @@ export class AddBookingComponent implements OnInit {
   }
 
   saveBookings() {
+    
+    var token = localStorage.getItem('accessToken') || '';
+    var user= JSON.parse(atob(token.split('.')[1]));
+    this.bookingDetails.username = user.aud;
+
     if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
       console.log('true');
       console.log(this.bookingDetails);
@@ -94,5 +100,8 @@ export class AddBookingComponent implements OnInit {
 
   Clearmessage() {
     this.errormessage = '';
+    this._bookingService.checkavailabilty(this.bookingDetails)
+    .subscribe((data)=>{console.log(data)})
+ 
   }
 }

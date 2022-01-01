@@ -82,8 +82,18 @@ export class EditBookingComponent implements OnInit {
     this.errormessage = '';
   }
   editBookings() {
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+    if (user.role=='ADMIN'){
     this.bookingsService.editBookings(this.bookingDetails);
     alert('Successfully edited');
     this.router.navigate(['/admin/home']);
+    }
+    else{
+      this.bookingsService.editBookings(this.bookingDetails);
+    alert('Successfully edited');
+    this.router.navigate(['/associates/home']);
+    }
   }
+
 }

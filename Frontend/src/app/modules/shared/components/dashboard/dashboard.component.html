@@ -1,3 +1,5 @@
+
+<!-- </section> -->
 <!-- Events Section-->
 <!-- 
 <app-sidebar></app-sidebar> -->
@@ -8,91 +10,100 @@
 
 <section class="pb-0">
   <div class="container-fluid">
-    <div class="ms-3">
-      <h3 class="h1 text-gray-700 mb-0" style="margin-top: 20px">
-        UPCOMING EVENTS
-      </h3>
-    </div>
-    <!-- Events-->
-    <div class="card mb-3" *ngFor="let bookings of bookingdetails">
-      <div class="card-body p-3">
-        <div class="row align-items-center gx-lg-5 gy-3">
-          <div class="col-lg-2 border-lg-end">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
-                <div class="ms-3">
-                  <h3 class="h4 text-gray-700 mb-0">
-                    {{ bookings.eventDetails }}
-                  </h3>
+      <div id="head" class="card mb-3">
+          <div class="card-body p-3">
+              <div class="row align-items-center gx-lg-5 gy-3">
+                  <div class="col-lg-9 border-lg-end">
+                      <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                              <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
+                              <div class="ms-3">
+                                  <h3 class="h4 text-gray-700 mb-0">
+                                      UPCOMING EVENTS
+                                  </h3>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
 
-                  <small class="text-gray-500">{{ bookings.hallName }}</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 border-lg-end">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
-                <div class="ms-3">
-                  <!-- <h3 class="h4 text-gray-700 mb-0"><i class="far fa-calendar me-1"></i>{{bookings.bookingDate | date: 'dd/MM/yyyy'}}</h3> -->
-                  <h3 class="h4 text-gray-700 mb-0">
-                    <i class="far fa-calendar me-1"></i
-                    >{{ bookings.bookingDate | date: "dd/MM/yyyy" }}
-                  </h3>
 
-                  <small class="text-gray-500">
-                    <h3 class="h6 text-gray-700 mb-0">
-                      <i class="far fa-clock me-1"></i>From:{{
-                        bookings.startTime
-                      }}
-                      To:{{ bookings.endTime }}
-                    </h3></small
-                  >
-                </div>
               </div>
-            </div>
           </div>
-          <div class="col-lg-3">
-            <div class="d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <div class="ms-3">
-                  <h3 class="h4 text-gray-700 mb-0">
-                    {{ bookings.employeeName }}
-                  </h3>
-
-                  <small class="text-gray-500">{{ bookings.ICTAKId }}</small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="d-flex align-items-center">
-              <div style="height: 50px; margin-right: 10px; max-width: 15rem">
-                <button
-                  id="btn"
-                  type="submit"
-                  name="edit"
-                  (click)="editBookings(bookings)"
-                >
-                  <h2 style="color: white">EDIT</h2>
-                </button>
-              </div>
-              <div style="height: 50px; max-width: 15rem">
-                <button
-                  id="btn"
-                  type="submit"
-                  name="delete"
-                  (click)="deleteBookings(bookings)"
-                >
-                  <h2 style="color: white">DELETE</h2>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
-    </div>
+      <!-- Events-->
+      <div id="box" class="card mb-3" *ngFor="let bookings of bookingdetails | paginate:{
+     
+        itemsPerPage:5,
+        currentPage:page,
+        totalItems:totalRecords}">
+          <div class="card-body p-3">
+              <div class="row align-items-center gx-lg-5 gy-3">
+                  <div class="col-lg-3 border-lg-end">
+                      <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                              <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
+                              <div class="ms-3">
+                                  <h3 class="h4 text-gray-700 mb-0">
+                                      {{ bookings.eventDetails }}
+                                  </h3>
+
+                                  <small class="text-gray-500">{{ bookings.hallName }}</small>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3 border-lg-end">
+                      <div class="d-flex align-items-center justify-content-between">
+                          <div class="d-flex align-items-center">
+                              <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
+                              <div class="ms-3">
+                                  <!-- <h3 class="h4 text-gray-700 mb-0"><i class="far fa-calendar me-1"></i>{{bookings.bookingDate | date: 'dd/MM/yyyy'}}</h3> -->
+                                  <h3 class="h4 text-gray-700 mb-0">
+                                      <i class="far fa-calendar me-1"></i
+                  >{{ bookings.bookingDate | date: "dd/MM/yyyy" }}
+                </h3>
+
+                <small class="text-gray-500">
+                  <h3 class="h6 text-gray-700 mb-0">
+                    <i class="far fa-clock me-1"></i>From:{{ bookings.startTime }} To:{{ bookings.endTime }}
+                                  </h3>
+                                  </small>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3">
+                      <div class="d-flex align-items-center">
+                          <div class="d-flex align-items-center">
+                              <div class="ms-3">
+                                  <h3 class="h4 text-gray-700 mb-0">
+                                      {{ bookings.employeeName }}
+                                  </h3>
+
+                                  <small class="text-gray-500">{{ bookings.ICTAKId }}</small>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-lg-3">
+                      <div class="d-flex align-items-center">
+                          <div style="height: 50px; margin-right: 10px; max-width: 15rem">
+                              <button id="btn" type="submit" name="edit" (click)="editBookings(bookings)">
+                <h4 style="color: white">EDIT</h4>
+              </button>
+                          </div>
+                          <div style="height: 50px; max-width: 15rem">
+                              <button id="btn" type="submit" name="delete" (click)="deleteBookings(bookings)">
+                <h4 style="color: white">DELETE</h4>
+              </button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
   </div>
+  <div>
+    <pagination-controls style="padding-bottom: 1px ;"  class="text-center"  (pageChange)="page=$event" [autoHide]="true"></pagination-controls>
+  </div> 
 </section>

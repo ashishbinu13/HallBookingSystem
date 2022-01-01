@@ -45,7 +45,7 @@ export class BookingsService {
   }
   getBookingslistbyid(user:any)
   {
-    return this.http.get(`${this.base_url}/booking/userbookinglist/`+user) 
+    return this.http.get<any>(`${this.base_url}/booking/userbookinglist/`+user) 
 
   }
 

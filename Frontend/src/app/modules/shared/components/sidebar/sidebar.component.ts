@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -7,21 +8,40 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+
   nav = {
     home: '',
     bookHall: '',
     associates: '',
     viewBookings: '',
+    profile:'',
   };
+ username="";
+  constructor(public _auth: AuthService, public _router:Router) {}
 
-  constructor(public _auth: AuthService) {}
 
   ngOnInit(): void {
+
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+    this.username= user.aud;
+
     if (this._auth.isAdmin()) {
       this.nav.home = '/admin/home';
-      this.nav.bookHall = '/admin/bookings/bookHall';
+      this.nav.bookHall = '/admin/bookHall';
       this.nav.associates = '/admin/associates';
-      this.nav.viewBookings = '/admin/bookings';
+      this.nav.viewBookings = '/admin/calendar';
+      this.nav.profile = '/admin/profile';
     }
+    else{
+      this.nav.home = '/associates/home';
+      this.nav.bookHall = '/associates/bookings/bookHall';
+      this.nav.viewBookings = '/associates/bookings';
+      this.nav.profile = '/associates/profile';
+    }
+  }
+  logoutUser() {
+    localStorage.clear();
+    this._router.navigate(['']);
   }
 }
