@@ -15,7 +15,6 @@ export class BookingsService {
   {
     console.log(bookingDetails)
     return this.http.post(`${this.base_url}/booking/insert`,bookingDetails)
-    .subscribe((data)=>{console.log("succes")});
 
   }
   getBooking(id:any){

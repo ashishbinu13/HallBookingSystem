@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  title="UPCOMING EVENTS"
   bookingdetails: any = [{}];
   constructor(
     private _bookingService: BookingsService,
     private router: Router,
-    private authService: AuthService
+    private _auth: AuthService
   ) {}
   totalRecords: any;
   page:number=1
@@ -53,11 +54,11 @@ export class DashboardComponent implements OnInit {
     var user = JSON.parse(atob(token.split('.')[1]));
     if (user.role=='ADMIN'){
     localStorage.setItem('editbookingId', bookings._id.toString());
-    this.router.navigate(['/admin/bookings/editbooking']);
+    this.router.navigate(['/admin/editbooking']);
     }
     else{
       localStorage.setItem('editbookingId', bookings._id.toString());
-      this.router.navigate(['/associates/bookings/editbooking']);  
+      this.router.navigate(['/associates/editbooking']);
     }
   }
 

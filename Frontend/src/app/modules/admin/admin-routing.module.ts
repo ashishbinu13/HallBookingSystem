@@ -28,26 +28,30 @@ const routes: Routes = [
       {path: 'profile', component: ProfileComponent },
       {path:'bookHall', component :AddBookingComponent},
       {path:'calendar', component :CalendarComponent},
-      {path:'associates',component:AssociatesComponent}
+      {path:'associates',component:AssociatesComponent},
+      {path:'editbooking',component:EditBookingComponent},
 
-    ],
+
+   ],
   },
-  {
-    path: 'bookings',
-    component: OutletComponent,
-    children: [
-      // { path: 'calendar', component: CalendarComponent },
+  // {
+  //   path: 'bookings',
+  //   component: OutletComponent,
+  //   children: [
+  //     // { path: 'calendar', component: CalendarComponent },
      // { path: ''bookHall'', component: AddBookingComponent },
-      { path: 'editbooking', component: EditBookingComponent },
-    ],
-  },
+     // { path: 'editbooking', component: EditBookingComponent },
+  //   ],
+  // },
   {
     path: 'associates',
     component: OutletComponent,
     children: [
       { path: '', component: AssociatesComponent },
       { path: 'register', component: AddassociateComponent },
-      { path: 'editass', component: EditassociateComponent}
+      { path: 'edit', component: EditassociateComponent},
+      {path:'addAssociate',component:AddassociateComponent},
+
     ],
   },
 ];

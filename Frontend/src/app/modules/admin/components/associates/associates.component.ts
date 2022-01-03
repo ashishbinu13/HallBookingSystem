@@ -24,7 +24,7 @@ export class AssociatesComponent implements OnInit {
   editass(user:any)
   {
     localStorage.setItem("editassId", user._id.toString());
-    this.router.navigate(['admin/associates/editass']);
+    this.router.navigate(['admin/associates/edit']);
 
   }
   deleteass(user:any)
@@ -35,6 +35,10 @@ export class AssociatesComponent implements OnInit {
       })
   
 
+  }
+
+  addAssociate(){
+    this.router.navigate(['admin/associates/addAssociate']);
   }
 }
 

@@ -35,9 +35,10 @@ export class SidebarComponent implements OnInit {
     }
     else{
       this.nav.home = '/associates/home';
-      this.nav.bookHall = '/associates/bookings/bookHall';
-      this.nav.viewBookings = '/associates/bookings';
+      this.nav.bookHall = '/associates/bookHall';
+      this.nav.viewBookings = '/associates/calendar';
       this.nav.profile = '/associates/profile';
+
     }
   }
   logoutUser() {
