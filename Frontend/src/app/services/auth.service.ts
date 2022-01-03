@@ -28,30 +28,33 @@ export class AuthService {
     return user.role === 'ADMIN' ? true : false;
   }
 
-  getUser(token: string) {
-    return JSON.parse(atob(token.split('.')[1]));
+  getUser() {
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+    return user.aud;
   }
-  addAssociate(user: any){
-    console.log(user)
-    return this.http.post('http://localhost:3000/auth/register',user)
-    .subscribe((data)=>{console.log("success")});
+  addAssociate(user: any) {
+    console.log(user);
+    return this.http
+      .post('http://localhost:3000/auth/register', user)
+      .subscribe((data) => {
+        console.log('success');
+      });
   }
-  getass(){
-    return this.http.get('http://localhost:3000/auth/getass')
+  getass() {
+    return this.http.get('http://localhost:3000/auth/getass');
   }
-  getass1(id:any){
-    return this.http.get('http://localhost:3000/auth/'+id);
+  getass1(id: any) {
+    return this.http.get('http://localhost:3000/auth/' + id);
   }
-  editass(user:any)
-  {
-    return this.http.put('http://localhost:3000/auth/editass',user)
-    .subscribe((data) =>{console.log(data)})
-    
+  editass(user: any) {
+    return this.http
+      .put('http://localhost:3000/auth/editass', user)
+      .subscribe((data) => {
+        console.log(data);
+      });
   }
-  deleteass(id:any)
-  {
-
-    return this.http.delete('http://localhost:3000/auth/deleteass/'+id)
-
+  deleteass(id: any) {
+    return this.http.delete('http://localhost:3000/auth/deleteass/' + id);
   }
 }
