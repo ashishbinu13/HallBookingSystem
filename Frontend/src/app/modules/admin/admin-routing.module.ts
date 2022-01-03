@@ -31,6 +31,7 @@ const routes: Routes = [
       {path:'associates',component:AssociatesComponent},
       {path:'editbooking',component:EditBookingComponent},
 
+
    ],
   },
   // {
@@ -48,7 +49,9 @@ const routes: Routes = [
     children: [
       { path: '', component: AssociatesComponent },
       { path: 'register', component: AddassociateComponent },
-      { path: 'edit', component: EditassociateComponent}
+      { path: 'edit', component: EditassociateComponent},
+      {path:'addAssociate',component:AddassociateComponent},
+
     ],
   },
 ];

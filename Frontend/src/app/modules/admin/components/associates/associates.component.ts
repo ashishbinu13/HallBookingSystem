@@ -34,6 +34,10 @@ export class AssociatesComponent implements OnInit {
   
 
   }
+
+  addAssociate(){
+    this.router.navigate(['admin/associates/addAssociate']);
+  }
 }
 
 
