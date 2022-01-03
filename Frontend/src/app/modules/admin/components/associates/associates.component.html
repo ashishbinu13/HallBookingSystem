@@ -38,7 +38,7 @@
     
     
             <!-- Events-->
-            <div id="box" class="card mb-3" *ngFor="let i of user1 paginate:{
+            <div id="box" class="card mb-3" *ngFor="let i of user1 | paginate:{
                 itemsPerPage:5,
                 currentPage:page,
                 totalItems:totalRecords}">
@@ -108,8 +108,11 @@
                 </div>
             </div>
         </div>
-        <div>
-            <pagination-controls  class="text-center"  (pageChange)="page=$event" [autoHide]="true"></pagination-controls>
-          </div>  
+     
+
+
+        <div style="margin-top: 40px; font-weight: bold; ">
+            <pagination-controls   class="text-center"  (pageChange)="page=$event" [autoHide]="true"></pagination-controls>     
+        </div> 
     </section>
       

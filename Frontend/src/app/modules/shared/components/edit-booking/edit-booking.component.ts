@@ -78,9 +78,7 @@ export class EditBookingComponent implements OnInit {
       event.target.options[event.target.options.selectedIndex].text;
   }
 
-  Clearmessage() {
-    this.errormessage = '';
-  }
+  
   editBookings() {
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
