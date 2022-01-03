@@ -11,7 +11,8 @@ const routes: Routes = [
     component: UseroutletComponent,
     children: [
       { path: '', component: DashboardComponent },
-      { path: 'home', component: DashboardComponent }
+      { path: 'home', component: DashboardComponent },
+      { path: 'editbooking', component: EditBookingComponent}
     ],
   },
   {
@@ -20,7 +21,7 @@ const routes: Routes = [
     children: [
       { path: '', component: CalendarComponent },
       { path: 'bookHall', component: AddBookingComponent },
-      { path: 'editbooking', component: EditBookingComponent}
+      
     ],
   },
 ];
