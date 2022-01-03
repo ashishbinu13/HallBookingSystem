@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HallDataService } from 'src/app/services/hall-data.service';
 import { BookingsService } from 'src/app/services/bookings.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-add-booking',
@@ -13,8 +14,9 @@ export class AddBookingComponent implements OnInit {
 
   constructor(
     public _bookingService: BookingsService,
-    public __hallservice: HallDataService,
-    public _router: Router
+    public _hallservice: HallDataService,
+    public _router: Router,
+    public _auth:AuthService
   ) {}
   bookingDetails = {
     employeeName: '',
@@ -40,9 +42,14 @@ export class AddBookingComponent implements OnInit {
   endTime: any;
   timediff: any;
   errormessage: any;
+  mindatetoday:any;
+  minmon:any;
+  maxdate1:any;
+  maxmon:any;
+  error:any;
 
   ngOnInit(): void {
-    this.__hallservice.getHallNames().subscribe((data) => {
+    this._hallservice.getHallNames().subscribe((data) => {
       this.halldata = JSON.parse(JSON.stringify(data));
       console.log(this.halldata);
     });
@@ -54,23 +61,56 @@ export class AddBookingComponent implements OnInit {
   getmaxdate() {
     this.date = new Date();
     this.date.setDate(this.date.getDate() + 15);
-    this.maxdate =
-      this.date.getFullYear() +
-      '-' +
-      (this.date.getMonth() + 1) +
-      '-' +
-      this.date.getDate();
+
+    if(this.date.getDate()<10)
+    {
+      this.maxdate1="0"+this.date.getDate();
+    }
+    else{
+      this.maxdate1=this.date.getDate();
+
+    }
+    if((this.date.getMonth() + 1) <10)
+    {
+      this.maxmon="0"+(this.date.getMonth() + 1);
+    }
+    else{
+      this.maxmon=this.date.getMonth()+1;
+
+    }
+    
+
+
+    this.maxdate =this.date.getFullYear() +'-' +this.maxmon + '-' +this.maxdate1;
+      console.log(this.maxdate);
   }
 
   getmindate() {
     this.todaydate = new Date();
     this.todaydate.setDate(this.todaydate.getDate());
-    this.mindate =
-      this.todaydate.getFullYear() +
-      '-' +
-      (this.todaydate.getMonth() + 1) +
-      '-' +
-      this.todaydate.getDate();
+
+     if (this.todaydate.getDate()<10)
+     {
+      this.mindatetoday="0"+this.todaydate.getDate();
+     }
+     else
+     {
+      this.mindatetoday=this.todaydate.getDate();
+
+     }
+     if((this.todaydate.getMonth() + 1)<10)
+     {
+      this.minmon= "0"+(this.todaydate.getMonth() + 1);
+     }
+     else
+     {
+      this.minmon=(this.todaydate.getMonth() + 1)
+
+     }
+    this.mindate =this.todaydate.getFullYear() +'-' + this.minmon+'-' +this.mindatetoday;
+
+      console.log(this.mindate);
+
   }
 
   saveBookings() {
@@ -80,17 +120,24 @@ export class AddBookingComponent implements OnInit {
     this.bookingDetails.username = user.aud;
 
     if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
-      console.log('true');
-      console.log(this.bookingDetails);
-
-      this._bookingService.saveBookings(this.bookingDetails);
-      this._router.navigate(['/admin/home']);
-    } else {
+       this._bookingService.saveBookings(this.bookingDetails).subscribe(
+        (data)=>{console.log("succes")},
+        (response)=>{
+        this.error=response.error.message;
+        console.log(this.error)}
+      );
+     
+    
+       if (this._auth.isAdmin()){this._router.navigate(['/admin/home'])}
+        else{ this._router.navigate(['/associates/home'])}
+      
+      
+    } 
+    else 
+    {
       this.errormessage = 'Endtime should be greater than starttime ';
     }
 
-    //  this._bookingService.checkavailabilty(this.bookingDetails)
-    // .subscribe((data)=>{console.log(data)})
   }
 
   onChange(event: any) {
@@ -100,8 +147,8 @@ export class AddBookingComponent implements OnInit {
 
   Clearmessage() {
     this.errormessage = '';
-    this._bookingService.checkavailabilty(this.bookingDetails)
-    .subscribe((data)=>{console.log(data)})
+   // this._bookingService.checkavailabilty(this.bookingDetails)
+   // .subscribe((data)=>{console.log(data)})
  
   }
 }

@@ -31,12 +31,12 @@
                 </a>
             </li>
             <li>
-                <a class="s-sidebar__nav-link" routerLink="{{nav.associates}}">
+                <a class="s-sidebar__nav-link" routerLink="{{nav.associates}}" *ngIf=_auth.isAdmin()>
                     <i class="fas fa-users"></i><em>ASSOCIATES</em>
                 </a>
             </li>
             <li>
-                <a class="s-sidebar__nav-link" routerLink="{{ nav.viewBookings }}">
+                <a class="s-sidebar__nav-link" routerLink="{{ nav.viewBookings }}" >
                     <i class="fas fa-calendar-alt"></i><em>VIEW BOOKINGS</em>
                 </a>
             </li>

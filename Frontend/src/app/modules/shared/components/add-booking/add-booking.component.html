@@ -1,6 +1,6 @@
 <div class="form">
     <h2>{{ title }}</h2>
-    <form (ngSubmit)="saveBookings()">
+    <form (ngSubmit)="saveBookings()" #addbooking="ngForm">
 
         <div class="input">
             <div class="inputBox">
@@ -23,8 +23,8 @@
             </div>
             <div class="inputBox">
                 <label>Date</label>
-                <input type="date" name="bookingDate" min="{{ mindate }}" max="{{ maxdate }}" required [(ngModel)]="bookingDetails.bookingDate" />
-                <!-- <input type="datetime-local" name="bookingDate"  min={{mindate}}   max={{maxdate}}  [(ngModel)]=bookingDetails.bookingDate> -->
+                <input type="date" name="bookingDate" min={{mindate}} max={{maxdate}} required [(ngModel)]="bookingDetails.bookingDate" />
+
             </div>
             <div class="inputBox">
                 <label>Start Time</label>
@@ -34,19 +34,17 @@
                 <label>End Time</label>
                 <input type="time" name="endTime" required [(ngModel)]="bookingDetails.endTime" (click)="Clearmessage()" />
             </div>
-            <!-- <div class="inputBox">
-                                      <label>Email</label>
-                                      <input type="email" name="empEmail" [(ngModel)]=bookingDetails.empEmail>
-                                  </div> -->
             <div class="inputBox">
                 <label>Event Details</label>
                 <input type="text" name="desc" required [(ngModel)]="bookingDetails.eventDetails" />
             </div>
 
             <div class="inputBox">
+                <span style="color: red">{{ error }}</span>
+
                 <span style="color: red">{{ errormessage }}</span>
                 <br />
-                <input type="submit" value="Submit" />
+                <input type="submit" value="Submit" [disabled]="!addbooking.valid" />
             </div>
         </div>
     </form>
