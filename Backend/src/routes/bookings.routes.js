@@ -13,8 +13,9 @@ router.get("/getBookings", verifyAccessToken, async (req, res, next) => {
   );
 
   try {
-
-    const bookings = await bookingDetails.find().sort({_id:-1}).limit(5);
+    //const bookings = await bookingDetails.find();
+    
+    const bookings = await bookingDetails.find().sort({_id:-1});
     res.send(bookings);
   } catch (error) {
     next(error);
