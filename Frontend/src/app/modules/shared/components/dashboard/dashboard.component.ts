@@ -11,11 +11,12 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  title="UPCOMING EVENTS"
   bookingdetails: any = [{}];
   constructor(
     private _bookingService: BookingsService,
     private router: Router,
-    private authService: AuthService
+    private _auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -45,7 +46,15 @@ export class DashboardComponent implements OnInit {
 
   editBookings(bookings: any) {
     localStorage.setItem('editbookingId', bookings._id.toString());
-    this.router.navigate(['/admin/bookings/editbooking']);
+    if(this._auth.isAdmin())
+    {
+    this.router.navigate(['/admin/editbooking']);
+    }
+    else
+    {
+      this.router.navigate(['/associates/editbooking']);
+
+    }
   }
 
   deleteBookings(bookings: any) {

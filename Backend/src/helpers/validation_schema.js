@@ -22,4 +22,17 @@ const loginSchema = Joi.object({
   password: Joi.string().min(4).required(),
 });
 
-module.exports = { authSchema, loginSchema };
+const bookingSchema= Joi.object({
+  employeeName: Joi.string().required(),
+  ICTAKId:Joi.string().required(),
+  bookingDate:Joi.date().required(),
+  hallName: Joi.string().required(),
+  startTime: Joi.string().required(),
+  endTime: Joi.string().required(),
+  eventDetails:Joi.string().required(),
+  username:Joi.string().required(),
+  dateStamp: Joi.date().required(),
+});
+
+
+module.exports = { authSchema, loginSchema,bookingSchema};

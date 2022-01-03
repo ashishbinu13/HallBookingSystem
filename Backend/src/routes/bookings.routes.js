@@ -2,6 +2,8 @@ const express = require("express");
 
 // modules
 const bookingDetails = require("../models/adminaddbooking.model");
+const { bookingSchema} = require("../helpers/validation_schema");
+
 const { verifyAccessToken } = require("../helpers/jwt_helper");
 
 const router = express.Router();
@@ -26,8 +28,11 @@ router.post("/insert", verifyAccessToken, async(req, res, next) => {
     res.header(
         "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
-    console.log("in insert")
     try {
+
+      const result = await bookingSchema.validateAsync(req.body);
+      console.log(result)
+
       var details = {
         employeeName: req.body.employeeName,
         ICTAKId: req.body.ICTAKId,
@@ -44,8 +49,12 @@ router.post("/insert", verifyAccessToken, async(req, res, next) => {
       var bookingDet = new bookingDetails(details);
       var booked = await bookingDet.save();
       console.log(booked);
-    } catch (error) {
-        next(error);
+    } 
+    catch (error) {
+      if (error.isJoi === true)
+      // return next(createHttpError.BadRequest("ent"));
+      next(error);
+
     }
 });
 
@@ -121,7 +130,7 @@ router.get("/userbookinglist/:user",verifyAccessToken, async (req, res, next) =>
  console.log(username)
  try
  {
-  const records = await bookingDetails.find().where('username').in(username).exec();
+  const records = await bookingDetails.find().where('username').in(username).sort({_id:-1}).limit(5).exec();
 
     console.log(records);
     res.send(records);
@@ -150,57 +159,37 @@ router.post("/check", function (req, res, next) {
   date = req.body.bookingDate;
   console.log(newStartTime);
   console.log(newEndTime);
-  try
-  {
-//    const results=bookingDetails.find(
-//     {
-//       $or: [
-//         {
-//           $and: [
-//             {
-//               $or: [
-//                 {
-//                   $and: [
-//                     { startTime: { $lt: newStartTime } },
-//                     { endTime: { $gt: newStartTime } },
-//                   ],
-//                 },
-//                 {
-//                   $and: [
-//                     { startTime: { $lt: newEndTime } },
-//                     { endTime: { $gt: newEndTime } },
-//                   ],
-//                 },
-//                 {
-//                     $and: [
-//                         { startTime: { $eq: newStartTime } },
-//                         { endTime: { $eq: newEndTime } },
-//                     ],
-//                 },
-//             ],
-//         },
-//       ],
-//     }
-
-//   //   function (err, results) {
-//   //     if (err) {
-//   //       console.log(err);
-//   //       return;
-//   //     }
-
-//   //     if (results.length > 0) {
-//   //       console.log(results);
-//   //     }
-//   //   }
-//   //)
-// //console.log(results);
-//    res.send();
-//     }
-  }
   
-  catch(err)
-  {
-   // res.send(err)
+  bookingDetails.find({
+    $or: [{$and: [
+      {$or: [
+              {$and: [{start_time: {$lt: newStartTime}}, {end_time: {$gt: newStartTime}}]}, 
+              {$and: [{start_time: {$lt: newEndTime}}, {end_time: {$gt: newEndTime}}]},
+              {$and: [{start_time: {$gte: newStartTime}}, {end_time: {$lte: newEndTime}}]},
+
+  ]},
+       {$or: [{start_time: {$ne: newStartTime}}, {end_time: {$ne: newEndTime}}]},
+
+       ]
+          },
+      {$and: [{start_time: {$eq: newStartTime}}, {end_time: {$eq: newEndTime}}]},
+      {$and:[{hallName:{hallname}}, {bookingDate:{date}}]},
+  ]
+  }.exec( function (err,results){
+    if (err) {
+      //handle error
+      return;
   }
-});
+
+  if (results.length > 0)
+  {
+console.log(results)  
+}
+
+
+  }));
+
+        
+    });
+
 module.exports = router;
