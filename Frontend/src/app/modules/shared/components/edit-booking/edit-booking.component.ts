@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingsService } from 'src/app/services/bookings.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HallDataService } from 'src/app/services/hall-data.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-edit-booking',
   templateUrl: './edit-booking.component.html',
@@ -9,22 +10,15 @@ import { HallDataService } from 'src/app/services/hall-data.service';
 })
 export class EditBookingComponent implements OnInit {
   title = 'Edit Your Booking';
-
+ 
   constructor(
     private bookingsService: BookingsService,
     private router: Router,
-    private __hallservice: HallDataService
+    private __hallservice: HallDataService,
+    private _auth: AuthService
   ) {}
-  bookingDetails = {
-    employeeName: '',
-    ICTAKId: '',
-    bookingDate: '',
-    hallName: '',
-    startTime: '',
-    endTime: '',
-    eventDetails: '',
-    dateStamp: new Date(),
-  };
+  bookingDetails: any = [{}];
+  
   halldata: any[] | undefined;
   mindate: any = '';
   maxdate: any = '';
@@ -37,11 +31,12 @@ export class EditBookingComponent implements OnInit {
   endTime: any;
   timediff: any;
   errormessage: any;
-
+  
   ngOnInit(): void {
     let bookingId = localStorage.getItem('editbookingId');
     this.bookingsService.getBooking(bookingId).subscribe((data) => {
       this.bookingDetails = JSON.parse(JSON.stringify(data));
+     
     });
     this.__hallservice.getHallNames().subscribe((data) => {
       this.halldata = JSON.parse(JSON.stringify(data));
@@ -80,9 +75,8 @@ export class EditBookingComponent implements OnInit {
 
   
   editBookings() {
-    var token = localStorage.getItem('accessToken') || '';
-    var user = JSON.parse(atob(token.split('.')[1]));
-    if (user.role=='ADMIN'){
+    
+    if(this._auth.isAdmin()){
     this.bookingsService.editBookings(this.bookingDetails);
     alert('Successfully edited');
     this.router.navigate(['/admin/home']);

@@ -14,10 +14,12 @@ export class DashboardComponent implements OnInit {
   constructor(
     private _bookingService: BookingsService,
     private router: Router,
-    private authService: AuthService
+    private _auth: AuthService
   ) {}
   totalRecords: any;
   page:number=1
+ 
+ 
   ngOnInit(): void {
    
     var token = localStorage.getItem('accessToken') || '';
@@ -29,6 +31,7 @@ export class DashboardComponent implements OnInit {
     this._bookingService.getBookingslist().subscribe((data) => {
       this.bookingdetails = JSON.parse(JSON.stringify(data)); 
       this.totalRecords=this.bookingdetails.length;
+     
     });
    }
   else
@@ -48,16 +51,17 @@ export class DashboardComponent implements OnInit {
   }
 
   editBookings(bookings: any) {
-    var token = localStorage.getItem('accessToken') || '';
-    var user = JSON.parse(atob(token.split('.')[1]));
-    if (user.role=='ADMIN'){
     localStorage.setItem('editbookingId', bookings._id.toString());
+    if(this._auth.isAdmin())
+    {
     this.router.navigate(['/admin/editbooking']);
     }
-    else{
-      localStorage.setItem('editbookingId', bookings._id.toString());
-      this.router.navigate(['/associates/editbooking']);  
+    else
+    {
+      this.router.navigate(['/associates/editbooking']);
+
     }
+    
   }
 
   deleteBookings(bookings: any) {
@@ -65,6 +69,8 @@ export class DashboardComponent implements OnInit {
       this.bookingdetails = this.bookingdetails.filter(
         (b: any) => b !== bookings
       );
+      this.totalRecords=this.bookingdetails.length;
     });
+   
   }
 }
