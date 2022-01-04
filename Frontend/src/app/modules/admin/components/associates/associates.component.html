@@ -32,7 +32,9 @@
               </div>
           </div>
       </div>
-      <pagination-controls class="text-center" (pageChange)="page = $event" [autoHide]="true"  previousLabel="Previous" nextLabel="Next"  [responsive]="true"></pagination-controls>
+      <div class="container">
+        <pagination-controls class="text-center" (pageChange)="page=$event" [autoHide]="true"previousLabel="Previous" nextLabel="Next"  [responsive]="true"></pagination-controls>
+    </div>
       <div id="box" class="card mb-3" *ngFor="
       let i of user1|
       paginate: {
