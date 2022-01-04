@@ -1,21 +1,9 @@
-<!-- Associates-->
-
 <section class="pb-0">
-  <div class="container-fluid">
-    <div id="head" class="card mb-3">
-      <div class="card-body p-3">
-        <div class="row align-items-center gx-lg-5 gy-3">
-          <div class="col-lg-9 border-lg-end">
-            <div class="d-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
-                <div class="ms-3">
-                  <h3 class="h4 text-gray-700 mb-0">ASSOCIATES</h3>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="container-fluid">
 
+
+
+<<<<<<< HEAD
           <div class="col-lg-3">
             <div class="d-flex align-items-center">
               <div style="height: 50px; margin-right: 10px; max-width: 15rem">
@@ -25,9 +13,38 @@
                   </button></a
                 >
               </div>
+=======
+
+        <div id="head" class="card mb-3">
+            <div class="card-body p-3">
+                <div class="row align-items-center gx-lg-5 gy-3">
+                    <div class="col-lg-9 border-lg-end">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
+                                <div class="ms-3">
+                                    <h3 class="h4 text-gray-700 mb-0">
+                                        ASSOCIATES
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 50px; margin-right: 10px; max-width: 15rem">
+                                <button id="btn" type="submit" (click)="addAssociate()">
+                                <h4 style="color: white">Add New</h4>
+                              </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+>>>>>>> 0976c9a814b51763ed434e89e45294b554977099
             </div>
-          </div>
         </div>
+<<<<<<< HEAD
       </div>
     </div>
 
@@ -77,51 +94,91 @@
                   <h3 class="h4 text-gray-700 mb-0">
                     <i class="far fa-envelope"></i> {{ i.email }}
                   </h3>
+=======
+        <pagination-controls class="text-center" (pageChange)="page = $event" [autoHide]="true"></pagination-controls>
+        <div id="box" class="card mb-3" *ngFor="
+        let i of user1|
+        paginate: {
+          itemsPerPage: 5,
+          currentPage: page,
+          totalItems: totalRecords
+        }
+      ">
+            <div class="card-body p-3">
+                <div class="row align-items-center gx-lg-5 gy-3">
+                    <div class="col-lg-3 border-lg-end">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
+                                <div class="ms-3">
+                                    <h3 class="h6 text-gray-700 mb-0">
+                                        {{i.name}}
+                                    </h3>
 
-                  <small class="text-gray-500">
-                    <h3 class="h6 text-gray-700 mb-0">
-                      User name - {{ i.username }}
-                    </h3>
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="d-flex align-items-center">
-              <div class="d-flex align-items-center">
-                <div class="ms-3">
-                  <h3 class="h4 text-gray-700 mb-0">
-                    <i class="fas fa-mobile-alt"></i> {{ i.phone }}
-                  </h3>
+                                    <small class="text-gray-500">{{ i.deptName}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 border-lg-end">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="d-flex align-items-center">
+                                <!-- <img class="img-fluid shadow-sm" src="/assets/img/profile1.jpg" alt="..." width="50"> -->
+                                <div class="ms-3">
+                                    <!-- <h3 class="h4 text-gray-700 mb-0"><i class="far fa-calendar me-1"></i>{{bookings.bookingDate | date: 'dd/MM/yyyy'}}</h3> -->
+                                    <h3 class="h6 text-gray-700 mb-0">
+                                        <i class="far fa-calendar me-1"></i
+                  > {{i.email}}
+                </h3>
+>>>>>>> 0976c9a814b51763ed434e89e45294b554977099
 
-                  <small class="text-gray-500"> </small>
+                <small class="text-gray-500">
+ 
+                    <i class="far fa-clock me-1"></i> User name - {{i.username}}
+
+                                        </small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="d-flex align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="ms-3">
+                                    <h3 class="h6 text-gray-700 mb-0">
+                                        {{i.phone}}
+                                    </h3>
+
+                                    <small class="text-gray-500"></small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="d-flex align-items-center">
+                            <div style="height: 50px;margin-right: 5px; max-width: 15rem">
+                                <button id="btn" type="submit" name="btn1" (click)="editass(i)">
+                               <h6 style="color: white">EDIT</h6>
+                              </button>
+                            </div>
+                            <div style="height: 50px; max-width: 15rem">
+                                <button id="btn" type="submit" name="btn2" (click)="deleteass(i)">
+                                   <h6 style="color: white">DELETE</h6>
+                               </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="col-lg-2">
+                      <div class="d-flex align-items-center">
+
+
+                      </div> -->
                 </div>
-              </div>
             </div>
-          </div>
-          <div class="col-lg-3">
-            <div class="d-flex align-items-center">
-              <div style="height: 50px; margin-right: 10px; max-width: 15rem">
-                <button id="btn" type="submit" name="btn1" (click)="editass(i)">
-                  <h4 style="color: white">EDIT</h4>
-                </button>
-              </div>
-              <div style="height: 50px; max-width: 15rem">
-                <button
-                  id="btn"
-                  type="submit"
-                  name="btn2"
-                  (click)="deleteass(i)"
-                >
-                  <h4 style="color: white">DELETE</h4>
-                </button>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
+
     </div>
+<<<<<<< HEAD
   </div>
   <div>
     <pagination-controls
@@ -132,3 +189,6 @@
   </div>
 </section>
 >>>>>>> ec77969e821061772e52c338bf6b901454ba49eb
+=======
+</section>
+>>>>>>> 0976c9a814b51763ed434e89e45294b554977099

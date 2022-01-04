@@ -31,7 +31,7 @@
 
 #box {
     box-shadow: 5px 5px 5px 5px #bbbbbb;
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #box:hover {
@@ -45,6 +45,7 @@ section {
     min-height: 500px;
     margin-top: 50px;
 }
-/* #page{
-    position: fixed;
-} */
+
+pagination-controls {
+    position: relative;
+}
