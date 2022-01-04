@@ -7,6 +7,8 @@
 
 <!-- Events Section-->
 
+
+
 <section class="pb-0">
     <div class="container-fluid">
         <div id="head" class="card mb-3">
@@ -31,7 +33,7 @@
         </div>
         <!-- Events-->
         <div class="container">
-            <pagination-controls class="text-center" (pageChange)="page=$event" [autoHide]="true"   previousLabel="Previous" nextLabel="Next"  [responsive]="true"></pagination-controls>
+            <pagination-controls class="text-center" (pageChange)="page=$event" [autoHide]="true"></pagination-controls>
         </div>
 
         <div id="box" class="card mb-3" *ngFor="let bookings of bookingdetails | paginate:{
@@ -107,8 +109,6 @@
                     </div>
                     <!-- <div class="col-lg-2">
                         <div class="d-flex align-items-center">
-
-
                         </div> -->
                 </div>
             </div>

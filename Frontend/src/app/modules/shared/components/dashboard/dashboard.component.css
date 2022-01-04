@@ -16,7 +16,6 @@
 /* #btn{
     background: linear-gradient(315deg, #13547a, #80d0c7);
     margin :10px;
-
  } */
 
 #head {
@@ -45,7 +44,6 @@ section {
     min-height: 500px;
     margin-top: 50px;
 }
-
 pagination-controls {
-    position: relative;
+    position:relative;
 }
