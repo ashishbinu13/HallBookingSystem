@@ -16,6 +16,7 @@ const DeptRoute = require("./src/routes/dept.routes");
 const PORT = process.env.PORT || 3000;
 const app = express();
 //
+app.use(express.static("./dist/Frontend"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -48,6 +49,10 @@ app.use((err, req, res, next) => {
     error: err.status || 500,
     message: err.message,
   });
+});
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname + "/dist/Frontend/index.html"));
 });
 
 app.listen(PORT, () => {
