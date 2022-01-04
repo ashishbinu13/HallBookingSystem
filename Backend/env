@@ -1,5 +1,0 @@
-PORT = 3000
-ADMIN_EMAIL = admin@email.com
-ACCESS_TOKEN_SECRET = faa33f74f301329f163e35ecb83ef4485f97a61aa4071f18df1b78495e7aeb90
-REFRESH_TOKEN_SECRET = 0f56bce06975863613e44ca4b402e9da963d2b124511b6e5cc3ab3e0a37ce0b5
-MONGO_URI = mongodb+srv://userone:userone@projectfiles.zs9i6.mongodb.net/hallBookingSystem?retryWrites=true&w=majority

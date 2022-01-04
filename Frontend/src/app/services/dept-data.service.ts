@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DeptDataService {
-  // base_url: string = 'http://localhost:3000';
+  base_url: string = 'http://localhost:3000';
 
-  base_url: string = 'api';
+  // base_url: string = 'api';
 
   constructor(private http: HttpClient) {}
 
