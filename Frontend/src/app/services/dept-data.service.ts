@@ -2,21 +2,21 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeptDataService {
+  // base_url: string = 'http://localhost:3000';
 
-  constructor( private http:HttpClient) { }
+  base_url: string = 'api';
 
-  getDeptNames()
-  {
-    console.log("ingetdeptservice");
-   return this.http.get("http://localhost:3000/dept/getdeptNames");
+  constructor(private http: HttpClient) {}
+
+  getDeptNames() {
+    console.log('ingetdeptservice');
+    return this.http.get(`${this.base_url}/dept/getdeptNames`);
   }
-   getdeptbyID(id:any)
-   {
-     console.log(id);
-    return this.http.get("http://localhost:3000/dept/"+id);
-
-   }
+  getdeptbyID(id: any) {
+    console.log(id);
+    return this.http.get(`${this.base_url}/dept/${id}`);
   }
+}

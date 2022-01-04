@@ -5,12 +5,16 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
+  // base_url: string = 'http://localhost:3000';
+
+  base_url: string = 'api';
+
   role!: string;
 
   constructor(private http: HttpClient, private _router: Router) {}
 
   loginUser(user: any) {
-    return this.http.post<any>('http://localhost:3000/auth/login', user);
+    return this.http.post<any>(`${this.base_url}/auth/login`, user);
   }
 
   isLoggedIn() {
@@ -36,25 +40,25 @@ export class AuthService {
   addAssociate(user: any) {
     console.log(user);
     return this.http
-      .post('http://localhost:3000/auth/register', user)
+      .post(`${this.base_url}/auth/register`, user)
       .subscribe((data) => {
         console.log('success');
       });
   }
   getass() {
-    return this.http.get('http://localhost:3000/auth/getass');
+    return this.http.get(`${this.base_url}/auth/getass`);
   }
   getass1(id: any) {
-    return this.http.get('http://localhost:3000/auth/' + id);
+    return this.http.get(`${this.base_url}/auth/${id}`);
   }
   editass(user: any) {
     return this.http
-      .put('http://localhost:3000/auth/editass', user)
+      .put(`${this.base_url}/auth/editass`, user)
       .subscribe((data) => {
         console.log(data);
       });
   }
   deleteass(id: any) {
-    return this.http.delete('http://localhost:3000/auth/deleteass/' + id);
+    return this.http.delete(`${this.base_url}/auth/deleteass/${id}`);
   }
 }
