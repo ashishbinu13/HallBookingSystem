@@ -1,0 +1,51 @@
+<div class="form">
+    <h2>{{ title }}</h2>
+    <form (ngSubmit)="saveBookings()" #addbooking="ngForm">
+
+        <div class="input">
+            <div class="inputBox">
+                <label>Associate Name</label>
+                <input type="text" name="employeeName" required [(ngModel)]="bookingDetails.employeeName" />
+            </div>
+            <div class="inputBox">
+                <label>ICTAK ID</label>
+                <input type="text" name="empId" required [(ngModel)]="bookingDetails.ICTAKId" />
+            </div>
+            <div class="inputBox">
+                <label for="">Hall </label>
+                <select id="halls" (change)="onChange($event)" name="halls" [(ngModel)]="hallselected" required>
+                                <!-- <select id="halls" name="halls" [(ngModel)]=hallselected required > -->
+                      
+                                <option *ngFor="let i of halldata" [value]="i._id">
+                                  {{ i.hallname }}
+                                </option>
+                              </select>
+            </div>
+            <div class="inputBox">
+                <label>Date</label>
+                <input type="date" name="bookingDate" min={{mindate}} max={{maxdate}} required [(ngModel)]="bookingDetails.bookingDate" />
+
+            </div>
+            <div class="inputBox">
+                <label>Start Time</label>
+                <input type="time" name="startTime" required [(ngModel)]="bookingDetails.startTime" />
+            </div>
+            <div class="inputBox">
+                <label>End Time</label>
+                <input type="time" name="endTime" required [(ngModel)]="bookingDetails.endTime" (click)="Clearmessage()" />
+            </div>
+            <div class="inputBox">
+                <label>Event Details</label>
+                <input type="text" name="desc" required [(ngModel)]="bookingDetails.eventDetails" />
+            </div>
+
+            <div class="inputBox">
+                <span style="color: red">{{ error }}</span>
+
+                <span style="color: red">{{ errormessage }}</span>
+                <br />
+                <input type="submit" value="Submit" [disabled]="!addbooking.valid" />
+            </div>
+        </div>
+    </form>
+</div>
