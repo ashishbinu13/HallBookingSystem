@@ -35,7 +35,7 @@ deptselected:any=""
   })
     this.deptservice.getDeptNames().subscribe((data)=>{
       this.deptdata= JSON.parse(JSON.stringify(data));
-       console.log(this.deptdata);
+      console.log(this.deptdata);
             
      })
   }

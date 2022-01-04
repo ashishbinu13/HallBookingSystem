@@ -17,7 +17,18 @@ export class EditBookingComponent implements OnInit {
     private __hallservice: HallDataService,
     private _auth: AuthService
   ) {}
-  bookingDetails: any = [{}];
+  bookingDetails = {
+    employeeName: '',
+    ICTAKId: '',
+    bookingDate: '',
+    hallName: '',
+    startTime: '',
+    endTime: '',
+    eventDetails: '',
+    username:'',
+    dateStamp: new Date(),
+  };
+
   
   halldata: any[] | undefined;
   mindate: any = '';
@@ -40,7 +51,7 @@ export class EditBookingComponent implements OnInit {
     });
     this.__hallservice.getHallNames().subscribe((data) => {
       this.halldata = JSON.parse(JSON.stringify(data));
-      console.log(this.halldata);
+     
     });
 
     this.getmindate();
