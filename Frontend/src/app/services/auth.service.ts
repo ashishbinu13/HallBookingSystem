@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  // base_url: string = 'http://localhost:3000';
+  base_url: string = 'http://localhost:3000';
 
-  base_url: string = 'api';
+  // base_url: string = 'api';
 
   role!: string;
 
