@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
+  title = 'UPCOMING EVENTS';
   bookingdetails: any = [{}];
   constructor(
     private _bookingService: BookingsService,
@@ -21,45 +22,31 @@ export class DashboardComponent implements OnInit {
  
  
   ngOnInit(): void {
-   
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
-  console.log(user);
-   if (user.role=='ADMIN')
-  
-   {
-    this._bookingService.getBookingslist().subscribe((data) => {
-      this.bookingdetails = JSON.parse(JSON.stringify(data)); 
-      this.totalRecords=this.bookingdetails.length;
-     
-    });
-   }
-  else
-   {
-    var username= user.aud;
-    console.log(username);
-       this._bookingService.getBookingslistbyid(username).subscribe((data) => {
-      this.bookingdetails = JSON.parse(JSON.stringify(data));
-      this.totalRecords=this.bookingdetails.length;
-      console.log(this.bookingdetails)
-
-    });
-
-
-   }
-
+    console.log(user);
+    if (user.role == 'ADMIN') {
+      this._bookingService.getBookingslist().subscribe((data) => {
+        this.bookingdetails = JSON.parse(JSON.stringify(data));
+        this.totalRecords = this.bookingdetails.length;
+      });
+    } else {
+      var username = user.aud;
+      console.log(username);
+      this._bookingService.getBookingslistbyid(username).subscribe((data) => {
+        this.bookingdetails = JSON.parse(JSON.stringify(data));
+        this.totalRecords = this.bookingdetails.length;
+        console.log(this.bookingdetails);
+      });
+    }
   }
 
   editBookings(bookings: any) {
     localStorage.setItem('editbookingId', bookings._id.toString());
-    if(this._auth.isAdmin())
-    {
-    this.router.navigate(['/admin/editbooking']);
-    }
-    else
-    {
+    if (this._auth.isAdmin()) {
+      this.router.navigate(['/admin/editbooking']);
+    } else {
       this.router.navigate(['/associates/editbooking']);
-
     }
     
   }

@@ -35,7 +35,13 @@ FullCalendarModule.registerPlugins([
     FooterComponent,
   ],
 
-  imports: [RouterModule, FormsModule, FullCalendarModule, CommonModule,NgxPaginationModule],
+  imports: [
+    RouterModule,
+    FormsModule,
+    FullCalendarModule,
+    CommonModule,
+    NgxPaginationModule,
+  ],
   exports: [
     CommonModule,
     FormsModule,

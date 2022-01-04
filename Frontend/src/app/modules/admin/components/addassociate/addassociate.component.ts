@@ -9,47 +9,46 @@ import { HallDataService } from 'src/app/services/hall-data.service';
 @Component({
   selector: 'app-addassociate',
   templateUrl: './addassociate.component.html',
-  styleUrls: ['./addassociate.component.css']
+  styleUrls: ['./addassociate.component.css'],
 })
 export class AddassociateComponent implements OnInit {
-
-
-  constructor(private authService:AuthService,public deptservice:DeptDataService, private router:Router) { }
-  user={
-    name:'',
-    username:'',
-    email:'',
-    password:'',
-    phone:'',
-    deptName:'',
-    designation:'',
-    areaint:'',
-    place:'',
-    nation:'',
-    role:''
+  constructor(
+    private authService: AuthService,
+    public deptservice: DeptDataService,
+    private router: Router
+  ) {}
+  user = {
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    phone: '',
+    deptName: '',
+    designation: '',
+    areaint: '',
+    place: '',
+    nation: '',
+    role: '',
   };
 
-  deptdata:any[] |undefined;
-deptselected:any=""
-  deptnames:any
+  deptdata: any[] | undefined;
+  deptselected: any = '';
+  deptnames: any;
 
   ngOnInit(): void {
-    this.deptservice.getDeptNames().subscribe((data)=>{
-      this.deptdata= JSON.parse(JSON.stringify(data));
-       console.log(this.deptdata);
-            
-     })
+    this.deptservice.getDeptNames().subscribe((data) => {
+      this.deptdata = JSON.parse(JSON.stringify(data));
+      console.log(this.deptdata);
+    });
   }
-  
-  addAssociate(){
+
+  addAssociate() {
     console.log(this.user);
     this.authService.addAssociate(this.user);
-    this.router.navigate(['/admin/associates'])
+    this.router.navigate(['/admin/associates']);
   }
-  onChange(event: any)
-{
- this.user.deptName=event.target.options[event.target.options.selectedIndex].text;
-
-}
-
+  onChange(event: any) {
+    this.user.deptName =
+      event.target.options[event.target.options.selectedIndex].text;
+  }
 }

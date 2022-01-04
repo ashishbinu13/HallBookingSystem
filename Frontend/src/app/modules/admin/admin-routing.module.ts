@@ -23,12 +23,12 @@ const routes: Routes = [
     path: '',
     component: OutletComponent,
     children: [
-      {path: '', component: DashboardComponent },
-      {path: 'home', component: DashboardComponent },
-      {path: 'profile', component: ProfileComponent },
-      {path:'bookHall', component :AddBookingComponent},
-      {path:'calendar', component :CalendarComponent},
-      {path:'associates',component:AssociatesComponent},
+      { path: '', component: DashboardComponent },
+      { path: 'home', component: DashboardComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'bookHall', component: AddBookingComponent },
+      { path: 'calendar', component: CalendarComponent },
+      { path: 'associates', component: AssociatesComponent },
       { path: 'editbooking', component: EditBookingComponent },
     ],
   },
@@ -37,8 +37,8 @@ const routes: Routes = [
   //   component: OutletComponent,
   //   children: [
   //     // { path: 'calendar', component: CalendarComponent },
-  //    // { path: ''bookHall'', component: AddBookingComponent },
-    
+  // { path: ''bookHall'', component: AddBookingComponent },
+  // { path: 'editbooking', component: EditBookingComponent },
   //   ],
   // },
   {
@@ -47,7 +47,7 @@ const routes: Routes = [
     children: [
       { path: '', component: AssociatesComponent },
       { path: 'register', component: AddassociateComponent },
-      { path: 'editass', component: EditassociateComponent}
+      { path: 'edit', component: EditassociateComponent },
     ],
   },
 ];

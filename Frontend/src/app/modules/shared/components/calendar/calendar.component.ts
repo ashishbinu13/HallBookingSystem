@@ -4,6 +4,7 @@ import { CalendarOptions } from '@fullcalendar/angular';
 import { CalendarService } from 'src/app/services/calendar.service';
 import { BookingModel } from './booking.model';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-calendar',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./calendar.component.css'],
 })
 export class CalendarComponent implements OnInit {
+  isAdmin!: boolean;
   bookingDetails = [];
   Events = new Array();
   eventsTest = [
@@ -31,7 +33,8 @@ export class CalendarComponent implements OnInit {
   constructor(
     private httpClient: HttpClient,
     private calService: CalendarService,
-    private _router: Router
+    private _router: Router,
+    private _auth: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -39,6 +42,7 @@ export class CalendarComponent implements OnInit {
     this.calendarOptions = {
       initialView: 'dayGridMonth',
     };
+    this.isAdmin = this._auth.isAdmin();
   }
 
   getDetails() {
@@ -60,13 +64,27 @@ export class CalendarComponent implements OnInit {
           var date = element.bookingDate.split('T')[0];
           var start = `${date}T${element.startTime}`;
           var end = `${date}T${element.endTime}`;
-          eventItem.title = title;
-          eventItem.start = new Date(start).toISOString();
-          eventItem.end = new Date(end).toISOString();
-          eventItem.allDay = false;
+          var username = element.username;
 
-          // add event to event array
-          this.Events.push(eventItem);
+          if (this.isAdmin) {
+            eventItem.title = title;
+            eventItem.start = new Date(start).toISOString();
+            eventItem.end = new Date(end).toISOString();
+            eventItem.allDay = false;
+
+            // add event to event array
+            this.Events.push(eventItem);
+          } else {
+            if (username === this._auth.getUser()) {
+              eventItem.title = title;
+              eventItem.start = new Date(start).toISOString();
+              eventItem.end = new Date(end).toISOString();
+              eventItem.allDay = false;
+
+              // add event to event array
+              this.Events.push(eventItem);
+            }
+          }
         });
 
         // full calendar options
