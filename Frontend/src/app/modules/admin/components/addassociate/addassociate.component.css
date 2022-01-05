@@ -73,7 +73,6 @@
     border-radius: 10px;
     margin: 0px;
 }
-
 option {
     position: relative;
     width: 100%;
@@ -91,8 +90,20 @@ option {
 .form .input .inputBox input:hover {
     background: #13547a -webkit-linear-gradient(bottom, #13547a 0%, #13547a 100%);
 }
-
-#halls {
+#role{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border: none;
+    outline: none;
+    padding: 5px 15px;
+    background: linear-gradient(315deg, #13547a, #80d0c7);
+    color: #fff;
+    font-size: 18px;
+    border-radius: 10px;
+    margin: 0px;
+}
+#dept {
     position: relative;
     width: 100%;
     height: 40px;

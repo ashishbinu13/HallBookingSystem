@@ -13,8 +13,9 @@ import { HallDataService } from 'src/app/services/hall-data.service';
 })
 export class AddassociateComponent implements OnInit {
 
-
   constructor(private authService:AuthService,public deptservice:DeptDataService, private router:Router) { }
+  errorMessage:string='';
+  isInvalid:boolean=false;
   user={
     name:'',
     username:'',
@@ -40,7 +41,6 @@ deptselected:any=""
             
      })
   }
-  
   addAssociate(){
     console.log(this.user);
     this.authService.addAssociate(this.user);

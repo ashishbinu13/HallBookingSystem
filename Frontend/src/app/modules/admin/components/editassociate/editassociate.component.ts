@@ -24,7 +24,7 @@ export class EditassociateComponent implements OnInit {
     role:''
   };
 
-  deptdata:any[] |undefined;
+  deptdata:any
 deptselected:any=""
   deptnames:any
 
@@ -45,6 +45,7 @@ deptselected:any=""
 
 }
 editass(){
+  this.deptselected.get('deptNames');
     this.authService.editass(this.user); 
     alert("Successfully edited"); 
     this.router.navigate(['/admin/associates'])

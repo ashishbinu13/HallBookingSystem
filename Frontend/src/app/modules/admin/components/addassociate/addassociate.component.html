@@ -1,29 +1,26 @@
 <div class="form">
     <h2>Add Associate</h2>
-    <form (ngSubmit)="addAssociate()">
+    <form (ngSubmit)="addAssociate()" novalidate #addForm='ngForm'>
     <div class="input">
         <div class="inputBox">
             <label for="">Associate Name</label>
             <input type="text" name="name" id="name" #name="ngModel" required [(ngModel)]=user.name>
-            <!-- <div *ngIf="name.invalid && (name.dirty || name.touched)">
-                <div *ngIf="name.errors required">Name is required</div>
-            </div> -->
         </div>
         <div class="inputBox">
             <label for="">ICTAK ID</label>
-            <input type="text" name="ICTAKID" id="username" required [(ngModel)]=user.username>
+            <input type="text" name="ICTAKID" id="username" #ICTAKID="ngModel" required [(ngModel)]=user.username>
         </div>
         <div class="inputBox">
             <label for="">Email Id</label>
-            <input type="email" name="email" id="email" required [(ngModel)]=user.email>
+            <input type="email" name="email" id="email" #email="ngModel" required [(ngModel)]=user.email>
         </div>
         <div class="inputBox">
             <label for="">Password</label>
-            <input type="password" name="password" id="password" required [(ngModel)]=user.password>
+            <input type="password" name="password" id="password" #password="ngModel" required [(ngModel)]=user.password>
         </div>
         <div class="inputBox">
             <label for="">Phone Number</label>
-            <input type="text" name="phone" id="phone" required [(ngModel)]=user.phone>
+            <input type="text" name="phone" id="phone" #phone="ngModel" required [(ngModel)]=user.phone>
         </div>
         <div class="inputBox">
             <label for="">Department </label>
@@ -35,34 +32,32 @@
         </div>
         <div class="inputBox">
             <label for="">Designation</label>
-            <input type="text" name="designation" id="designation" required [(ngModel)]=user.designation>
+            <input type="text" name="designation" id="designation" #designation="ngModel" required [(ngModel)]=user.designation>
         </div>
         <div class="inputBox">
             <label for="">Area of Interest</label>
-            <input type="text" name="areaint" id="areaint" required [(ngModel)]=user.areaint>
+            <input type="text" name="areaint" id="areaint" #areaint="ngModel" required [(ngModel)]=user.areaint>
         </div>
         <div class="inputBox">
             <label for="">Place</label>
-            <input type="text" name="place" id="place" required [(ngModel)]=user.place>
+            <input type="text" name="place" id="place" #place="ngModel" required [(ngModel)]=user.place>
         </div>
         <div class="inputBox">
             <label for="">Nationality</label>
-            <input type="text" name="nation" id="nation" required [(ngModel)]=user.nation>
+            <input type="text" name="nation" id="nation" #nation="ngModel" required [(ngModel)]=user.nation>
         </div>
         <div class="inputBox">
             <label for="">Role</label>
             <!-- <select id="role" name="role">
-                <option  value="a">Admin</option>
-                <option value="b">Associate</option>
+                <option value=""></option>
+                <option value="a">ADMIN</option>
+                <option value="b">ASSOCIATE</option>
 
             </select> -->
-            <input type="text" name="role" id="role" required [(ngModel)]=user.role>
+            <input type="text" name="role" id="role" #role="ngModel" required [(ngModel)]=user.role>
         </div>
-        <!-- <div class="inputBox">
-            <label for="">Image</label>
-            <input type="text" name="image" required [(ngModel)]=user.image>
-        </div> -->
         <div class="inputBox">
+            <small *ngIf="isInvalid" class="msg"> {{ errorMessage }} </small>
             <br>
             <button id="btn" type="submit" name="">
             <h2>ADD</h2>

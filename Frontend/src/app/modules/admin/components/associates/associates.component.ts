@@ -30,6 +30,7 @@ export class AssociatesComponent implements OnInit {
     this._authService.deleteass(user._id)
       .subscribe((data) => {
         this.user1 = this.user1.filter(p => p !== user);
+        alert("Successfully deleted"); 
       })
   
 

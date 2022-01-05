@@ -24,9 +24,7 @@
         </div>
         <div class="inputBox">
             <label for="">Department </label>
-            <select id="dept" (change)="onChange($event)" name="dept" [(ngModel)]=deptselected required>
-                <!-- <select id="halls" name="halls" [(ngModel)]=hallselected required > -->
-
+            <select id="dept" (change)="onChange($event)" name="dept" [(ngModel)]="deptselected" required>
             <option *ngFor="let i of deptdata" [value]="i._id">{{i.deptname}}</option>
             </select>
         </div>

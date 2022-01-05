@@ -1,6 +1,7 @@
 // packages
 const express = require("express");
 const createHttpError = require("http-errors");
+// const bcrypt = require("bycrypt");
 
 // modules
 const User = require("../models/user.model");
@@ -80,18 +81,29 @@ router.put("/editass", async (req, res, next) => {
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   console.log(req.body);
-  id = req.body._id,
-    name1 = req.body.name,
-    username = req.body.username,
-    email = req.body.email,
-    password = req.body.password,
-    phone = req.body.phone,
-    deptName = req.body.endTime,
-    designation = req.body.designation,
-    areaint = req.body.areaint,
-    place = req.body.place,
-    nation = req.body.nation,
-    role = req.body.role,
+    var id = req.body._id;
+    var name1 = req.body.name;
+    var username = req.body.username;
+    var email = req.body.email;
+    var password = req.body.password;
+    var phone = req.body.phone;
+    var deptName = req.body.endTime;
+    var designation = req.body.designation;
+    var areaint = req.body.areaint;
+    var place = req.body.place;
+    var nation = req.body.nation;
+    var role = req.body.role;
+    
+    async function hashIt(password){
+      const salt = await bcrypt.genSalt(10);
+      const hashedPassword = await bcrypt.hash(password, salt)
+      password=hashedPassword;
+    }
+    hashIt(password);
+    // async function compareIt(password){
+    //   const validPassword = await bcrypt.compare(password, hashedPassword);
+    // }
+    // compareIt(password);
     User.findByIdAndUpdate({"_id": id },
         {$set: {"name": name1,
             "username": username,
