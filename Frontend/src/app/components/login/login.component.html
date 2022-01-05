@@ -10,9 +10,9 @@
       <input type="password" name="password" [(ngModel)]="user.password" />
     </div>
     <div class="inputBox">
+      <small *ngIf="isInvalid" class="msg"> {{ errorMessage }} </small>
       <br />
       <button type="submit" id="btn">Login</button>
     </div>
   </div>
-  <p class="forgot">Forgot Password? <a href="#">Click Here</a></p>
 </form>

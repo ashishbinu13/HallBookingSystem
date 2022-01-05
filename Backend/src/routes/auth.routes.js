@@ -155,8 +155,8 @@ router.post("/login", async (req, res, next) => {
 
     res.send({ accessToken, refreshToken, username: user.username });
   } catch (error) {
-    if (error.isJoi === true)
-      return next(createHttpError.BadRequest("Invalid username/password"));
+    // if (error.isJoi === true)
+    //   return next(createHttpError.BadRequest("Invalid username/password"));
     next(error);
   }
 });
