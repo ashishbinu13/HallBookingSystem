@@ -41,6 +41,8 @@ FullCalendarModule.registerPlugins([
     FullCalendarModule,
     CommonModule,
     NgxPaginationModule,
+    ReactiveFormsModule
+    
   ],
   exports: [
     CommonModule,

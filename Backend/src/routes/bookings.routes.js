@@ -99,12 +99,8 @@ router.put("/editBookings", verifyAccessToken, async(req, res, next) => {
             },
         })
         .then(function() {
-        
-          console.log("success");
-          res.send();
-           
-        });
-       
+          res.send();   
+        });      
 
 });
 

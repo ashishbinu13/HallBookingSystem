@@ -3,6 +3,7 @@ import { BookingsService } from 'src/app/services/bookings.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HallDataService } from 'src/app/services/hall-data.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { FormControl, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-edit-booking',
   templateUrl: './edit-booking.component.html',
@@ -48,7 +49,23 @@ export class EditBookingComponent implements OnInit {
   maxmon:any;
   error:any;
 
-  errorMessage: string = '';
+
+  // editForm = new FormGroup({
+  //   employeeName: new FormControl(''),
+  //   ICTAKId: new FormControl(''),
+  //   bookingDate: new FormControl(''),
+  //   hallName: new FormControl(''),
+  //   startTime: new FormControl(''),
+  //   endTime: new FormControl(''),
+  //   eventDetails: new FormControl(''),
+  //   username: new FormControl(''),
+  //   dateStamp:new FormControl(''),
+  // });
+
+  // errorMessage: string = '';
+  // isInvalid: boolean = false;
+
+
   ngOnInit(): void {
     let bookingId = localStorage.getItem('editbookingId');
     this.bookingsService.getBooking(bookingId).subscribe((data) => {
@@ -87,7 +104,7 @@ export class EditBookingComponent implements OnInit {
 
 
     this.maxdate =this.date.getFullYear() +'-' +this.maxmon + '-' +this.maxdate1;
-      console.log(this.maxdate);
+      
   }
 
   getmindate() {
@@ -114,7 +131,7 @@ export class EditBookingComponent implements OnInit {
      }
     this.mindate =this.todaydate.getFullYear() +'-' + this.minmon+'-' +this.mindatetoday;
 
-      console.log(this.mindate);
+    
 
   }
 
@@ -135,19 +152,22 @@ export class EditBookingComponent implements OnInit {
     if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
        this.bookingsService.editBookings(this.bookingDetails)
         .subscribe( 
-        (data)=>{console.log("succes")
+        (data)=>
+        {
         this.ngOnInit();},
         (response)=>{
+       
         this.error=response.error.message;
-        console.log(this.error)}
+       
+      }
       
         );
     
        if (this._auth.isAdmin()){
-        // alert('Successfully edited');
+        
          this.router.navigate(['/admin/home'])}
         else{
-          // alert('Successfully edited');
+         
            this.router.navigate(['/associates/home'])}
       
       
@@ -162,8 +182,7 @@ export class EditBookingComponent implements OnInit {
   }
   Clearmessage() {
     this.errormessage = '';
-   // this._bookingService.checkavailabilty(this.bookingDetails)
-   // .subscribe((data)=>{console.log(data)})
+   
  
   }
 }

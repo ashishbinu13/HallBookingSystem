@@ -7,3 +7,6 @@ img {
     max-height: 150px;
     max-width: 150px;
 }
+#box {
+    box-shadow: 1px 1px 1px 1px #42837a;
+}
