@@ -3,12 +3,12 @@ const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema({
   employeeName: {
-    type: String,
-    required: true,
+    type: String
+
   },
   ICTAKId: {
-    type: String,
-    required: true,
+    type: String
+
   },
   bookingDate: {
     type: Date,

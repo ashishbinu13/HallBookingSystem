@@ -8,10 +8,8 @@ router.get('/gethallNames', (req,res,next)=>{
       "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
     try{
-   console.log("In backend");
       HallNames.find()
       .then (function(hallNames){
-        console.log(hallNames)
         res.send(hallNames)
       }) 
     }

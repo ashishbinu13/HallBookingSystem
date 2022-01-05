@@ -19,7 +19,9 @@ export class DashboardComponent implements OnInit {
     private _auth: AuthService
   ) {}
   totalRecords: any;
-  page: number = 1;
+  page:number=1
+ 
+ 
   ngOnInit(): void {
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
@@ -49,6 +51,7 @@ export class DashboardComponent implements OnInit {
       localStorage.setItem('editbookingId', bookings._id.toString());
       this.router.navigate(['/associates/editbooking']);
     }
+    
   }
 
   deleteBookings(bookings: any) {
@@ -56,6 +59,8 @@ export class DashboardComponent implements OnInit {
       this.bookingdetails = this.bookingdetails.filter(
         (b: any) => b !== bookings
       );
+      this.totalRecords=this.bookingdetails.length;
     });
+   
   }
 }

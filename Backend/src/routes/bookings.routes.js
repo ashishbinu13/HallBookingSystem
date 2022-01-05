@@ -29,10 +29,11 @@ router.post("/insert", verifyAccessToken, async(req, res, next) => {
     res.header(
         "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
+
     try {
 
-      const result = await bookingSchema.validateAsync(req.body);
-      console.log(result)
+     // const result = await bookingSchema.validateAsync(req.body);
+     // console.log(result)
 
       var details = {
         employeeName: req.body.employeeName,
@@ -45,14 +46,13 @@ router.post("/insert", verifyAccessToken, async(req, res, next) => {
         username:req.body.username,
         dateStamp: req.body.dateStamp,
       };
-      console.log(details);
   
       var bookingDet = new bookingDetails(details);
       var booked = await bookingDet.save();
       console.log(booked);
     } 
     catch (error) {
-      if (error.isJoi === true)
+     // if (error.isJoi === true)
       // return next(createHttpError.BadRequest("ent"));
       next(error);
 
@@ -74,16 +74,17 @@ router.put("/editBookings", verifyAccessToken, async(req, res, next) => {
     res.header(
         "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
+    
     console.log(req.body);
-    (id = req.body._id),
-    (employeeName = req.body.employeeName),
-    (ICTAKId = req.body.ICTAKId),
-    (bookingDate = req.body.bookingDate),
-    (hallName = req.body.hallName),
-    (startTime = req.body.startTime),
-    (endTime = req.body.endTime),
-    (eventDetails = req.body.eventDetails),
-    (dateStamp = req.body.dateStamp),
+    id = req.body._id,
+    employeeName = req.body.employeeName,
+    ICTAKId = req.body.ICTAKId,
+    bookingDate = req.body.bookingDate,
+    hallName = req.body.hallName,
+    startTime = req.body.startTime,
+    endTime = req.body.endTime,
+    eventDetails = req.body.eventDetails,
+    dateStamp = req.body.dateStamp,
     bookingDetails
         .findByIdAndUpdate({ _id: id }, {
             $set: {
@@ -98,9 +99,13 @@ router.put("/editBookings", verifyAccessToken, async(req, res, next) => {
             },
         })
         .then(function() {
-            console.log("success");
-            res.send();
+        
+          console.log("success");
+          res.send();
+           
         });
+       
+
 });
 
 
@@ -125,10 +130,7 @@ router.get("/userbookinglist/:user",verifyAccessToken, async (req, res, next) =>
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  console.log("userbookinglist")
-  console.log(req.params.user)
  let username= req.params.user;
- console.log(username)
  try
  {
   const records = await bookingDetails.find().where('username').in(username).sort({_id:-1}).limit(5).exec();

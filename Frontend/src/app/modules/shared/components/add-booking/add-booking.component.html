@@ -1,15 +1,15 @@
 <div class="form">
     <h2>{{ title }}</h2>
-    <form (ngSubmit)="saveBookings()" #addbooking="ngForm">
+    <form (ngSubmit)="saveBookings()" #addbooking="ngForm" >
 
         <div class="input">
-            <div class="inputBox">
+            <div class="inputBox" *ngIf="_auth.isAdmin()" >
                 <label>Associate Name</label>
-                <input type="text" name="employeeName" required [(ngModel)]="bookingDetails.employeeName" />
+                <input type="text" name="employeeName"  [(ngModel)]="bookingDetails.employeeName" />
             </div>
-            <div class="inputBox">
+            <div class="inputBox" *ngIf="_auth.isAdmin()">
                 <label>ICTAK ID</label>
-                <input type="text" name="empId" required [(ngModel)]="bookingDetails.ICTAKId" />
+                <input type="text" name="empId"  [(ngModel)]="bookingDetails.ICTAKId" />
             </div>
             <div class="inputBox">
                 <label for="">Hall </label>
@@ -44,7 +44,7 @@
 
                 <span style="color: red">{{ errormessage }}</span>
                 <br />
-                <input type="submit" value="Submit" [disabled]="!addbooking.valid" />
+                <input type="submit" value="Submit" [disabled]="!addbooking.valid"  />
             </div>
         </div>
     </form>

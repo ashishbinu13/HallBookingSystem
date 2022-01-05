@@ -82,7 +82,6 @@ export class AddBookingComponent implements OnInit {
 
 
     this.maxdate =this.date.getFullYear() +'-' +this.maxmon + '-' +this.maxdate1;
-      console.log(this.maxdate);
   }
 
   getmindate() {
@@ -109,7 +108,6 @@ export class AddBookingComponent implements OnInit {
      }
     this.mindate =this.todaydate.getFullYear() +'-' + this.minmon+'-' +this.mindatetoday;
 
-      console.log(this.mindate);
 
   }
 
@@ -121,7 +119,7 @@ export class AddBookingComponent implements OnInit {
 
     if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
        this._bookingService.saveBookings(this.bookingDetails).subscribe(
-        (data)=>{console.log("succes")},
+        (data)=>{console.log("success")},
         (response)=>{
         this.error=response.error.message;
         console.log(this.error)}
@@ -129,7 +127,8 @@ export class AddBookingComponent implements OnInit {
      
     
        if (this._auth.isAdmin()){this._router.navigate(['/admin/home'])}
-        else{ this._router.navigate(['/associates/home'])}
+        else{ this._router.navigate(['/associates/home'])
+        }
       
       
     } 

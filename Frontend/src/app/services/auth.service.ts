@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  // base_url: string = 'http://localhost:3000';
+  base_url: string = 'http://localhost:3000';
 
-  base_url: string = 'api';
+  // base_url: string = 'api';
 
   role!: string;
 
@@ -60,5 +60,10 @@ export class AuthService {
   }
   deleteass(id: any) {
     return this.http.delete(`${this.base_url}/auth/deleteass/${id}`);
+  }
+  getusers(user:any)
+  {
+    return this.http.get<any>('http://localhost:3000/auth/userlist/'+user) 
+
   }
 }

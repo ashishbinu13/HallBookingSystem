@@ -23,8 +23,6 @@ const loginSchema = Joi.object({
 });
 
 const bookingSchema= Joi.object({
-  employeeName: Joi.string().required(),
-  ICTAKId:Joi.string().required(),
   bookingDate:Joi.date().required(),
   hallName: Joi.string().required(),
   startTime: Joi.string().required(),
