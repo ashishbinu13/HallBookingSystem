@@ -57,4 +57,9 @@ export class AuthService {
   deleteass(id: any) {
     return this.http.delete('http://localhost:3000/auth/deleteass/' + id);
   }
+  getusers(user:any)
+  {
+    return this.http.get<any>('http://localhost:3000/auth/userlist/'+user) 
+
+  }
 }

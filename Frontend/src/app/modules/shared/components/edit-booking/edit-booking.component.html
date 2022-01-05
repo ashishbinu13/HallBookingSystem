@@ -1,6 +1,6 @@
 <div class="form">
   <h2>{{ title }}</h2>
-  <form (ngSubmit)="editBookings()">
+  <form (ngSubmit)="editBookings()"  >
     <div class="input">
       <div class="inputBox">
         <label>Associate Name</label>
@@ -64,6 +64,7 @@
           name="endTime"
           required
           [(ngModel)]="bookingDetails.endTime"
+          (click)="Clearmessage()"
         />
       </div>
 
@@ -78,8 +79,11 @@
       </div>
 
       <div class="inputBox">
+        <span style="color: red">{{ error }}</span>
+
+        <span style="color: red">{{ errormessage }}</span>
         <br />
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"  />
       </div>
     </div>
   </form>

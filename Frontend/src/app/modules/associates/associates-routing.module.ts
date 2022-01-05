@@ -17,6 +17,7 @@ const routes: Routes = [
       { path: 'bookHall', component: AddBookingComponent },
       { path: 'editbooking', component: EditBookingComponent },
       { path: 'calendar', component: CalendarComponent },
+      { path: 'profile', component:  ProfileComponent },
     ],
   },
   // {

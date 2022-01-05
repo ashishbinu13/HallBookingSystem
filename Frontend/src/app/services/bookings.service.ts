@@ -28,7 +28,7 @@ export class BookingsService {
   editBookings(bookings:any)
   {
     return this.http.put(`${this.base_url}/booking/editBookings`,bookings)
-    .subscribe(data =>{console.log(data)})
+    // .subscribe(data =>{console.log(data)})
     
   }
   checkavailabilty(bookingDetails:any)

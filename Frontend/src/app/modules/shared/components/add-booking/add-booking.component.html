@@ -1,6 +1,6 @@
 <div class="form">
     <h2>{{ title }}</h2>
-    <form (ngSubmit)="saveBookings()" #addbooking="ngForm">
+    <form (ngSubmit)="saveBookings()" #addbooking="ngForm" >
 
         <div class="input">
             <div class="inputBox">
@@ -44,7 +44,7 @@
 
                 <span style="color: red">{{ errormessage }}</span>
                 <br />
-                <input type="submit" value="Submit" [disabled]="!addbooking.valid" />
+                <input type="submit" value="Submit" [disabled]="!addbooking.valid"  />
             </div>
         </div>
     </form>

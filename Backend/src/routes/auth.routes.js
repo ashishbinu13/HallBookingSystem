@@ -164,5 +164,29 @@ router.post("/login", async (req, res, next) => {
 //     next(error);
 //   }
 // });
+router.get("/userlist/:user", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+ 
+  console.log(req.params.user)
+ let username= req.params.user;
+ console.log(username)
+ try
+ {
+  const records = await User.find().where('username').in(username);
+
+    console.log(records);
+    res.send(records);
+
+ }
+ catch(err)
+ {
+   res.send(err)
+ }
+
+});
+
 
 module.exports = router;
