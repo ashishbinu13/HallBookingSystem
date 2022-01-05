@@ -1,6 +1,7 @@
 // packages
 const express = require("express");
 const createHttpError = require("http-errors");
+const bcrypt = require("bcrypt");
 
 // modules
 const User = require("../models/user.model");
@@ -39,8 +40,7 @@ router.post("/register", async (req, res, next) => {
     const refreshToken = await signRefreshToken(savedUser.username);
 
     res.send({ accessToken, refreshToken });
-  } 
-  catch (error) {
+  } catch (error) {
     if (error.isJoi === true) error.status = 422;
     next(error);
   }
@@ -51,27 +51,24 @@ router.get("/getass", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  try{
-    const user1=await User.find();
+  try {
+    const user1 = await User.find();
     res.send(user1);
-  }
-  catch(error){
+  } catch (error) {
     next(error);
   }
 });
 
-router.get("/:id",async(req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   // const result = await authSchema.validateAsync(req.body.id);
-    const id=req.params.id;
-    User.findOne({"_id":id })
-    .then((user1)=>{
+  const id = req.params.id;
+  User.findOne({ _id: id }).then((user1) => {
     res.send(user1);
   });
-
 });
 
 router.put("/editass", async (req, res, next) => {
@@ -79,36 +76,49 @@ router.put("/editass", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  console.log(req.body);
-  id = req.body._id,
-    name1 = req.body.name,
-    username = req.body.username,
-    email = req.body.email,
-    password = req.body.password,
-    phone = req.body.phone,
-    deptName = req.body.endTime,
-    designation = req.body.designation,
-    areaint = req.body.areaint,
-    place = req.body.place,
-    nation = req.body.nation,
-    role = req.body.role,
-    User.findByIdAndUpdate({"_id": id },
-        {$set: {"name": name1,
-            "username": username,
-            "email": email,
-            "password": password,
-            "phone": phone,
-            "deptName": deptName,
-            "designation": designation,
-            "areaint": areaint,
-            "place": place,
-            "nation": nation,
-            "role": role}})
-      
-            .then(function () {
-        console.log("success");
-        res.send();
+
+  const crypt = new Promise((resolve, reject) => {
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
+        resolve(hash);
       });
+    });
+  });
+
+  var id = req.body._id;
+  var name1 = req.body.name;
+  var username = req.body.username;
+  var email = req.body.email;
+  var phone = req.body.phone;
+  var deptName = req.body.endTime;
+  var designation = req.body.designation;
+  var areaint = req.body.areaint;
+  var place = req.body.place;
+  var nation = req.body.nation;
+  var role = req.body.role;
+  crypt.then((password) => {
+    User.findByIdAndUpdate(
+      { _id: id },
+      {
+        $set: {
+          name: name1,
+          username: username,
+          email: email,
+          password: password,
+          phone: phone,
+          deptName: deptName,
+          designation: designation,
+          areaint: areaint,
+          place: place,
+          nation: nation,
+          role: role,
+        },
+      }
+    ).then(function () {
+      console.log("success");
+      res.send();
+    });
+  });
 });
 
 router.delete("/deleteass/:id", async (req, res, next) => {
@@ -169,24 +179,18 @@ router.get("/userlist/:user", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
- 
-  console.log(req.params.user)
- let username= req.params.user;
- console.log(username)
- try
- {
-  const records = await User.find().where('username').in(username);
+
+  console.log(req.params.user);
+  let username = req.params.user;
+  console.log(username);
+  try {
+    const records = await User.find().where("username").in(username);
 
     console.log(records);
     res.send(records);
-
- }
- catch(err)
- {
-   res.send(err)
- }
-
+  } catch (err) {
+    res.send(err);
+  }
 });
-
 
 module.exports = router;
