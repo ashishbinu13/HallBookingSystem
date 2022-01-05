@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BookingsService } from 'src/app/services/bookings.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HallDataService } from 'src/app/services/hall-data.service';
+import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-edit-booking',
   templateUrl: './edit-booking.component.html',
@@ -13,7 +14,8 @@ export class EditBookingComponent implements OnInit {
   constructor(
     private bookingsService: BookingsService,
     private router: Router,
-    private __hallservice: HallDataService
+    private __hallservice: HallDataService,
+    private _auth: AuthService
   ) {}
   bookingDetails = {
     employeeName: '',
@@ -23,8 +25,10 @@ export class EditBookingComponent implements OnInit {
     startTime: '',
     endTime: '',
     eventDetails: '',
+    username: '',
     dateStamp: new Date(),
   };
+
   halldata: any[] | undefined;
   mindate: any = '';
   maxdate: any = '';
@@ -41,7 +45,9 @@ export class EditBookingComponent implements OnInit {
   minmon: any;
   maxdate1: any;
   maxmon: any;
+  error: any;
 
+  errorMessage: string = '';
   ngOnInit(): void {
     let bookingId = localStorage.getItem('editbookingId');
     this.bookingsService.getBooking(bookingId).subscribe((data) => {
@@ -49,7 +55,6 @@ export class EditBookingComponent implements OnInit {
     });
     this.__hallservice.getHallNames().subscribe((data) => {
       this.halldata = JSON.parse(JSON.stringify(data));
-      console.log(this.halldata);
     });
 
     this.getmindate();
@@ -107,12 +112,34 @@ export class EditBookingComponent implements OnInit {
   editBookings() {
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
-    this.bookingsService.editBookings(this.bookingDetails);
-    alert('Successfully edited');
-    if (user.role == 'ADMIN') {
-      this.router.navigate(['/admin/home']);
+    this.bookingDetails.username = user.aud;
+
+    if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
+      this.bookingsService.editBookings(this.bookingDetails).subscribe(
+        (data) => {
+          console.log('succes');
+          this.ngOnInit();
+        },
+        (response) => {
+          this.error = response.error.message;
+          console.log(this.error);
+        }
+      );
+
+      if (this._auth.isAdmin()) {
+        // alert('Successfully edited');
+        this.router.navigate(['/admin/home']);
+      } else {
+        // alert('Successfully edited');
+        this.router.navigate(['/associates/home']);
+      }
     } else {
-      this.router.navigate(['/associates/home']);
+      this.errormessage = 'Endtime should be greater than starttime ';
     }
+  }
+  Clearmessage() {
+    this.errormessage = '';
+    // this._bookingService.checkavailabilty(this.bookingDetails)
+    // .subscribe((data)=>{console.log(data)})
   }
 }

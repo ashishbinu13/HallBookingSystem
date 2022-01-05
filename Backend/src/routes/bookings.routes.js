@@ -45,11 +45,11 @@ router.post("/insert", verifyAccessToken, async(req, res, next) => {
         username:req.body.username,
         dateStamp: req.body.dateStamp,
       };
-      console.log(details);
+      //console.log(details);
   
       var bookingDet = new bookingDetails(details);
       var booked = await bookingDet.save();
-      console.log(booked);
+      //console.log(booked);
     } 
     catch (error) {
       if (error.isJoi === true)
@@ -74,16 +74,17 @@ router.put("/editBookings", verifyAccessToken, async(req, res, next) => {
     res.header(
         "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
+    
     console.log(req.body);
-    (id = req.body._id),
-    (employeeName = req.body.employeeName),
-    (ICTAKId = req.body.ICTAKId),
-    (bookingDate = req.body.bookingDate),
-    (hallName = req.body.hallName),
-    (startTime = req.body.startTime),
-    (endTime = req.body.endTime),
-    (eventDetails = req.body.eventDetails),
-    (dateStamp = req.body.dateStamp),
+    id = req.body._id,
+    employeeName = req.body.employeeName,
+    ICTAKId = req.body.ICTAKId,
+    bookingDate = req.body.bookingDate,
+    hallName = req.body.hallName,
+    startTime = req.body.startTime,
+    endTime = req.body.endTime,
+    eventDetails = req.body.eventDetails,
+    dateStamp = req.body.dateStamp,
     bookingDetails
         .findByIdAndUpdate({ _id: id }, {
             $set: {
@@ -98,9 +99,13 @@ router.put("/editBookings", verifyAccessToken, async(req, res, next) => {
             },
         })
         .then(function() {
-            console.log("success");
-            res.send();
+        
+          console.log("success");
+          res.send();
+           
         });
+       
+
 });
 
 
