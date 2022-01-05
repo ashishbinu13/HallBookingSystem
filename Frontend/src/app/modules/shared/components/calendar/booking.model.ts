@@ -6,6 +6,7 @@ export class BookingModel {
     public hallName: String,
     public startTime: String,
     public endTime: String,
-    public desc: String
+    public desc: String,
+    public username: String
   ) {}
 }

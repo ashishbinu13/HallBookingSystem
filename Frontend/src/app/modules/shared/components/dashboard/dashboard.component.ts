@@ -11,7 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./dashboard.component.css'],
 })
 export class DashboardComponent implements OnInit {
-  title="UPCOMING EVENTS"
+  title = 'UPCOMING EVENTS';
   bookingdetails: any = [{}];
   constructor(
     private _bookingService: BookingsService,
@@ -19,40 +19,29 @@ export class DashboardComponent implements OnInit {
     private _auth: AuthService
   ) {}
   totalRecords: any;
-  page:number=1
+  page: number = 1;
   ngOnInit(): void {
-   
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
-  console.log(user);
-   if (user.role=='ADMIN')
-  
-   {
-    this._bookingService.getBookingslist().subscribe((data) => {
-      this.bookingdetails = JSON.parse(JSON.stringify(data)); 
-      this.totalRecords=this.bookingdetails.length;
-    });
-   }
-  else
-   {
-    var username= user.aud;
-    console.log(username);
-       this._bookingService.getBookingslistbyid(username).subscribe((data) => {
-      this.bookingdetails = JSON.parse(JSON.stringify(data));
-      this.totalRecords=this.bookingdetails.length;
-      console.log(this.bookingdetails)
-
-    });
-
-
-   }
-
+    if (user.role == 'ADMIN') {
+      this._bookingService.getBookingslist().subscribe((data) => {
+        this.bookingdetails = JSON.parse(JSON.stringify(data));
+        this.totalRecords = this.bookingdetails.length;
+      });
+    } else {
+      var username = user.aud;
+      console.log(username);
+      this._bookingService.getBookingslistbyid(username).subscribe((data) => {
+        this.bookingdetails = JSON.parse(JSON.stringify(data));
+        this.totalRecords = this.bookingdetails.length;
+        console.log(this.bookingdetails);
+      });
+    }
   }
 
   editBookings(bookings: any) {
-    var token = localStorage.getItem('accessToken') || '';
-    var user = JSON.parse(atob(token.split('.')[1]));
-    if (user.role=='ADMIN'){
+    if(this._auth.isAdmin())
+    {
     localStorage.setItem('editbookingId', bookings._id.toString());
     this.router.navigate(['/admin/editbooking']);
     }

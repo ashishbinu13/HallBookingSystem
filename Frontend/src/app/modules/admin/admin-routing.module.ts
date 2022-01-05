@@ -34,15 +34,6 @@ const routes: Routes = [
 
    ],
   },
-  // {
-  //   path: 'bookings',
-  //   component: OutletComponent,
-  //   children: [
-  //     // { path: 'calendar', component: CalendarComponent },
-     // { path: ''bookHall'', component: AddBookingComponent },
-     // { path: 'editbooking', component: EditBookingComponent },
-  //   ],
-  // },
   {
     path: 'associates',
     component: OutletComponent,

@@ -22,7 +22,7 @@
       </div>
       <div class="inputBox">
         <label for="">Hall </label>
-       <select
+        <select
           id="halls"
           (change)="onChange($event)"
           name="halls"
@@ -34,7 +34,6 @@
             {{ i.hallname }}
           </option>
         </select>
-       
       </div>
       <div class="inputBox">
         <label>Date</label>
@@ -63,7 +62,6 @@
           name="endTime"
           required
           [(ngModel)]="bookingDetails.endTime"
-          (click)="Clearmessage()"
         />
       </div>
 
@@ -78,9 +76,7 @@
       </div>
 
       <div class="inputBox">
-        <span style="color: red">{{ errormessage }}</span>
         <br />
-
         <input type="submit" value="Submit" />
       </div>
     </div>

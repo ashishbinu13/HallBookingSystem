@@ -115,21 +115,16 @@ export class EditBookingComponent implements OnInit {
       event.target.options[event.target.options.selectedIndex].text;
   }
 
-  Clearmessage() {
-    this.errormessage = '';
-  }
+  
   editBookings() {
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
-    if (user.role=='ADMIN'){
     this.bookingsService.editBookings(this.bookingDetails);
     alert('Successfully edited');
-    this.router.navigate(['/admin/home']);
-    }
-    else{
-      this.bookingsService.editBookings(this.bookingDetails);
-    alert('Successfully edited');
-    this.router.navigate(['/associates/home']);
+    if (user.role == 'ADMIN') {
+      this.router.navigate(['/admin/home']);
+    } else {
+      this.router.navigate(['/associates/home']);
     }
   }
 

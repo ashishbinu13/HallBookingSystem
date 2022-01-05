@@ -6,7 +6,6 @@ import { DashboardComponent } from 'src/app/modules/shared/components/dashboard/
 import { EditBookingComponent } from '../shared/components/edit-booking/edit-booking.component';
 import { ProfileComponent } from '../shared/components/profile/profile.component';
 import { UseroutletComponent } from './components/useroutlet/useroutlet.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -14,7 +13,7 @@ const routes: Routes = [
     children: [
       { path: '', component: DashboardComponent },
       { path: 'home', component: DashboardComponent },
-      {path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'bookHall', component: AddBookingComponent },
       {path:'editbooking',component:EditBookingComponent},
       {path:'calendar', component :CalendarComponent},

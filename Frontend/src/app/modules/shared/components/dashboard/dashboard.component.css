@@ -45,7 +45,13 @@ section {
     min-height: 500px;
     margin-top: 50px;
 }
+<<<<<<< HEAD
 
 pagination-controls {
     position: relative;
 }
+=======
+/* #page{
+    position: fixed;
+} */
+>>>>>>> 660a68d931301baf66e4be9865d141260d878c86
