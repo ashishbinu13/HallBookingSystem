@@ -38,6 +38,7 @@ export class SidebarComponent implements OnInit {
       this.nav.bookHall = '/associates/bookHall';
       this.nav.viewBookings = '/associates/calendar';
       this.nav.profile = '/associates/profile';
+
     }
   }
   logoutUser() {

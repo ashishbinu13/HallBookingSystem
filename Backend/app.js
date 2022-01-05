@@ -24,18 +24,18 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // routes-local
-// app.use("/auth", AuthRoute);
-// app.use("/admin", AdminRoute);
-// app.use("/hall", HallRoute);
-// app.use("/dept", DeptRoute);
-// app.use("/booking", BookingRoute);
+app.use("/auth", AuthRoute);
+app.use("/admin", AdminRoute);
+app.use("/hall", HallRoute);
+app.use("/dept", DeptRoute);
+app.use("/booking", BookingRoute);
 
 // routes
-app.use("/api/auth", AuthRoute);
-app.use("/api/admin", AdminRoute);
-app.use("/api/hall", HallRoute);
-app.use("/api/dept", DeptRoute);
-app.use("/api/booking", BookingRoute);
+// app.use("/api/auth", AuthRoute);
+// app.use("/api/admin", AdminRoute);
+// app.use("/api/hall", HallRoute);
+// app.use("/api/dept", DeptRoute);
+// app.use("/api/booking", BookingRoute);
 
 // error handling
 

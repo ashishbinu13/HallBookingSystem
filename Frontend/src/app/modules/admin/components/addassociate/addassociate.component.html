@@ -1,73 +1,73 @@
 <div class="form">
     <h2>Add Associate</h2>
     <form (ngSubmit)="addAssociate()">
-    <div class="input">
-        <div class="inputBox">
-            <label for="">Associate Name</label>
-            <input type="text" name="name" required [(ngModel)]=user.name>
-        </div>
-        <div class="inputBox">
-            <label for="">ICTAK ID</label>
-            <input type="text" name="ICTAKID" required [(ngModel)]=user.username>
-        </div>
-        <div class="inputBox">
-            <label for="">Email Id</label>
-            <input type="email" name="email" required [(ngModel)]=user.email>
-        </div>
-        <div class="inputBox">
-            <label for="">Password</label>
-            <input type="password" name="password" required [(ngModel)]=user.password>
-        </div>
-        <div class="inputBox">
-            <label for="">Phone Number</label>
-            <input type="text" name="phone" required [(ngModel)]=user.phone>
-        </div>
-        <div class="inputBox">
-            <label for="">Department </label>
-            <select id="dept" (change)="onChange($event)" name="dept" [(ngModel)]=deptselected required>
+        <div class="input">
+            <div class="inputBox">
+                <label for="">Associate Name</label>
+                <input type="text" name="name" required [(ngModel)]=user.name>
+            </div>
+            <div class="inputBox">
+                <label for="">ICTAK ID</label>
+                <input type="text" name="ICTAKID" required [(ngModel)]=user.username>
+            </div>
+            <div class="inputBox">
+                <label for="">Email Id</label>
+                <input type="email" name="email" required [(ngModel)]=user.email>
+            </div>
+            <div class="inputBox">
+                <label for="">Password</label>
+                <input type="password" name="password" required [(ngModel)]=user.password>
+            </div>
+            <div class="inputBox">
+                <label for="">Phone Number</label>
+                <input type="text" name="phone" required [(ngModel)]=user.phone>
+            </div>
+            <div class="inputBox">
+                <label for="">Department </label>
+                <select id="halls" (change)="onChange($event)" name="dept" [(ngModel)]=deptselected required>
                 <!-- <select id="halls" name="halls" [(ngModel)]=hallselected required > -->
 
             <option *ngFor="let i of deptdata" [value]="i._id">{{i.deptname}}</option>
             </select>
-        </div>
-        <div class="inputBox">
-            <label for="">Designation</label>
-            <input type="text" name="designation" required [(ngModel)]=user.designation>
-        </div>
-        <div class="inputBox">
-            <label for="">Area of Interest</label>
-            <input type="text" name="areaint" required [(ngModel)]=user.areaint>
-        </div>
-        <div class="inputBox">
-            <label for="">Place</label>
-            <input type="text" name="place" required [(ngModel)]=user.place>
-        </div>
-        <div class="inputBox">
-            <label for="">Nationality</label>
-            <input type="text" name="nation" required [(ngModel)]=user.nation>
-        </div>
-        <div class="inputBox">
-            <label for="">Role</label>
-            <!-- <select id="role" name="role">
+            </div>
+            <div class="inputBox">
+                <label for="">Designation</label>
+                <input type="text" name="designation" required [(ngModel)]=user.designation>
+            </div>
+            <div class="inputBox">
+                <label for="">Area of Interest</label>
+                <input type="text" name="areaint" required [(ngModel)]=user.areaint>
+            </div>
+            <div class="inputBox">
+                <label for="">Place</label>
+                <input type="text" name="place" required [(ngModel)]=user.place>
+            </div>
+            <div class="inputBox">
+                <label for="">Nationality</label>
+                <input type="text" name="nation" required [(ngModel)]=user.nation>
+            </div>
+            <div class="inputBox">
+                <label for="">Role</label>
+                <!-- <select id="role" name="role">
                 <option  value="a">Admin</option>
                 <option value="b">Associate</option>
 
             </select> -->
-            <input type="text" name="role" required [(ngModel)]=user.role>
-        </div>
-        <!-- <div class="inputBox">
+                <input type="text" name="role" required [(ngModel)]=user.role>
+            </div>
+            <!-- <div class="inputBox">
             <label for="">Image</label>
             <input type="text" name="image" required [(ngModel)]=user.image>
         </div> -->
-        <div class="inputBox">
-            <br>
-            <button id="btn" type="submit" name="">
+            <div class="inputBox">
+                <br>
+                <button id="btn" type="submit" name="">
             <h2>ADD</h2>
                 </button>
 
+            </div>
         </div>
-    </div>
-</form>
+    </form>
 
 
 </div>

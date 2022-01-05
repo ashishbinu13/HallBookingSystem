@@ -3,6 +3,7 @@ import { BookingsService } from 'src/app/services/bookings.service';
 import { DatePipe } from '@angular/common';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-dashboard',
