@@ -26,9 +26,9 @@ export class CalendarComponent implements OnInit {
   ];
   calendarOptions!: CalendarOptions;
 
-  onDateClick(res: any) {
-    alert('Clicked on date : ' + res.dateStr);
-  }
+  // onDateClick(res: any) {
+  //   alert('Clicked on date : ' + res.dateStr);
+  // }
 
   constructor(
     private httpClient: HttpClient,
@@ -91,7 +91,7 @@ export class CalendarComponent implements OnInit {
         this.calendarOptions = {
           initialView: 'dayGridMonth',
           dayMaxEvents: true,
-          dateClick: this.onDateClick.bind(this),
+          // dateClick: this.onDateClick.bind(this),
           events: this.Events,
           headerToolbar: {
             start: 'prev,next today',

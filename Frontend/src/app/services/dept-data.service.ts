@@ -5,21 +5,18 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class DeptDataService {
-  base_url: string = 'http://localhost:3000';
+  // base_url: string = 'http://localhost:3000';
 
-  // base_url: string = 'api';
+  base_url: string = 'api';
 
-  constructor( private http:HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  getDeptNames()
-  {
-    console.log("ingetdeptservice");
-   return this.http.get("http://localhost:3000/dept/getdeptNames");
+  getDeptNames() {
+    console.log('ingetdeptservice');
+    return this.http.get('http://localhost:3000/dept/getdeptNames');
   }
-   getdeptbyID(id:any)
-   {
-     console.log(id);
-    return this.http.get("http://localhost:3000/dept/"+id);
-
-   }
+  getdeptbyID(id: any) {
+    console.log(id);
+    return this.http.get('http://localhost:3000/dept/' + id);
   }
+}
