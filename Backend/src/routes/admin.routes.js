@@ -9,7 +9,7 @@ const { verifyAccessToken } = require("../helpers/jwt_helper");
 const router = express.Router();
 
 // register route
-router.post("/insert", verifyAccessToken,async (req, res, next) => {
+router.post("/insert", verifyAccessToken, async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
@@ -26,11 +26,9 @@ router.post("/insert", verifyAccessToken,async (req, res, next) => {
       eventDetails: req.body.eventDetails,
       dateStamp: req.body.dateStamp,
     };
-    console.log(details);
 
     var bookingDet = new bookingDetails(details);
     var booked = await bookingDet.save();
-    console.log(booked);
   } catch (error) {
     next(error);
   }
@@ -64,6 +62,5 @@ router.post("/insert", verifyAccessToken,async (req, res, next) => {
 //     next(error);
 //   }
 // });
-
 
 module.exports = router;

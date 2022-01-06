@@ -7,23 +7,30 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  isInvalid: boolean = false;
+  errorMessage: string = '';
   user = { username: '', password: '' };
   constructor(private _auth: AuthService, private _router: Router) {}
 
   ngOnInit(): void {}
 
   loginUser() {
-    this._auth.loginUser(this.user).subscribe((res) => {
-      localStorage.setItem('accessToken', res.accessToken);
-      localStorage.setItem('refreshToken', res.refreshToken);
+    this._auth.loginUser(this.user).subscribe(
+      (res) => {
+        this.isInvalid = false;
+        localStorage.setItem('accessToken', res.accessToken);
+        localStorage.setItem('refreshToken', res.refreshToken);
 
-      if (this._auth.isAdmin()) 
-      {
-      this._router.navigate(['/admin/home']);
+        if (this._auth.isAdmin()) {
+          this._router.navigate(['/admin/home']);
+        } else {
+          this._router.navigate(['/associates/home']);
+        }
+      },
+      (response) => {
+        this.errorMessage = response.error.message;
+        this.isInvalid = true;
       }
-      else{
-        this._router.navigate(['/associates/home'])
-      }
-    });
+    );
   }
 }

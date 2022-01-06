@@ -46,8 +46,8 @@ const routes: Routes = [
     component: OutletComponent,
     children: [
       { path: '', component: AssociatesComponent },
-      { path: 'register', component: AddassociateComponent },
       { path: 'edit', component: EditassociateComponent },
+      { path: 'addAssociate', component: AddassociateComponent },
     ],
   },
 ];

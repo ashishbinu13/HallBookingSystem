@@ -1,5 +1,3 @@
-/* Sidebar */
-
 .s-sidebar__trigger {
     z-index: 2;
     position: fixed;
@@ -58,7 +56,7 @@
 .s-sidebar__nav-link em {
     color: white;
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 4em;
     transform: translateY(-50%);
 }
@@ -78,7 +76,7 @@
 
 .s-sidebar__nav-link>i::before {
     position: absolute;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
 }

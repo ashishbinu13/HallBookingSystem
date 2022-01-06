@@ -11,7 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "~12.2.0",
-    "@angular/common": "~12.2.0",
+    "@angular/common": "^12.2.15",
     "@angular/compiler": "~12.2.0",
     "@angular/core": "~12.2.0",
     "@angular/forms": "~12.2.0",
@@ -26,8 +26,8 @@
     "@fullcalendar/timegrid": "^5.10.1",
     "@ng-bootstrap/ng-bootstrap": "^10.0.0",
     "bootstrap": "^4.6.1",
-    "ngx-pagination": "^5.1.1",
     "ngx-lottie": "^8.0.1",
+    "ngx-pagination": "^5.1.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"

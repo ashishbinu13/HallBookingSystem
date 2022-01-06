@@ -5,9 +5,9 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class AuthService {
-  base_url: string = 'http://localhost:3000';
+  // base_url: string = 'http://localhost:3000';
 
-  // base_url: string = 'api';
+  base_url: string = 'api';
 
   role!: string;
 
@@ -38,13 +38,13 @@ export class AuthService {
     return user.aud;
   }
   addAssociate(user: any) {
-    console.log(user);
-    return this.http
-      .post(`${this.base_url}/auth/register`, user)
-      .subscribe((data) => {
-        console.log('success');
-      });
+    return this.http.post(`${this.base_url}/auth/register`, user);
   }
+
+  getAssociate(id: any) {
+    return this.http.get(`${this.base_url}/auth/getass/${id}`);
+  }
+
   getass() {
     return this.http.get(`${this.base_url}/auth/getass`);
   }
@@ -52,13 +52,12 @@ export class AuthService {
     return this.http.get(`${this.base_url}/auth/${id}`);
   }
   editass(user: any) {
-    return this.http
-      .put(`${this.base_url}/auth/editass`, user)
-      .subscribe((data) => {
-        console.log(data);
-      });
+    return this.http.put(`${this.base_url}/auth/editass`, user);
   }
   deleteass(id: any) {
     return this.http.delete(`${this.base_url}/auth/deleteass/${id}`);
+  }
+  getusers(user: any) {
+    return this.http.get<any>('http://localhost:3000/auth/userlist/' + user);
   }
 }

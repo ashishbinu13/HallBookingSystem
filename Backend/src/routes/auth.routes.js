@@ -1,6 +1,7 @@
 // packages
 const express = require("express");
 const createHttpError = require("http-errors");
+const bcrypt = require("bcrypt");
 
 // modules
 const User = require("../models/user.model");
@@ -23,7 +24,6 @@ router.post("/register", async (req, res, next) => {
 
   try {
     const result = await authSchema.validateAsync(req.body);
-
     const usernameExists = await User.findOne({ username: result.username });
     if (usernameExists)
       throw createHttpError.Conflict(
@@ -39,9 +39,7 @@ router.post("/register", async (req, res, next) => {
     const refreshToken = await signRefreshToken(savedUser.username);
 
     res.send({ accessToken, refreshToken });
-  } 
-  catch (error) {
-    if (error.isJoi === true) error.status = 422;
+  } catch (error) {
     next(error);
   }
 });
@@ -51,27 +49,36 @@ router.get("/getass", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  try{
-    const user1=await User.find();
+  try {
+    const user1 = await User.find();
     res.send(user1);
-  }
-  catch(error){
+  } catch (error) {
     next(error);
   }
 });
 
-router.get("/:id",async(req, res, next) => {
+router.get("/getass/:id", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+  const id = req.params.id;
+
+  User.findOne({ username: id }).then((user) => {
+    res.send(user);
+  });
+});
+
+router.get("/:id", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
   // const result = await authSchema.validateAsync(req.body.id);
-    const id=req.params.id;
-    User.findOne({"_id":id })
-    .then((user1)=>{
+  const id = req.params.id;
+  User.findOne({ _id: id }).then((user1) => {
     res.send(user1);
   });
-
 });
 
 router.put("/editass", async (req, res, next) => {
@@ -79,36 +86,47 @@ router.put("/editass", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  console.log(req.body);
-  id = req.body._id,
-    name1 = req.body.name,
-    username = req.body.username,
-    email = req.body.email,
-    password = req.body.password,
-    phone = req.body.phone,
-    deptName = req.body.endTime,
-    designation = req.body.designation,
-    areaint = req.body.areaint,
-    place = req.body.place,
-    nation = req.body.nation,
-    role = req.body.role,
-    User.findByIdAndUpdate({"_id": id },
-        {$set: {"name": name1,
-            "username": username,
-            "email": email,
-            "password": password,
-            "phone": phone,
-            "deptName": deptName,
-            "designation": designation,
-            "areaint": areaint,
-            "place": place,
-            "nation": nation,
-            "role": role}})
-      
-            .then(function () {
-        console.log("success");
+
+  try {
+    var id = req.body._id;
+    delete req.body._id;
+    delete req.body.__v;
+
+    const result = await authSchema.validateAsync(req.body);
+
+    const crypt = new Promise((resolve, reject) => {
+      bcrypt.genSalt(10, function (err, salt) {
+        bcrypt.hash(result.password, salt, function (err, hash) {
+          resolve(hash);
+        });
+      });
+    });
+
+    crypt.then((password) => {
+      User.findByIdAndUpdate(
+        { _id: id },
+        {
+          $set: {
+            name: result.name,
+            username: result.username,
+            email: result.email,
+            password: password,
+            phone: result.phone,
+            deptName: result.deptName,
+            designation: result.designation,
+            areaint: result.areaint,
+            place: result.place,
+            nation: result.nation,
+            role: result.role,
+          },
+        }
+      ).then(function () {
         res.send();
       });
+    });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.delete("/deleteass/:id", async (req, res, next) => {
@@ -119,7 +137,6 @@ router.delete("/deleteass/:id", async (req, res, next) => {
 
   user1 = User.findById(req.params.id);
   user1.remove().then(() => {
-    console.log("success");
     res.send();
   });
 });
@@ -145,8 +162,8 @@ router.post("/login", async (req, res, next) => {
 
     res.send({ accessToken, refreshToken, username: user.username });
   } catch (error) {
-    if (error.isJoi === true)
-      return next(createHttpError.BadRequest("Invalid username/password"));
+    // if (error.isJoi === true)
+    //   return next(createHttpError.BadRequest("Invalid username/password"));
     next(error);
   }
 });
@@ -164,5 +181,20 @@ router.post("/login", async (req, res, next) => {
 //     next(error);
 //   }
 // });
+router.get("/userlist/:user", async (req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
+  );
+
+  let username = req.params.user;
+  try {
+    const records = await User.find().where("username").in(username);
+
+    res.send(records);
+  } catch (err) {
+    res.send(err);
+  }
+});
 
 module.exports = router;
