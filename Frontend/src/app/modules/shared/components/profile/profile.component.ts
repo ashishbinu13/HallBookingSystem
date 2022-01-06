@@ -15,8 +15,6 @@ export class ProfileComponent implements OnInit {
   var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
     var username= user.aud;
-
-    
       this._authservice.getusers(username).subscribe((data) => {
         this.userDetails = JSON.parse(JSON.stringify(data));
         
