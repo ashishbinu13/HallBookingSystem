@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 export class AuthService {
   role!: string;
 
-  constructor(private http: HttpClient, private _router: Router) {}
+  constructor(private http: HttpClient,private _router:Router) {}
 
   loginUser(user: any) {
     return this.http.post<any>('http://localhost:3000/auth/login', user);
@@ -28,16 +28,16 @@ export class AuthService {
     return user.role === 'ADMIN' ? true : false;
   }
 
-  getUser(token: string) {
-    return JSON.parse(atob(token.split('.')[1]));
+  getUser() {
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+    return user.aud;
   }
-  addAssociate(user: any){
-    console.log(user)
-    return this.http.post('http://localhost:3000/auth/register',user)
-    .subscribe((data)=>{console.log("success")});
+  addAssociate(user:any){
+    return this.http.post('http://localhost:3000/auth/register',user);
   }
   getass(){
-    return this.http.get('http://localhost:3000/auth/getass')
+    return this.http.get('http://localhost:3000/auth/getass');
   }
   getass1(id:any){
     return this.http.get('http://localhost:3000/auth/'+id);

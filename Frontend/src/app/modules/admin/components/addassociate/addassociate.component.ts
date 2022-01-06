@@ -9,47 +9,64 @@ import { HallDataService } from 'src/app/services/hall-data.service';
 @Component({
   selector: 'app-addassociate',
   templateUrl: './addassociate.component.html',
-  styleUrls: ['./addassociate.component.css']
+  styleUrls: ['./addassociate.component.css'],
 })
 export class AddassociateComponent implements OnInit {
-
-  constructor(private authService:AuthService,public deptservice:DeptDataService, private router:Router) { }
-  errorMessage:string='';
-  isInvalid:boolean=false;
-  user={
-    name:'',
-    username:'',
-    email:'',
-    password:'',
-    phone:'',
-    deptName:'',
-    designation:'',
-    areaint:'',
-    place:'',
-    nation:'',
-    role:''
+  constructor(
+    private authService: AuthService,
+    public deptservice: DeptDataService,
+    private router: Router
+  ) {}
+  user = {
+    name: '',
+    username: '',
+    email: '',
+    password: '',
+    phone: '',
+    deptName: '',
+    designation: '',
+    areaint: '',
+    place: '',
+    nation: '',
+    role: '',
   };
 
-  deptdata:any[] |undefined;
-deptselected:any=""
-  deptnames:any
+  deptdata: any[] | undefined;
+  deptselected: any = '';
+  deptnames: any;
+  errormessage: any;
+  error: any;
+  isInvalid!: boolean;
 
   ngOnInit(): void {
-    this.deptservice.getDeptNames().subscribe((data)=>{
-      this.deptdata= JSON.parse(JSON.stringify(data));
-       console.log(this.deptdata);
-            
-     })
+    this.deptservice.getDeptNames().subscribe((data: any) => {
+      this.deptdata = JSON.parse(JSON.stringify(data));
+    });
   }
+
   addAssociate(){
-    console.log(this.user);
-    this.authService.addAssociate(this.user);
-    this.router.navigate(['/admin/associates'])
+    var token=localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+
+    this.authService.addAssociate(this.user).subscribe(
+      (data:any) => {
+        if (this.authService.isAdmin()) {
+          this.router.navigate(['/admin/home']);
+        } else {
+          this.router.navigate(['/associates/home']);
+        }
+      },
+      (response: any) => {
+        this.error = response.error.message;
+        console.log(this.error);
+        this.isInvalid = false;
+      }
+    );
+  if(!this.isInvalid){
   }
-  onChange(event: any)
-{
- this.user.deptName=event.target.options[event.target.options.selectedIndex].text;
-
 }
-
+  onChange(event: any) {
+    this.user.deptName =
+      event.target.options[event.target.options.selectedIndex].text;
+  }
 }

@@ -2,9 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeptDataService {
+  base_url: string = 'http://localhost:3000';
+
+  // base_url: string = 'api';
 
   constructor( private http:HttpClient) { }
 

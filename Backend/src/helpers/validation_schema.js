@@ -45,4 +45,5 @@ const bookingSchema= Joi.object({
   dateStamp: Joi.date().required(),
 });
 
-module.exports = { authSchema, loginSchema, bookingSchema };
+
+module.exports = { authSchema, loginSchema,bookingSchema};

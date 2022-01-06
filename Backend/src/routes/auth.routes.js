@@ -80,12 +80,19 @@ router.put("/editass", async (req, res, next) => {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  console.log(req.body);
+
+  const crypt = new Promise((resolve, reject) => {
+    bcrypt.genSalt(10, function (err, salt) {
+      bcrypt.hash(req.body.password, salt, function (err, hash) {
+        resolve(hash);
+      });
+    });
+  });
+
     var id = req.body._id;
     var name1 = req.body.name;
     var username = req.body.username;
     var email = req.body.email;
-    var password = req.body.password;
     var phone = req.body.phone;
     var deptName = req.body.endTime;
     var designation = req.body.designation;
@@ -93,36 +100,30 @@ router.put("/editass", async (req, res, next) => {
     var place = req.body.place;
     var nation = req.body.nation;
     var role = req.body.role;
-    
-    async function hashIt(password){
-      const salt = await bcrypt.genSalt(10);
-      const hashedPassword = await bcrypt.hash(password, salt)
-      password=hashedPassword;
-    }
-    hashIt(password);
-    // async function compareIt(password){
-    //   const validPassword = await bcrypt.compare(password, hashedPassword);
-    // }
-    // compareIt(password);
-    User.findByIdAndUpdate({"_id": id },
-        {$set: {"name": name1,
-            "username": username,
-            "email": email,
-            "password": password,
-            "phone": phone,
-            "deptName": deptName,
-            "designation": designation,
-            "areaint": areaint,
-            "place": place,
-            "nation": nation,
-            "role": role}})
-      
-            .then(function () {
+    crypt.then((password) => {
+      User.findByIdAndUpdate(
+        { _id: id },
+        {
+          $set: {
+            name: name1,
+            username: username,
+            email: email,
+            password: password,
+            phone: phone,
+            deptName: deptName,
+            designation: designation,
+            areaint: areaint,
+            place: place,
+            nation: nation,
+            role: role,
+          },
+        }
+      ).then(function () {
         console.log("success");
         res.send();
       });
-});
-
+    });
+  });
 router.delete("/deleteass/:id", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(

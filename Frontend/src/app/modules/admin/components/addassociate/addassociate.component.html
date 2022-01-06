@@ -1,6 +1,6 @@
 <div class="form">
     <h2>Add Associate</h2>
-    <form (ngSubmit)="addAssociate()" novalidate #addForm='ngForm'>
+    <form (ngSubmit)="addAssociate()" #addForm='ngForm'>
     <div class="input">
         <div class="inputBox">
             <label for="">Associate Name</label>
@@ -57,11 +57,11 @@
             <input type="text" name="role" id="role" #role="ngModel" required [(ngModel)]=user.role>
         </div>
         <div class="inputBox">
-            <small *ngIf="isInvalid" class="msg"> {{ errorMessage }} </small>
+            <span style="color: red">{{ error }}</span>
+
+        <!-- <span style="color: red">{{ errormessage }}</span> -->
             <br>
-            <button id="btn" type="submit" name="">
-            <h2>ADD</h2>
-                </button>
+            <input type="submit" value="Add" />
 
         </div>
     </div>

@@ -7,6 +7,8 @@ import { Injectable } from '@angular/core';
 export class CalendarService {
   base_url: string = 'http://localhost:3000';
 
+  // base_url: string = 'api';
+
   constructor(public http: HttpClient) {}
 
   getBookings() {

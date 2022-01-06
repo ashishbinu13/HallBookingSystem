@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { RouterModule } from '@angular/router';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 //fullcalendar
 import { FullCalendarModule } from '@fullcalendar/angular';
 import interactionPlugin from '@fullcalendar/interaction';
@@ -35,7 +35,13 @@ FullCalendarModule.registerPlugins([
     FooterComponent,
   ],
 
-  imports: [RouterModule, FormsModule, FullCalendarModule, CommonModule],
+  imports: [
+    RouterModule,
+    FormsModule,
+    FullCalendarModule,
+    CommonModule,
+    NgxPaginationModule,
+  ],
   exports: [
     CommonModule,
     FormsModule,
