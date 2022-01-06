@@ -133,8 +133,6 @@ export class AddBookingComponent implements OnInit {
     } else {
       this.errormessage = 'Endtime should be greater than starttime ';
     }
-    if (!this.isInvalid) {
-    }
   }
 
   onChange(event: any) {

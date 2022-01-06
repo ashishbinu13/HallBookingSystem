@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class EditBookingComponent implements OnInit {
   title = 'Edit Your Booking';
+  isInvalid!: boolean;
 
   constructor(
     private bookingsService: BookingsService,
@@ -117,22 +118,19 @@ export class EditBookingComponent implements OnInit {
     if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
       this.bookingsService.editBookings(this.bookingDetails).subscribe(
         (data) => {
-          console.log('succes');
-          this.ngOnInit();
+          if (this._auth.isAdmin()) {
+            // alert('Successfully edited');
+            this.router.navigate(['/admin/home']);
+          } else {
+            // alert('Successfully edited');
+            this.router.navigate(['/associates/home']);
+          }
         },
         (response) => {
           this.error = response.error.message;
-          console.log(this.error);
+          this.isInvalid = false;
         }
       );
-
-      if (this._auth.isAdmin()) {
-        // alert('Successfully edited');
-        this.router.navigate(['/admin/home']);
-      } else {
-        // alert('Successfully edited');
-        this.router.navigate(['/associates/home']);
-      }
     } else {
       this.errormessage = 'Endtime should be greater than starttime ';
     }

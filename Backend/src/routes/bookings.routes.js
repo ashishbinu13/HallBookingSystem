@@ -31,7 +31,6 @@ router.post("/insert", verifyAccessToken, async (req, res, next) => {
   );
   try {
     const result = await bookingSchema.validateAsync(req.body);
-    console.log(result);
 
     var details = {
       employeeName: req.body.employeeName,
@@ -72,34 +71,33 @@ router.put("/editBookings", verifyAccessToken, async (req, res, next) => {
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
 
-  (id = req.body._id),
-    (employeeName = req.body.employeeName),
-    (ICTAKId = req.body.ICTAKId),
-    (bookingDate = req.body.bookingDate),
-    (hallName = req.body.hallName),
-    (startTime = req.body.startTime),
-    (endTime = req.body.endTime),
-    (eventDetails = req.body.eventDetails),
-    (dateStamp = req.body.dateStamp),
+  try {
+    var id = req.body._id;
+    delete req.body._id;
+    delete req.body.__v;
+    const result = await bookingSchema.validateAsync(req.body);
     bookingDetails
       .findByIdAndUpdate(
         { _id: id },
         {
           $set: {
-            employeeName: employeeName,
-            ICTAKId: ICTAKId,
-            bookingDate: bookingDate,
-            hallName: hallName,
-            startTime: startTime,
-            endTime: endTime,
-            eventDetails: eventDetails,
-            dateStamp: dateStamp,
+            employeeName: result.employeeName,
+            ICTAKId: result.ICTAKId,
+            bookingDate: result.bookingDate,
+            hallName: result.hallName,
+            startTime: result.startTime,
+            endTime: result.endTime,
+            eventDetails: result.eventDetails,
+            dateStamp: result.dateStamp,
           },
         }
       )
       .then(function () {
         res.send();
       });
+  } catch (error) {
+    next(error);
+  }
 });
 
 router.delete(
