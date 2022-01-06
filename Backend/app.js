@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const morgan = require("morgan");
 const createHttpError = require("http-errors");
 const cors = require("cors");
@@ -15,6 +16,7 @@ const DeptRoute = require("./src/routes/dept.routes");
 //
 const app = express();
 //
+app.use(express.static("./dist/Frontend"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -47,6 +49,10 @@ app.use((err, req, res, next) => {
     error: err.status || 500,
     message: err.message,
   });
+});
+
+app.get("/*", function (req, res) {
+  res.sendFile(path.join(__dirname + "/dist/Frontend/index.html"));
 });
 
 // port
