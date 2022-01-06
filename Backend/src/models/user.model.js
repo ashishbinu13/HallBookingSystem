@@ -13,7 +13,7 @@ const UserSchema = new Schema({
     type: String,
     lowercase: true,
     unique: true,
-    default: "ICTAK-ID",
+    default: "ICTAKID",
   },
   email: {
     type: String,

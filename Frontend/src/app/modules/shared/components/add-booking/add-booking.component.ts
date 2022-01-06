@@ -48,11 +48,22 @@ export class AddBookingComponent implements OnInit {
   maxmon: any;
   error: any;
   isInvalid!: boolean;
+  isAdmin!: boolean;
 
   ngOnInit(): void {
+    this.isAdmin = this._auth.isAdmin();
+    if (!this.isAdmin) {
+      var userId = this._auth.getUser();
+
+      this._auth.getAssociate(userId).subscribe((data) => {
+        var userdata = JSON.parse(JSON.stringify(data));
+        this.bookingDetails.employeeName = userdata.name;
+        this.bookingDetails.ICTAKId = userdata.username;
+      });
+    }
+
     this._hallservice.getHallNames().subscribe((data) => {
       this.halldata = JSON.parse(JSON.stringify(data));
-      console.log(this.halldata);
     });
 
     this.getmindate();
@@ -76,7 +87,6 @@ export class AddBookingComponent implements OnInit {
 
     this.maxdate =
       this.date.getFullYear() + '-' + this.maxmon + '-' + this.maxdate1;
-    console.log(this.maxdate);
   }
 
   getmindate() {
@@ -99,8 +109,6 @@ export class AddBookingComponent implements OnInit {
       this.minmon +
       '-' +
       this.mindatetoday;
-
-    console.log(this.mindate);
   }
 
   saveBookings() {
@@ -111,7 +119,6 @@ export class AddBookingComponent implements OnInit {
     if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
       this._bookingService.saveBookings(this.bookingDetails).subscribe(
         (data) => {
-          console.log('succes');
           if (this._auth.isAdmin()) {
             this._router.navigate(['/admin/home']);
           } else {
@@ -120,7 +127,6 @@ export class AddBookingComponent implements OnInit {
         },
         (response) => {
           this.error = response.error.message;
-          console.log(this.error);
           this.isInvalid = false;
         }
       );

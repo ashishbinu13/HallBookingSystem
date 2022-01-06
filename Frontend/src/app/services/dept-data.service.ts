@@ -9,14 +9,17 @@ export class DeptDataService {
 
   // base_url: string = 'api';
 
-  constructor(private http: HttpClient) {}
+  constructor( private http:HttpClient) { }
 
-  getDeptNames() {
-    console.log('ingetdeptservice');
-    return this.http.get(`${this.base_url}/dept/getdeptNames`);
+  getDeptNames()
+  {
+    console.log("ingetdeptservice");
+   return this.http.get("http://localhost:3000/dept/getdeptNames");
   }
-  getdeptbyID(id: any) {
-    console.log(id);
-    return this.http.get(`${this.base_url}/dept/${id}`);
+   getdeptbyID(id:any)
+   {
+     console.log(id);
+    return this.http.get("http://localhost:3000/dept/"+id);
+
+   }
   }
-}

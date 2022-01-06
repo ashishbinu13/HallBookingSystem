@@ -72,7 +72,6 @@ router.put("/editBookings", verifyAccessToken, async (req, res, next) => {
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
 
-  console.log(req.body);
   (id = req.body._id),
     (employeeName = req.body.employeeName),
     (ICTAKId = req.body.ICTAKId),
@@ -99,7 +98,6 @@ router.put("/editBookings", verifyAccessToken, async (req, res, next) => {
         }
       )
       .then(function () {
-        console.log("success");
         res.send();
       });
 });
@@ -115,7 +113,6 @@ router.delete(
 
     bookings = bookingDetails.findById(req.params.id);
     bookings.remove().then(() => {
-      console.log("success");
       res.send();
     });
   }
@@ -129,10 +126,7 @@ router.get(
     res.header(
       "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
     );
-    console.log("userbookinglist");
-    console.log(req.params.user);
     let username = req.params.user;
-    console.log(username);
     try {
       const records = await bookingDetails
         .find()
@@ -142,7 +136,6 @@ router.get(
         .limit(5)
         .exec();
 
-      console.log(records);
       res.send(records);
     } catch (err) {
       res.send(err);
@@ -155,14 +148,10 @@ router.post("/check", function (req, res, next) {
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  console.log("incheck");
-  console.log(req.body);
   newStartTime = req.body.startTime;
   newEndTime = req.body.endTime;
   hallname = req.body.hallName;
   date = req.body.bookingDate;
-  console.log(newStartTime);
-  console.log(newEndTime);
 
   bookingDetails.find(
     {
@@ -213,9 +202,9 @@ router.post("/check", function (req, res, next) {
         return;
       }
 
-      if (results.length > 0) {
-        console.log(results);
-      }
+      // if (results.length > 0) {
+      //   console.log(results);
+      // }
     })
   );
 });

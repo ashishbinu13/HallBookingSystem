@@ -1,58 +1,94 @@
 <section class="pb-0">
-    <div class="container-fluid">
-        <div class="row gy-4">
-            <!-- Work Amount  -->
-            <div>
-
+  <div class="container-fluid">
+    <div class="row gy-4">
+      <!-- Work Amount  -->
+      <div></div>
+      <!-- Client Profile -->
+      <div class="col-lg-12">
+        <div class="card mb-0" *ngFor="let users of userDetails">
+          <div class="card-body text-center">
+            <!-- <div class="client-avatar mb-3">
+              <img
+                class="img-fluid shadow-0"
+                src="/assets/img/profile1.jpg"
+                alt="..."
+              />
+            </div> -->
+            <h1 class="fw-normal">{{ users.name }}</h1>
+            <p class="h6 text-sm text-gray-500 mb-1">{{ users.designation }}</p>
+            <a
+              class="btn btn-faintGreen btn-sm text-white px-4 rounded-pill py-0"
+              href="#"
+              >Follow</a
+            >
+            <div class="row py-4 gy-3">
+              <div class="col-lg-4">
+                <small class="h6 d-block lh-1"
+                  ><i class="fas fa-id-card-alt"></i></small
+                ><small class="h6">{{ users.username }}</small>
+              </div>
+              <div class="col-lg-4">
+                <small class="h6 d-block lh-1"
+                  ><i class="fas fa-mobile-alt"></i></small
+                ><small class="h6">{{ users.phone }}</small>
+              </div>
+              <div class="col-lg-4">
+                <small class="h6 d-block lh-1"
+                  ><i class="fas fa-envelope"></i></small
+                ><small class="h6">{{ users.email }}</small>
+              </div>
             </div>
-            <!-- Client Profile -->
-            <div class="col-lg-12">
-                <div class="card mb-0" *ngFor="let users of userDetails">
 
-                    <div class="card-body text-center">
-                        <!-- <div class="client-avatar mb-3"><img class="img-fluid  shadow-0" src="/assets/img/profile1.jpg" alt="...">
-
-                        </div> -->
-                        <h3 class="fw-normal">{{users.name}}</h3>
-                        <p class="text-sm text-gray-500 mb-1">{{users.designation}}</p><a class="btn btn-faintGreen btn-sm text-white px-4 rounded-pill py-0" href="#">Follow</a>
-                        <div class="row py-4 gy-3">
-                            <div class="col-lg-4"><small class="d-block lh-1"><i class="fas fa-id-card-alt"></i></small><small>{{users.username}}</small></div>
-                            <div class="col-lg-4"><small class="d-block lh-1"><i class="fas fa-mobile-alt"></i></small><small>{{users.phone}}</small></div>
-                            <div class="col-lg-4"><small class="d-block lh-1"><i class="fas fa-envelope"></i></small><small>{{users.email}}</small></div>
-                        </div>
-
-                        <div class="row py-4 gy-3" style="border: 1px solid rgb(226, 225, 225);margin-bottom: 10px;">
-                            <div class="col-lg-6"><strong class="d-block lh-1">DEPARTMENT</strong><small></small></div>
-                            <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
-                            <div class="col-lg-6"><strong class="d-block lh-1">{{users.deptName}}</strong></div>
-                        </div>
-                       
-                        <div class="row py-4 gy-3" style="border: 1px solid rgb(226, 225, 225);margin-bottom: 10px;">
-                            <div class="col-lg-6"><strong class="d-block lh-1">AREA OF INTEREST</strong><small></small></div>
-                            <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
-                            <div class="col-lg-6"><strong class="d-block lh-1">{{users.areaint}}</strong></div>
-                        </div>
-                        
-                        <div class="row py-4 gy-3" style="border: 1px solid rgb(226, 225, 225);margin-bottom: 10px;">
-                            <div class="col-lg-6"><strong class="d-block lh-1">LOCATION</strong><small></small></div>
-                            <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
-                            <div class="col-lg-6"><strong class="d-block lh-1">{{users.place}}</strong></div>
-                        </div>
-                        <div class="row py-4 gy-3" style="border: 1px solid rgb(226, 225, 225);margin-bottom: 10px;">
-                            <div class="col-lg-6"><strong class="d-block lh-1">NATIONALITY</strong><small></small></div>
-                            <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
-                            <div class="col-lg-6"><strong class="d-block lh-1">{{users.nation}}</strong></div>
-                        </div>
-                    </div>
-
-                </div>
-
+            <div id="box" class="row py-4 gy-3" style="margin-bottom: 10px">
+              <div class="col-lg-6">
+                <strong class="h7 d-block lh-1">DEPARTMENT</strong
+                ><small></small>
+              </div>
+              <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
+              <div class="col-lg-6">
+                <strong class="d-block lh-1"></strong
+                ><small class="h6">{{ users.deptName }}</small>
+              </div>
             </div>
-            <!-- Total Overdue             -->
-            <div>
 
-
+            <div id="box" class="row py-4 gy-3" style="margin-bottom: 10px">
+              <div class="col-lg-6">
+                <strong class="h7 d-block lh-1">AREA OF INTEREST</strong
+                ><small></small>
+              </div>
+              <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
+              <div class="col-lg-6">
+                <strong class="d-block lh-1"></strong
+                ><small class="h6">{{ users.areaint }}</small>
+              </div>
             </div>
+
+            <div id="box" class="row py-4 gy-3" style="margin-bottom: 10px">
+              <div class="col-lg-6">
+                <strong class="h7 d-block lh-1">LOCATION</strong><small></small>
+              </div>
+              <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
+              <div class="col-lg-6">
+                <strong class="d-block lh-1"></strong
+                ><small class="h6">{{ users.place }}</small>
+              </div>
+            </div>
+            <div id="box" class="row py-4 gy-3" style="margin-bottom: 10px">
+              <div class="col-lg-6">
+                <strong class="h7 d-block lh-1">NATIONALITY</strong
+                ><small></small>
+              </div>
+              <!-- <div class="col-lg-4"><strong class="d-block lh-1"></strong><small></small></div> -->
+              <div class="col-lg-6">
+                <strong class="d-block lh-1"></strong
+                ><small class="h6">{{ users.nation }}</small>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <!-- Total Overdue             -->
+      <div></div>
     </div>
+  </div>
 </section>

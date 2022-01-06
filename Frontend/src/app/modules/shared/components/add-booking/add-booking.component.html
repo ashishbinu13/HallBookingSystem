@@ -2,7 +2,7 @@
   <h2>{{ title }}</h2>
   <form (ngSubmit)="saveBookings()" #addbooking="ngForm">
     <div class="input">
-      <div class="inputBox">
+      <div *ngIf="isAdmin" class="inputBox">
         <label>Associate Name</label>
         <input
           type="text"
@@ -11,7 +11,7 @@
           [(ngModel)]="bookingDetails.employeeName"
         />
       </div>
-      <div class="inputBox">
+      <div *ngIf="isAdmin" class="inputBox">
         <label>ICTAK ID</label>
         <input
           type="text"
@@ -77,9 +77,11 @@
       </div>
 
       <div class="inputBox">
-        <span style="color: red">{{ error }}</span>
+        <span style="color: white; background-color: red">{{ error }}</span>
 
-        <span style="color: red">{{ errormessage }}</span>
+        <span style="color: white; background-color: red">{{
+          errormessage
+        }}</span>
         <br />
         <input type="submit" value="Submit" />
       </div>

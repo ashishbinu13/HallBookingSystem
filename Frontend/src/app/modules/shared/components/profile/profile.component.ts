@@ -8,19 +8,14 @@ import { AuthService } from 'src/app/services/auth.service';
 export class ProfileComponent implements OnInit {
   userDetails: any = [{}];
 
-  constructor(private _authservice:AuthService) {}
+  constructor(private _authservice: AuthService) {}
 
   ngOnInit(): void {
-
-  var token = localStorage.getItem('accessToken') || '';
+    var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
-    var username= user.aud;
-
-    
-      this._authservice.getusers(username).subscribe((data) => {
-        this.userDetails = JSON.parse(JSON.stringify(data));
-        
-      });
+    var username = user.aud;
+    this._authservice.getusers(username).subscribe((data) => {
+      this.userDetails = JSON.parse(JSON.stringify(data));
+    });
   }
-  
 }

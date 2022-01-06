@@ -34,18 +34,31 @@ export class AddassociateComponent implements OnInit {
   deptdata: any[] | undefined;
   deptselected: any = '';
   deptnames: any;
+  errormessage: any;
+  error: any;
+  isInvalid!: boolean;
 
   ngOnInit(): void {
-    this.deptservice.getDeptNames().subscribe((data) => {
+    this.isInvalid = false;
+
+    this.deptservice.getDeptNames().subscribe((data: any) => {
       this.deptdata = JSON.parse(JSON.stringify(data));
-      console.log(this.deptdata);
     });
   }
 
   addAssociate() {
-    console.log(this.user);
-    this.authService.addAssociate(this.user);
-    this.router.navigate(['/admin/associates']);
+    var token = localStorage.getItem('accessToken') || '';
+    var user = JSON.parse(atob(token.split('.')[1]));
+
+    this.authService.addAssociate(this.user).subscribe(
+      (data: any) => {
+        this.router.navigate(['/admin/associates']);
+      },
+      (response: any) => {
+        this.isInvalid = true;
+        this.error = response.error.message;
+      }
+    );
   }
   onChange(event: any) {
     this.user.deptName =

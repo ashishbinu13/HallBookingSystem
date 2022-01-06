@@ -7,7 +7,6 @@ const authSchema = Joi.object({
   username: Joi.string().required(),
   email: Joi.string()
     .email()
-    .lowercase()
     .pattern(
       new RegExp(
         "^([a-z0-9.-]{1,64})@([a-z0-9-]{2,200}).([a-z]{2,20})(.[a-z]{2,10})?$"
@@ -15,10 +14,17 @@ const authSchema = Joi.object({
     )
     .messages({ "string.pattern.base": "invalid email id" })
     .required(),
-  password: Joi.string().min(4).required(),
+  password: Joi.string()
+    .pattern(new RegExp("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"))
+    .required()
+    .messages({
+      "string.pattern.base":
+        "password must have at least one capital letter, small letter and number with minimum 8 characters",
+    }),
   phone: Joi.string()
     .length(10)
     .pattern(/^[0-9]+$/)
+    .messages({ "string.pattern.base": "invalid mobile number" })
     .required(),
   deptName: Joi.string().required(),
   designation: Joi.string().required(),
