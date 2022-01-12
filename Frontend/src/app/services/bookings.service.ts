@@ -5,9 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class BookingsService {
-  base_url: string = 'http://localhost:3000';
+  // base_url: string = 'http://localhost:3000';
 
-  // base_url: string = 'api';
+  base_url: string = 'api';
 
   constructor(public http: HttpClient) {}
 
@@ -28,7 +28,6 @@ export class BookingsService {
     // .subscribe(data =>{console.log(data)})
   }
   checkavailabilty(bookingDetails: any) {
-    console.log('check');
     return this.http.post(`${this.base_url}/booking/check`, bookingDetails);
   }
   deleteBookings(id: any) {
