@@ -6,9 +6,7 @@ const cors = require("cors");
 require("dotenv").config();
 require("./src/helpers/init_mongodb");
 
-const mongoose = require("mongoose");
 const BookingRoute = require("./src/routes/bookings.routes");
-// const AddAssociateRoute = require("./src/routes/associateadd.routes");
 const AdminRoute = require("./src/routes/admin.routes");
 const AuthRoute = require("./src/routes/auth.routes");
 const HallRoute = require("./src/routes/hall.routes");
@@ -20,22 +18,23 @@ app.use(express.static("./dist/Frontend"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
-
 app.use(morgan("dev"));
 
 // routes-local
-// app.use("/auth", AuthRoute);
-// app.use("/admin", AdminRoute);
-// app.use("/hall", HallRoute);
-// app.use("/dept", DeptRoute);
-// app.use("/booking", BookingRoute);
+
+app.use("/auth", AuthRoute);
+app.use("/admin", AdminRoute);
+app.use("/hall", HallRoute);
+app.use("/dept", DeptRoute);
+app.use("/booking", BookingRoute);
 
 // routes
-app.use("/api/auth", AuthRoute);
-app.use("/api/admin", AdminRoute);
-app.use("/api/hall", HallRoute);
-app.use("/api/dept", DeptRoute);
-app.use("/api/booking", BookingRoute);
+
+// app.use("/api/auth", AuthRoute);
+// app.use("/api/admin", AdminRoute);
+// app.use("/api/hall", HallRoute);
+// app.use("/api/dept", DeptRoute);
+// app.use("/api/booking", BookingRoute);
 
 // error handling
 

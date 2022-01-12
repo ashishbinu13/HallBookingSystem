@@ -112,27 +112,36 @@ export class AddBookingComponent implements OnInit {
   }
 
   saveBookings() {
+    this.error = '';
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
     this.bookingDetails.username = user.aud;
 
-    if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
-      this._bookingService.saveBookings(this.bookingDetails).subscribe(
-        (data) => {
-          if (this._auth.isAdmin()) {
-            this._router.navigate(['/admin/home']);
+    this._bookingService
+      .checkavailabilty(this.bookingDetails)
+      .subscribe((available) => {
+        if (available) {
+          if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
+            this._bookingService.saveBookings(this.bookingDetails).subscribe(
+              (data) => {
+                if (this._auth.isAdmin()) {
+                  this._router.navigate(['/admin/home']);
+                } else {
+                  this._router.navigate(['/associates/home']);
+                }
+              },
+              (response) => {
+                this.error = response.error.message;
+                this.isInvalid = false;
+              }
+            );
           } else {
-            this._router.navigate(['/associates/home']);
+            this.error = 'Endtime should be greater than starttime ';
           }
-        },
-        (response) => {
-          this.error = response.error.message;
-          this.isInvalid = false;
+        } else {
+          this.error = 'Hall is unavailable. Please choose a different slot';
         }
-      );
-    } else {
-      this.errormessage = 'Endtime should be greater than starttime ';
-    }
+      });
   }
 
   onChange(event: any) {
