@@ -115,25 +115,34 @@ export class EditBookingComponent implements OnInit {
     var user = JSON.parse(atob(token.split('.')[1]));
     this.bookingDetails.username = user.aud;
 
-    if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
-      this.bookingsService.editBookings(this.bookingDetails).subscribe(
-        (data) => {
-          if (this._auth.isAdmin()) {
-            // alert('Successfully edited');
-            this.router.navigate(['/admin/home']);
+    this.bookingsService
+      .checkavailabilty(this.bookingDetails)
+      .subscribe((available) => {
+        if (available) {
+          if (this.bookingDetails.endTime > this.bookingDetails.startTime) {
+            this.bookingsService.editBookings(this.bookingDetails).subscribe(
+              (data) => {
+                if (this._auth.isAdmin()) {
+                  // alert('Successfully edited');
+                  this.router.navigate(['/admin/home']);
+                } else {
+                  // alert('Successfully edited');
+                  this.router.navigate(['/associates/home']);
+                }
+              },
+              (response) => {
+                this.error = response.error.message;
+                this.isInvalid = false;
+              }
+            );
           } else {
-            // alert('Successfully edited');
-            this.router.navigate(['/associates/home']);
+            this.error = 'Endtime should be greater than starttime ';
           }
-        },
-        (response) => {
-          this.error = response.error.message;
-          this.isInvalid = false;
+        } else {
+          this.error =
+            'Hall/Slot is unavailable. Please choose a different hall/slot';
         }
-      );
-    } else {
-      this.errormessage = 'Endtime should be greater than starttime ';
-    }
+      });
   }
   Clearmessage() {
     this.errormessage = '';
