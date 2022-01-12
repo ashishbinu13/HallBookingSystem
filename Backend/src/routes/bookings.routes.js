@@ -183,9 +183,8 @@ router.post("/check", async (req, res, next) => {
               available = false;
             }
           });
-
-          res.json(available);
         }
+        res.json(available);
       });
   } catch (error) {
     next(error);
