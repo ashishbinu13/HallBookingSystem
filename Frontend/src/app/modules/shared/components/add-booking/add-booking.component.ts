@@ -112,7 +112,6 @@ export class AddBookingComponent implements OnInit {
   }
 
   saveBookings() {
-    this.error = '';
     var token = localStorage.getItem('accessToken') || '';
     var user = JSON.parse(atob(token.split('.')[1]));
     this.bookingDetails.username = user.aud;
@@ -139,7 +138,8 @@ export class AddBookingComponent implements OnInit {
             this.error = 'Endtime should be greater than starttime ';
           }
         } else {
-          this.error = 'Hall is unavailable. Please choose a different slot';
+          this.error =
+            'Hall/Slot is unavailable. Please choose a different hall/slot';
         }
       });
   }
