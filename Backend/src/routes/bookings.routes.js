@@ -5,6 +5,7 @@ const bookingDetails = require("../models/adminaddbooking.model");
 const { bookingSchema } = require("../helpers/validation_schema");
 
 const { verifyAccessToken } = require("../helpers/jwt_helper");
+const createHttpError = require("http-errors");
 
 const router = express.Router();
 
@@ -141,70 +142,111 @@ router.get(
   }
 );
 
-router.post("/check", function (req, res, next) {
+router.post("/check", async (req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Methods: GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-  newStartTime = req.body.startTime;
-  newEndTime = req.body.endTime;
-  hallname = req.body.hallName;
-  date = req.body.bookingDate;
 
-  bookingDetails.find(
-    {
-      $or: [
-        {
-          $and: [
-            {
-              $or: [
-                {
-                  $and: [
-                    { start_time: { $lt: newStartTime } },
-                    { end_time: { $gt: newStartTime } },
-                  ],
-                },
-                {
-                  $and: [
-                    { start_time: { $lt: newEndTime } },
-                    { end_time: { $gt: newEndTime } },
-                  ],
-                },
-                {
-                  $and: [
-                    { start_time: { $gte: newStartTime } },
-                    { end_time: { $lte: newEndTime } },
-                  ],
-                },
-              ],
-            },
-            {
-              $or: [
-                { start_time: { $ne: newStartTime } },
-                { end_time: { $ne: newEndTime } },
-              ],
-            },
-          ],
-        },
-        {
-          $and: [
-            { start_time: { $eq: newStartTime } },
-            { end_time: { $eq: newEndTime } },
-          ],
-        },
-        { $and: [{ hallName: { hallname } }, { bookingDate: { date } }] },
-      ],
-    }.exec(function (err, results) {
-      if (err) {
-        //handle error
-        return;
-      }
+  try {
+    var available = true;
+    function isBetween(a, b, c) {
+      if (a >= b && a <= c) return true;
+    }
 
-      // if (results.length > 0) {
-      //   console.log(results);
-      // }
-    })
-  );
+    const start = req.body.startTime;
+    const end = req.body.endTime;
+
+    var newHourStart = parseInt(start.split(":")[0]);
+    var newMinStart = parseInt(start.split(":")[1]);
+
+    const hallname = req.body.hallName;
+    const date = new Date(req.body.bookingDate);
+    var bookings = bookingDetails
+      .find({ bookingDate: date, hallName: hallname })
+      .exec((err, docs) => {
+        if (docs.length !== 0) {
+          docs.forEach((booking) => {
+            var hourStart = parseInt(booking.startTime.split(":")[0]);
+            var minStart = parseInt(booking.startTime.split(":")[1]);
+            var hourEnd = parseInt(booking.endTime.split(":")[0]);
+            var minEnd = parseInt(booking.endTime.split(":")[1]);
+            if (hourStart !== hourEnd) {
+              if (minStart === minEnd || minStart > minEnd) {
+                minEnd += 60;
+              }
+            }
+            if (
+              isBetween(newHourStart, hourStart, hourEnd) &&
+              isBetween(newMinStart, minStart, minEnd)
+            ) {
+              available = false;
+            }
+          });
+
+          res.json(available);
+        }
+      });
+  } catch (error) {
+    next(error);
+  }
+
+  // console.log(bookings);
+
+  // bookingDetails.find(
+  //   {
+  //     $or: [
+  //       {
+  //         $and: [
+  //           {
+  //             $or: [
+  //               {
+  //                 $and: [
+  //                   { start_time: { $lt: newStartTime } },
+  //                   { end_time: { $gt: newStartTime } },
+  //                 ],
+  //               },
+  //               {
+  //                 $and: [
+  //                   { start_time: { $lt: newEndTime } },
+  //                   { end_time: { $gt: newEndTime } },
+  //                 ],
+  //               },
+  //               {
+  //                 $and: [
+  //                   { start_time: { $gte: newStartTime } },
+  //                   { end_time: { $lte: newEndTime } },
+  //                 ],
+  //               },
+  //             ],
+  //           },
+  //           {
+  //             $or: [
+  //               { start_time: { $ne: newStartTime } },
+  //               { end_time: { $ne: newEndTime } },
+  //             ],
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         $and: [
+  //           { start_time: { $eq: newStartTime } },
+  //           { end_time: { $eq: newEndTime } },
+  //         ],
+  //       },
+  //       { $and: [{ hallName: { hallname } }, { bookingDate: { date } }] },
+  //     ],
+  //   }.exec(function (err, results) {
+  //     if (err) {
+  //       //handle error
+  //       return;
+  //     }
+
+  //     // if (results.length > 0) {
+  //     //   console.log(results);
+  //     // }
+  //   })
+  // );
 });
 
 module.exports = router;

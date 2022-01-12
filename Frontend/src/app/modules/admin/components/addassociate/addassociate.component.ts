@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AddingService } from 'src/app/services/adding.service';
-import { AdminService } from 'src/app/services/admin.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { DeptDataService } from 'src/app/services/dept-data.service';
 import { HallDataService } from 'src/app/services/hall-data.service';

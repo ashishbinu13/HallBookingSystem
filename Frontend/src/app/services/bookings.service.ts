@@ -28,7 +28,6 @@ export class BookingsService {
     // .subscribe(data =>{console.log(data)})
   }
   checkavailabilty(bookingDetails: any) {
-    console.log(bookingDetails);
     return this.http.post(`${this.base_url}/booking/check`, bookingDetails);
   }
   deleteBookings(id: any) {
